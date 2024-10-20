@@ -5,6 +5,7 @@ import { Boxes } from '@/components/ui/background-boxes'
 import Avatar from './Avatar'
 import Hero from './Hero'
 import TextGenerate from './TextGenerateEffect'
+import Buttons from './Buttons'
 
 const BackgroundBoxesDemo = () => {
   return (
@@ -14,6 +15,7 @@ const BackgroundBoxesDemo = () => {
       <Avatar />
       <Hero />
       <TextGenerate />
+      <Buttons />
     </div>
   )
 }

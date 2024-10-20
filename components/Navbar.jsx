@@ -22,8 +22,17 @@ function Navbar({ className }) {
         <Link href={'/'}>
           <MenuItem setActive={setActive} active={active} item="Home" />
         </Link>
-        <Link href={'/about'}>
-          <MenuItem setActive={setActive} active={active} item="About" />
+        <Link href={'/project'}>
+          <MenuItem setActive={setActive} active={active} item="Projects" />
+        </Link>
+        <Link href={'/blog'}>
+          <MenuItem setActive={setActive} active={active} item="Blog" />
+        </Link>
+        <Link href={'/resume'}>
+          <MenuItem setActive={setActive} active={active} item="Resume" />
+        </Link>
+        <Link href={'/contact'}>
+          <MenuItem setActive={setActive} active={active} item="Contact Me" />
         </Link>
       </Menu>
     </div>
