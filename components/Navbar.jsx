@@ -16,10 +16,10 @@ const Navbar = () => {
   }
 
   const links = [
-    { href: '/', label: 'Dashboard' },
-    { href: '/about', label: 'About' },
+    { href: '/', label: 'Home' },
     { href: '/projects', label: 'Projects' },
-    { href: '/contact', label: 'Contact' }
+    { href: '/blogs', label: 'Blogs' },
+    { href: '/resume', label: 'Resume' }
   ]
 
   return (
