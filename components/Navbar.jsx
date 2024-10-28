@@ -28,6 +28,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <Image
             src="/pd.png"
+            priority
             width={500}
             height={500}
             alt="My Logo"
