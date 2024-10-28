@@ -31,14 +31,16 @@ const Navbar = () => {
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.2 }}
           >
-            <Image
-              src="/pd.png"
-              priority
-              width={500}
-              height={500}
-              alt="My Logo"
-              className="w-12 h-12"
-            />
+            <Link href={'/'}>
+              <Image
+                src="/pd.png"
+                priority
+                width={500}
+                height={500}
+                alt="My Logo"
+                className="w-12 h-12"
+              />
+            </Link>
           </MotionDiv>
           <div className="hidden md:flex space-x-4">
             {links.map((link) => (

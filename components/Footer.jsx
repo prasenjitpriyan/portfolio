@@ -13,14 +13,16 @@ const Footer = () => {
           transition={{ duration: 0.2 }}
           className="flex items-center mb-4 md:mb-0"
         >
-          <Image
-            src={'/pd.png'}
-            priority
-            width={500}
-            height={500}
-            alt="Logo"
-            className="h-10 w-10"
-          />
+          <Link href={'/'}>
+            <Image
+              src={'/pd.png'}
+              priority
+              width={500}
+              height={500}
+              alt="Logo"
+              className="h-10 w-10"
+            />
+          </Link>
         </MotionDiv>
         <div className="flex space-x-6">
           {socialMediaLinks.map(({ href, target, className, icon }, index) => (

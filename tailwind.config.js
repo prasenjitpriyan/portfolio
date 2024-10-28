@@ -15,7 +15,7 @@ module.exports = {
       'my-color-6': '#f06529',
       'my-color-7': '#2965f1',
       'my-color-8': '#007acc',
-      'my-color-8': '#764abc'
+      'my-color-9': '#764abc'
     }
   },
   plugins: []
