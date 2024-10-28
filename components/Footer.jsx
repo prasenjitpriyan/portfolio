@@ -42,7 +42,7 @@ const Footer = () => {
           ))}
         </div>
       </div>
-      <div className="bg-my-color-2 text-my-color-4 py-4 text-center">
+      <div className="bg-my-color-1 text-my-color-4 py-4 text-center border-t border-my-color-4">
         <p className="text-sm">
           &copy; {new Date().getFullYear()} Prasenjit Das. All rights reserved.
         </p>
