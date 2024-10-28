@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { RxHamburgerMenu } from 'react-icons/rx'
-import { motion } from 'framer-motion'
+import MotionDiv from './MotionDiv'
 import Link from 'next/link'
 
 const Navbar = () => {
@@ -23,20 +23,26 @@ const Navbar = () => {
   ]
 
   return (
-    <nav className="sticky top-0 z-10 bg-my-color-1 backdrop-filter backdrop-blur-lg bg-opacity-30 shadow">
+    <nav className="bg-my-color-1">
       <div className="max-w-8xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Image
-            src="/pd.png"
-            priority
-            width={500}
-            height={500}
-            alt="My Logo"
-            className="w-12 h-12"
-          />
+          <MotionDiv
+            initial={{ scale: 1 }}
+            whileHover={{ scale: 1.1 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Image
+              src="/pd.png"
+              priority
+              width={500}
+              height={500}
+              alt="My Logo"
+              className="w-12 h-12"
+            />
+          </MotionDiv>
           <div className="hidden md:flex space-x-4">
             {links.map((link) => (
-              <motion.div
+              <MotionDiv
                 key={link.href}
                 initial={{ scale: 1 }}
                 whileHover={{ scale: 1.1 }}
@@ -48,12 +54,12 @@ const Navbar = () => {
                   className={
                     pathname === link.href
                       ? 'text-my-color-6'
-                      : 'text-my-color-2'
+                      : 'text-my-color-4'
                   }
                 >
                   {link.label}
                 </Link>
-              </motion.div>
+              </MotionDiv>
             ))}
           </div>
           <div className="md:hidden">
@@ -73,7 +79,7 @@ const Navbar = () => {
         <div className="md:hidden">
           <div className="flex flex-col bg-white rounded shadow-md p-4">
             {links.map((link) => (
-              <motion.div
+              <MotionDiv
                 key={link.href}
                 initial={{ scale: 1 }}
                 whileHover={{ scale: 1.1 }}
@@ -91,7 +97,7 @@ const Navbar = () => {
                 >
                   {link.label}
                 </Link>
-              </motion.div>
+              </MotionDiv>
             ))}
           </div>
         </div>
