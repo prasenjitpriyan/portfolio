@@ -22,7 +22,7 @@ const Navbar = () => {
   ]
 
   return (
-    <nav className="sticky top-0 z-10 bg-my-color-5 backdrop-filter backdrop-blur-lg bg-opacity-30 shadow">
+    <nav className="sticky top-0 z-10 bg-my-color-1 backdrop-filter backdrop-blur-lg bg-opacity-30 shadow">
       <div className="max-w-8xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Image
