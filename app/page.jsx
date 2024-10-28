@@ -1,7 +1,14 @@
+import AboutPage from '@/pages/AboutPage'
+import HomePage from '@/pages/HomePage'
 import React from 'react'
 
-const HomePage = () => {
-  return <div>HomePage</div>
+const Home = () => {
+  return (
+    <main>
+      <HomePage />
+      <AboutPage />
+    </main>
+  )
 }
 
-export default HomePage
+export default Home
