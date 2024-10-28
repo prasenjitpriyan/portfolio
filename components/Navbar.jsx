@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { RxHamburgerMenu } from 'react-icons/rx'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 const Navbar = () => {
@@ -34,15 +35,24 @@ const Navbar = () => {
           />
           <div className="hidden md:flex space-x-4">
             {links.map((link) => (
-              <Link
+              <motion.div
                 key={link.href}
-                href={link.href}
-                className={
-                  pathname === link.href ? 'text-my-color-6' : 'text-my-color-2'
-                }
+                initial={{ scale: 1 }}
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.2 }}
               >
-                {link.label}
-              </Link>
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={
+                    pathname === link.href
+                      ? 'text-my-color-6'
+                      : 'text-my-color-2'
+                  }
+                >
+                  {link.label}
+                </Link>
+              </motion.div>
             ))}
           </div>
           <div className="md:hidden">
@@ -62,18 +72,25 @@ const Navbar = () => {
         <div className="md:hidden">
           <div className="flex flex-col bg-white rounded shadow-md p-4">
             {links.map((link) => (
-              <Link
+              <motion.div
                 key={link.href}
-                href={link.href}
-                className={
-                  pathname === link.href
-                    ? 'font-bold text-my-color-6'
-                    : 'text-my-color-2'
-                }
-                onClick={() => setIsOpen(false)} // Close menu on link click
+                initial={{ scale: 1 }}
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.2 }}
               >
-                {link.label}
-              </Link>
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={
+                    pathname === link.href
+                      ? 'font-bold text-my-color-6'
+                      : 'text-my-color-2'
+                  }
+                  onClick={() => setIsOpen(false)} // Close menu on link click
+                >
+                  {link.label}
+                </Link>
+              </motion.div>
             ))}
           </div>
         </div>
