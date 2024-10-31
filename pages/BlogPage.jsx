@@ -41,9 +41,7 @@ const BlogPage = () => {
               key={index}
               className="bg-white rounded-lg shadow-lg overflow-hidden"
             >
-              <Image
-                width={500}
-                height={500}
+              <img
                 src={blog.image}
                 alt={blog.title}
                 className="w-full h-48 object-cover"
@@ -59,6 +57,16 @@ const BlogPage = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* More Blogs Button */}
+        <div className="text-center mt-8">
+          <a
+            href="/blog" // Change this to your actual blog listing page
+            className="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-200"
+          >
+            More Blogs
+          </a>
         </div>
       </div>
     </section>
