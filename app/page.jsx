@@ -4,6 +4,7 @@ import HomePage from '@/pages/HomePage'
 import FeaturedPage from '@/pages/FeaturedPage'
 import Footer from '@/components/Footer'
 import ProjectsPage from '@/pages/ProjectsPage'
+import BlogPage from '@/pages/BlogPage'
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <AboutPage />
       <FeaturedPage />
       <ProjectsPage />
+      <BlogPage />
       <Footer />
     </main>
   )
