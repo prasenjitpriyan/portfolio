@@ -1,8 +1,9 @@
 import React from 'react'
-import HomePage from '@/pages/HomePage'
 import AboutPage from '@/pages/AboutPage'
+import HomePage from '@/pages/HomePage'
 import FeaturedPage from '@/pages/FeaturedPage'
 import Footer from '@/components/Footer'
+import ProjectsPage from '@/pages/ProjectsPage'
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <HomePage />
       <AboutPage />
       <FeaturedPage />
+      <ProjectsPage />
       <Footer />
     </main>
   )
