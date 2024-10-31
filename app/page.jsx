@@ -1,9 +1,8 @@
-import Footer from '@/components/Footer'
+import React from 'react'
+import HomePage from '@/pages/HomePage'
 import AboutPage from '@/pages/AboutPage'
 import FeaturedPage from '@/pages/FeaturedPage'
-import HomePage from '@/pages/HomePage'
-import ProjectPage from '@/pages/ProjectPage'
-import React from 'react'
+import Footer from '@/components/Footer'
 
 const Home = () => {
   return (
@@ -11,7 +10,6 @@ const Home = () => {
       <HomePage />
       <AboutPage />
       <FeaturedPage />
-      <ProjectPage />
       <Footer />
     </main>
   )
