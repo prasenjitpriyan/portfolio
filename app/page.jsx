@@ -5,6 +5,7 @@ import FeaturedPage from '@/pages/FeaturedPage'
 import Footer from '@/components/Footer'
 import ProjectsPage from '@/pages/ProjectsPage'
 import BlogPage from '@/pages/BlogPage'
+import TestimonialsPage from '@/pages/TestimonialsPage'
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <FeaturedPage />
       <ProjectsPage />
       <BlogPage />
+      <TestimonialsPage />
       <Footer />
     </main>
   )
