@@ -24,7 +24,7 @@ const Footer = () => {
             />
           </Link>
         </MotionDiv>
-        <div className="flex space-x-6">
+        <div className="flex space-x-3">
           {socialMediaLinks.map(({ href, target, className, icon }, index) => (
             <MotionDiv
               key={index}
