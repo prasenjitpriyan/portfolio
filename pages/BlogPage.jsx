@@ -30,16 +30,16 @@ const BlogPage = () => {
   ]
 
   return (
-    <section className="min-h-screen bg-gray-100 p-6 sm:p-12">
+    <section className="min-h-screen bg-my-color-2 p-6 sm:p-12">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold text-center text-blue-600 mb-8">
+        <h1 className="text-4xl font-bold text-center text-my-color-4 mb-8">
           Blog
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {blogs.map((blog, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg shadow-lg overflow-hidden"
+              className="bg-my-color-4 rounded-lg shadow-lg overflow-hidden"
             >
               <img
                 src={blog.image}
