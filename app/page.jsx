@@ -6,6 +6,7 @@ import Footer from '@/components/Footer'
 import ProjectsPage from '@/pages/ProjectsPage'
 import BlogPage from '@/pages/BlogPage'
 import TestimonialsPage from '@/pages/TestimonialsPage'
+import ContactPage from '@/pages/ContactPage'
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
       <ProjectsPage />
       <BlogPage />
       <TestimonialsPage />
+      <ContactPage />
       <Footer />
     </main>
   )
