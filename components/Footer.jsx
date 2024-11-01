@@ -5,7 +5,7 @@ import MotionDiv from './MotionDiv'
 
 const Footer = () => {
   return (
-    <footer className="bg-my-color-2 text-my-color-4">
+    <footer className="bg-my-color-1 text-my-color-4">
       <div className="max-w-8xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center">
         <MotionDiv
           initial={{ scale: 1 }}
@@ -44,7 +44,7 @@ const Footer = () => {
           ))}
         </div>
       </div>
-      <div className="bg-my-color-1 text-my-color-4 py-4 text-center border-t border-my-color-4">
+      <div className="bg-my-color-1 text-my-color-4 py-4 text-center">
         <p className="text-sm">
           &copy; {new Date().getFullYear()} Prasenjit Das. All rights reserved.
         </p>
