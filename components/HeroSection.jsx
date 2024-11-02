@@ -1,8 +1,6 @@
-'use client'
-
-import Image from 'next/image'
-import Link from 'next/link'
 import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
 
 const HeroSection = () => {
   return (
@@ -23,7 +21,7 @@ const HeroSection = () => {
           <button>
             <Link
               href="/projects"
-              className="px-6 py-3 text-lg font-semibold text-white bg-blue-600 rounded-lg shadow-lg transition duration-200 hover:bg-blue-700"
+              className="px-6 py-3 text-lg font-semibold text-my-color-2 bg-my-color-4 rounded-lg transition duration-200 hover:bg-my-color-5"
             >
               View My Projects
             </Link>
@@ -31,7 +29,7 @@ const HeroSection = () => {
           <button>
             <Link
               href="/contact"
-              className="px-6 py-3 text-lg font-semibold text-blue-600 border border-blue-600 rounded-lg shadow-lg transition duration-200 hover:bg-blue-600 hover:text-white"
+              className="px-6 py-3 text-lg font-semibold text-my-color-4 border border-my-color-4 rounded-lg shadow-lg transition duration-200 hover:bg-my-color-5 hover:text-my-color-2"
             >
               Get in Touch
             </Link>
@@ -46,7 +44,7 @@ const HeroSection = () => {
           height={500}
           src="/myIMG.jpg" // Update with your image path
           alt="Description of the image"
-          className="w-full max-w-md rounded-lg shadow-lg"
+          className="w-full max-w-md rounded-lg shadow-lg hover:border-2 hover:border-my-color-5"
         />
       </div>
     </section>
