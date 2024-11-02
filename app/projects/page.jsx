@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import { useState } from 'react'
 
@@ -46,8 +48,8 @@ const ProjectsPage = () => {
   ]
 
   // Sort projects based on sortOrder
-  const sortedProjects = [...projects].sort((a, b) => {
-    return sortOrder === 'latest' ? b.date - a.date : a.date - b.date
+  const sortedProjects = [...projects].sort((Link, b) => {
+    return sortOrder === 'latest' ? b.date - Link.date : Link.date - b.date
   })
 
   // Function to load more projects
@@ -79,7 +81,10 @@ const ProjectsPage = () => {
             key={project.id}
             className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg"
           >
-            <img
+            <Image
+              priority
+              width={1000}
+              height={1000}
               src={project.image}
               alt={project.title}
               className="w-full h-40 object-cover"
@@ -92,22 +97,22 @@ const ProjectsPage = () => {
                 {project.technologies.join(', ')}
               </p>
               <div className="flex justify-between mt-4">
-                <a
+                <Link
                   href={project.liveDemo}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-500 hover:underline"
                 >
                   Live Demo
-                </a>
-                <a
+                </Link>
+                <Link
                   href={project.repoLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-500 hover:underline"
                 >
                   GitHub Repo
-                </a>
+                </Link>
               </div>
             </div>
           </div>
