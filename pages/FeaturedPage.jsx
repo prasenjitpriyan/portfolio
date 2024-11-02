@@ -1,3 +1,5 @@
+import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const FeaturedPage = () => {
@@ -42,7 +44,9 @@ const FeaturedPage = () => {
               key={index}
               className="bg-white rounded-lg shadow-lg overflow-hidden"
             >
-              <img
+              <Image
+                width={500}
+                height={500}
                 src={project.image}
                 alt={`${project.title} Screenshot`}
                 className="w-full h-48 object-cover"
@@ -56,22 +60,22 @@ const FeaturedPage = () => {
                   Technologies Used: {project.technologies}
                 </p>
                 <div className="flex space-x-4">
-                  <a
+                  <Link
                     href={project.demoLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-500 hover:underline"
                   >
                     Live Demo
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href={project.repoLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-500 hover:underline"
                   >
                     GitHub Repo
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

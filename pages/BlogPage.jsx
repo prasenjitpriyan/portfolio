@@ -1,5 +1,6 @@
-import Image from 'next/image'
 import React from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 
 const BlogPage = () => {
   const blogs = [
@@ -41,16 +42,18 @@ const BlogPage = () => {
               key={index}
               className="bg-my-color-4 rounded-lg shadow-lg overflow-hidden"
             >
-              <img
+              <Image
                 src={blog.image}
                 alt={blog.title}
+                width={500}
+                height={500}
                 className="w-full h-48 object-cover"
               />
               <div className="p-4">
                 <h2 className="text-xl font-semibold text-gray-800 mb-2">
-                  <a href={blog.link} className="hover:text-blue-600">
+                  <Link href={blog.link} className="hover:text-blue-600">
                     {blog.title}
-                  </a>
+                  </Link>
                 </h2>
                 <p className="text-gray-600 mb-2">{blog.description}</p>
                 <span className="text-gray-500 text-sm">{blog.date}</span>
@@ -61,12 +64,12 @@ const BlogPage = () => {
 
         {/* More Blogs Button */}
         <div className="text-center mt-8">
-          <a
+          <Link
             href="/blog" // Change this to your actual blog listing page
             className="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-200"
           >
             More Blogs
-          </a>
+          </Link>
         </div>
       </div>
     </section>

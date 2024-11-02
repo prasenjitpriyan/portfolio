@@ -10,7 +10,7 @@ const GlobalErrorPage = () => {
           Something Went Wrong!
         </h1>
         <p className="mt-2 text-lg text-my-color-4">
-          We're experiencing technical difficulties.
+          We&apos;re experiencing technical difficulties.
         </p>
         <p className="mt-2 text-sm text-my-color-5">
           Please try refreshing the page or check back later.

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
@@ -62,7 +63,9 @@ const ProjectsPage = () => {
               key={index}
               className="bg-my-color-4 rounded-lg shadow-lg overflow-hidden"
             >
-              <img
+              <Image
+                width={500}
+                height={500}
                 src={project.image}
                 alt={`${project.title} Screenshot`}
                 className="w-full h-48 object-cover"
