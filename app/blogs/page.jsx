@@ -5,6 +5,7 @@ import { useState } from 'react'
 
 const BlogPage = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const [visibleBlogs, setVisibleBlogs] = useState(6)
 
   const blogs = [
     {
@@ -42,8 +43,30 @@ const BlogPage = () => {
       title: 'Blog Title 6',
       description: 'This is a short description of the third blog post.',
       image: '/myIMG.jpg'
+    },
+    {
+      id: 7,
+      title: 'Blog Title 7',
+      description: 'This is a short description of the third blog post.',
+      image: '/myIMG.jpg'
+    },
+    {
+      id: 8,
+      title: 'Blog Title 8',
+      description: 'This is a short description of the third blog post.',
+      image: '/myIMG.jpg'
+    },
+    {
+      id: 9,
+      title: 'Blog Title 9',
+      description: 'This is a short description of the third blog post.',
+      image: '/myIMG.jpg'
     }
   ]
+
+  const loadMoreBlogs = () => {
+    setVisibleBlogs((prevVisibleBlogs) => prevVisibleBlogs + 3)
+  }
 
   return (
     <div className="min-h-[calc(100svh-4rem)] bg-my-color-2 text-my-color-4 flex">
@@ -96,7 +119,7 @@ const BlogPage = () => {
 
         {/* Blogs Listing */}
         <div className="grid gap-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
-          {blogs.map((blog) => (
+          {blogs.slice(0, visibleBlogs).map((blog) => (
             <div
               key={blog.id}
               className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg"
@@ -114,6 +137,18 @@ const BlogPage = () => {
             </div>
           ))}
         </div>
+
+        {/* Load More Button */}
+        {visibleBlogs < blogs.length && (
+          <div className="flex justify-center mt-6">
+            <button
+              onClick={loadMoreBlogs}
+              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+            >
+              Load More
+            </button>
+          </div>
+        )}
       </main>
 
       {/* Mobile Sidebar Toggle Button */}
