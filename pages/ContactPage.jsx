@@ -3,8 +3,8 @@ import { FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa'
 
 const ContactPage = () => {
   return (
-    <section className="min-h-screen bg-my-color-2 p-6 sm:p-12">
-      <div className="max-w-lg mx-auto bg-my-color-4 rounded-lg shadow-lg p-8">
+    <section className="min-h-screen bg-my-color-2 max-w-8xl p-8">
+      <div className="mx-auto bg-my-color-4 rounded-lg shadow-lg p-12">
         <h1 className="text-3xl font-bold text-my-color-2 text-center mb-6">
           Contact Me
         </h1>

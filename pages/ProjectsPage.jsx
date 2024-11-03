@@ -52,8 +52,8 @@ const ProjectsPage = () => {
     }
   ]
   return (
-    <section className="min-h-screen bg-my-color-2 p-6 sm:p-12">
-      <div className="max-w-6xl mx-auto">
+    <section className="min-h-screen bg-my-color-2">
+      <div className="max-w-8xl mx-auto p-8">
         <h1 className="text-4xl font-bold text-center text-my-color-4 mb-8">
           Projects Overview
         </h1>
