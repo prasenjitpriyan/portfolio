@@ -19,6 +19,22 @@ const TestimonialsPage = () => {
     {
       name: 'Michael Brown',
       text: "Prasenjit's technical acumen and dedication to problem-solving are unmatched. Our project's success is a testament to their expertise."
+    },
+    {
+      name: 'Michael Brown',
+      text: "Prasenjit's technical acumen and dedication to problem-solving are unmatched. Our project's success is a testament to their expertise."
+    },
+    {
+      name: 'Michael Brown',
+      text: "Prasenjit's technical acumen and dedication to problem-solving are unmatched. Our project's success is a testament to their expertise."
+    },
+    {
+      name: 'Michael Brown',
+      text: "Prasenjit's technical acumen and dedication to problem-solving are unmatched. Our project's success is a testament to their expertise."
+    },
+    {
+      name: 'Michael Brown',
+      text: "Prasenjit's technical acumen and dedication to problem-solving are unmatched. Our project's success is a testament to their expertise."
     }
   ]
 
