@@ -1,21 +1,28 @@
-'use client'
-
 import React from 'react'
-import { motion } from 'framer-motion'
+import {
+  SiJavascript,
+  SiTypescript,
+  SiReact,
+  SiNodedotjs,
+  SiAngular,
+  SiVuedotjs,
+  SiGithub
+} from 'react-icons/si'
 
 const AboutPage = () => {
+  const skills = [
+    { name: 'JavaScript', icon: <SiJavascript /> },
+    { name: 'TypeScript', icon: <SiTypescript /> },
+    { name: 'React.js', icon: <SiReact /> },
+    { name: 'Node.js', icon: <SiNodedotjs /> },
+    { name: 'Angular.js', icon: <SiAngular /> },
+    { name: 'Vue.js', icon: <SiVuedotjs /> },
+    { name: 'Github', icon: <SiGithub /> }
+  ]
+
   return (
-    <div className="min-h-screen bg-my-color-2 text-my-color-4 flex items-center justify-center p-4 sm:p-8 lg:p-12">
-      <motion.div
-        className="max-w-8xl mx-auto bg-white rounded-lg shadow-2xl p-8"
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-        whileHover={{
-          scale: 1.02,
-          boxShadow: '0px 15px 30px rgba(0, 0, 0, 0.3)'
-        }}
-      >
+    <div className="min-h-screen bg-my-color-2 text-my-color-4 flex items-center justify-center">
+      <div className="max-w-8xl mx-auto p-8">
         <h1 className="text-4xl font-bold text-center text-blue-600 mb-6">
           About Me
         </h1>
@@ -51,19 +58,14 @@ const AboutPage = () => {
 
         {/* Skill Icons/Badges */}
         <div className="flex flex-wrap justify-center mb-6 space-x-4">
-          {['JS', 'TS', 'React', 'Node'].map((skill, index) => (
-            <motion.div
+          {skills.map((skill, index) => (
+            <div
               key={index}
-              className="w-16 h-16 bg-my-color-5 rounded-lg flex items-center justify-center text-my-color-2 font-bold mb-4 shadow-md"
-              whileHover={{
-                scale: 1.1,
-                boxShadow: '0px 10px 20px rgba(0, 0, 0, 0.2)'
-              }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: 'spring', stiffness: 300 }}
+              className="w-16 h-16 bg-my-color-4 rounded-full flex items-center justify-center text-my-color-2 text-3xl mb-4 shadow-md 
+                     hover:scale-105 hover:shadow-lg transition-transform duration-200 ease-in-out"
             >
-              {skill}
-            </motion.div>
+              {skill.icon}
+            </div>
           ))}
         </div>
 
@@ -85,7 +87,7 @@ const AboutPage = () => {
             effective solutions.
           </li>
         </ul>
-      </motion.div>
+      </div>
     </div>
   )
 }
