@@ -44,7 +44,7 @@ const BlogPage = () => {
             <motion.div
               key={index}
               className="bg-my-color-4 rounded-lg shadow-lg overflow-hidden"
-              whileHover={{ scale: 1.05 }} // Card zoom effect
+              whileHover={{ scale: 1.05, rotateY: 5, rotateX: -5 }} // Adds 3D tilt on hover
               initial={{ opacity: 0, y: 20 }} // Entrance animation
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: index * 0.2 }}
