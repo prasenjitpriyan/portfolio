@@ -1,6 +1,9 @@
+'use client'
+
+import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import { motion } from 'framer-motion'
 
 const FeaturedPage = () => {
   const projects = [
@@ -33,25 +36,37 @@ const FeaturedPage = () => {
     }
   ]
   return (
-    <div className="min-h-svh bg-my-color-2 text-my-color-4">
+    <div className="min-h-screen bg-my-color-2 text-my-color-4">
       <div className="max-w-8xl p-8 mx-auto">
         <h1 className="text-4xl font-bold text-center text-blue-600 mb-8">
           Featured Projects
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {projects.map((project, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-white rounded-lg shadow-lg overflow-hidden"
+              className="relative group bg-white rounded-lg shadow-lg overflow-hidden"
+              whileHover={{ scale: 1.05 }} // Slight zoom on hover
+              initial={{ opacity: 0, y: 20 }} // Initial entrance effect
+              animate={{ opacity: 1, y: 0 }} // Final position
+              transition={{ duration: 0.3, delay: index * 0.2 }} // Staggered entrance
             >
+              {/* Project Image */}
               <Image
                 width={500}
                 height={500}
                 src={project.image}
                 alt={`${project.title} Screenshot`}
-                className="w-full h-48 object-cover"
+                className="w-full h-96 object-cover transition-opacity duration-300 group-hover:opacity-20"
               />
-              <div className="p-4">
+
+              {/* Hover Overlay */}
+              <motion.div
+                className="absolute inset-0 flex flex-col justify-center items-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white bg-opacity-90"
+                initial={{ y: -20, opacity: 0 }} // Overlay entrance from top
+                whileHover={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
                 <h2 className="text-2xl font-semibold text-gray-800 mb-2">
                   {project.title}
                 </h2>
@@ -77,8 +92,8 @@ const FeaturedPage = () => {
                     GitHub Repo
                   </Link>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
         </div>
       </div>
