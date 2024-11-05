@@ -1,6 +1,6 @@
-import Image from 'next/image'
-import Link from 'next/link'
 import React from 'react'
+import ProjectsList from '@/components/ProjectsList'
+import Button from '@/components/Button'
 
 const ProjectsPage = () => {
   const projects = [
@@ -51,67 +51,21 @@ const ProjectsPage = () => {
       image: '/myIMG.jpg' // Replace with actual image path
     }
   ]
+
   return (
     <section className="min-h-screen bg-my-color-2">
       <div className="max-w-8xl mx-auto p-8">
         <h1 className="text-4xl font-bold text-center text-my-color-4 mb-8">
           Projects Overview
         </h1>
-        <div className="space-y-8">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="bg-my-color-4 rounded-lg shadow-lg overflow-hidden"
-            >
-              <Image
-                width={500}
-                height={500}
-                src={project.image}
-                alt={`${project.title} Screenshot`}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-4">
-                <h2 className="text-2xl font-semibold text-my-color-2 mb-2">
-                  {project.title}
-                </h2>
-                <p className="text-gray-700 mb-4">{project.description}</p>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                  Technologies Used:
-                </h3>
-                <ul className="list-disc list-inside mb-4">
-                  {project.technologies.map((tech, techIndex) => (
-                    <li key={techIndex} className="text-gray-600">
-                      {tech}
-                    </li>
-                  ))}
-                </ul>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                  Code Example:
-                </h3>
-                <pre className="bg-gray-200 p-3 rounded mb-4">
-                  <code>{project.codeExample}</code>
-                </pre>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                  Challenges & Solutions:
-                </h3>
-                <p className="text-gray-600 mb-4">{project.challenges}</p>
-                <p className="text-gray-600 mb-4">{project.solutions}</p>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                  Lessons Learned:
-                </h3>
-                <p className="text-gray-600">{project.lessons}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <ProjectsList projects={projects} />
         {/* More Projects Button */}
         <div className="mt-8 text-center">
-          <Link
+          <Button
             href="/projects"
-            className="inline-block bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700 transition duration-200"
-          >
-            More Projects
-          </Link>
+            text="More Projects"
+            className="px-6 py-3 text-lg font-semibold text-my-color-2 bg-my-color-4 rounded-lg transition duration-200 hover:bg-my-color-5"
+          />
         </div>
       </div>
     </section>
