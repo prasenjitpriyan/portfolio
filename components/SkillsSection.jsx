@@ -46,8 +46,8 @@ const skills = [
 
 const SkillsSection = () => (
   <div>
-    <h2 className="text-2xl font-semibold text-gray-800 mb-4">Skills:</h2>
-    <ul className="list-disc list-inside text-gray-700 mb-6">
+    <h2 className="text-2xl font-semibold text-my-color-5 mb-4">Skills:</h2>
+    <ul className="list-disc list-inside text-my-color-4 mb-6">
       <li>HTML</li>
       <li>CSS, Bootstrap, Tailwind CSS</li>
       <li>JavaScript (ES6+)</li>
@@ -58,7 +58,7 @@ const SkillsSection = () => (
       <li>Design: Responsive Design, UX/UI Principles</li>
     </ul>
 
-    <div className="flex flex-wrap justify-center mb-6 space-x-4">
+    <div className="flex flex-wrap justify-center space-x-4">
       {skills.map((skill, index) => (
         <SkillBadge key={index} icon={skill.icon} />
       ))}
