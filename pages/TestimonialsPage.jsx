@@ -1,6 +1,5 @@
-'use client'
 import React from 'react'
-import { motion, useAnimationFrame } from 'framer-motion'
+import MotionDiv from '@/components/MotionDiv'
 
 const TestimonialsPage = () => {
   const testimonials = [
@@ -38,7 +37,6 @@ const TestimonialsPage = () => {
     }
   ]
 
-  // Duplicate testimonials for an infinite scrolling effect
   const infiniteTestimonials = [...testimonials, ...testimonials]
 
   return (
@@ -48,7 +46,7 @@ const TestimonialsPage = () => {
           Testimonials
         </h1>
         <div className="overflow-hidden relative">
-          <motion.div
+          <MotionDiv
             className="flex gap-8"
             initial={{ x: 0 }}
             animate={{ x: '-100%' }}
@@ -59,7 +57,7 @@ const TestimonialsPage = () => {
             }}
           >
             {infiniteTestimonials.map((testimonial, index) => (
-              <motion.div
+              <MotionDiv
                 key={index}
                 className="min-w-[300px] bg-my-color-4 rounded-lg shadow-lg p-6"
               >
@@ -69,9 +67,9 @@ const TestimonialsPage = () => {
                 <h3 className="font-semibold text-my-color-2">
                   — {testimonial.name}
                 </h3>
-              </motion.div>
+              </MotionDiv>
             ))}
-          </motion.div>
+          </MotionDiv>
         </div>
       </div>
     </section>

@@ -1,9 +1,7 @@
-'use client'
-
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import MotionDiv from '@/components/MotionDiv'
 
 const FeaturedPage = () => {
   const projects = [
@@ -43,7 +41,7 @@ const FeaturedPage = () => {
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {projects.map((project, index) => (
-            <motion.div
+            <MotionDiv
               key={index}
               className="relative group bg-white rounded-lg shadow-lg overflow-hidden"
               whileHover={{ scale: 1.05 }} // Slight zoom on hover
@@ -61,7 +59,7 @@ const FeaturedPage = () => {
               />
 
               {/* Hover Overlay */}
-              <motion.div
+              <MotionDiv
                 className="absolute inset-0 flex flex-col justify-center items-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white bg-opacity-90"
                 initial={{ y: -20, opacity: 0 }} // Overlay entrance from top
                 whileHover={{ opacity: 1, y: 0 }}
@@ -92,8 +90,8 @@ const FeaturedPage = () => {
                     GitHub Repo
                   </Link>
                 </div>
-              </motion.div>
-            </motion.div>
+              </MotionDiv>
+            </MotionDiv>
           ))}
         </div>
       </div>

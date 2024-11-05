@@ -5,77 +5,58 @@ const CertificatesShowcasePage = () => {
   const certificates = [
     {
       title: 'Certified JavaScript Developer',
-      image: '/myIMG.jpg', // Replace with your image path
+      image: '/myIMG.jpg',
       description: 'Achieved certification in JavaScript development.',
       date: 'July 2024'
     },
     {
       title: 'TypeScript Mastery',
-      image: '/myIMG.jpg', // Replace with your image path
+      image: '/myIMG.jpg',
       description: 'Mastered TypeScript for web development.',
       date: 'August 2024'
     },
     {
       title: 'React Professional Certification',
-      image: '/myIMG.jpg', // Replace with your image path
+      image: '/myIMG.jpg',
       description: 'Professional certification in React development.',
       date: 'September 2024'
     },
     {
       title: 'Certified JavaScript Developer',
-      image: '/myIMG.jpg', // Replace with your image path
+      image: '/myIMG.jpg',
       description: 'Achieved certification in JavaScript development.',
       date: 'July 2024'
     },
     {
       title: 'TypeScript Mastery',
-      image: '/myIMG.jpg', // Replace with your image path
+      image: '/myIMG.jpg',
       description: 'Mastered TypeScript for web development.',
       date: 'August 2024'
     },
     {
       title: 'React Professional Certification',
-      image: '/myIMG.jpg', // Replace with your image path
+      image: '/myIMG.jpg',
       description: 'Professional certification in React development.',
       date: 'September 2024'
     },
     {
       title: 'Certified JavaScript Developer',
-      image: '/myIMG.jpg', // Replace with your image path
+      image: '/myIMG.jpg',
       description: 'Achieved certification in JavaScript development.',
       date: 'July 2024'
     },
     {
       title: 'TypeScript Mastery',
-      image: '/myIMG.jpg', // Replace with your image path
+      image: '/myIMG.jpg',
       description: 'Mastered TypeScript for web development.',
       date: 'August 2024'
     },
     {
       title: 'React Professional Certification',
-      image: '/myIMG.jpg', // Replace with your image path
-      description: 'Professional certification in React development.',
-      date: 'September 2024'
-    },
-    {
-      title: 'Certified JavaScript Developer',
-      image: '/myIMG.jpg', // Replace with your image path
-      description: 'Achieved certification in JavaScript development.',
-      date: 'July 2024'
-    },
-    {
-      title: 'TypeScript Mastery',
-      image: '/myIMG.jpg', // Replace with your image path
-      description: 'Mastered TypeScript for web development.',
-      date: 'August 2024'
-    },
-    {
-      title: 'React Professional Certification',
-      image: '/myIMG.jpg', // Replace with your image path
+      image: '/myIMG.jpg',
       description: 'Professional certification in React development.',
       date: 'September 2024'
     }
-    // Add more certificates as needed
   ]
 
   return (
