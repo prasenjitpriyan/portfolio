@@ -47,18 +47,20 @@ const skills = [
 const SkillsSection = () => (
   <div>
     <h2 className="text-2xl font-semibold text-my-color-5 mb-4">Skills:</h2>
-    <ul className="list-disc list-inside text-my-color-4 mb-6">
-      <li>HTML</li>
-      <li>CSS, Bootstrap, Tailwind CSS</li>
-      <li>JavaScript (ES6+)</li>
-      <li>TypeScript</li>
-      <li>Frameworks/Libraries: React, Node.js, Angular, Vue.js, Next.js</li>
-      <li>Tools: Git, Webpack, Babel</li>
-      <li>Testing: Jest, Cypress</li>
-      <li>Design: Responsive Design, UX/UI Principles</li>
+    <ul className="list-disc list-inside text-my-color-4 mb-6 space-y-2">
+      <li className="text-lg">HTML</li>
+      <li className="text-lg">CSS, Bootstrap, Tailwind CSS</li>
+      <li className="text-lg">JavaScript (ES6+)</li>
+      <li className="text-lg">TypeScript</li>
+      <li className="text-lg">
+        Frameworks/Libraries: React, Node.js, Angular, Vue.js, Next.js
+      </li>
+      <li className="text-lg">Tools: Git, Webpack, Babel</li>
+      <li className="text-lg">Testing: Jest, Cypress</li>
+      <li className="text-lg">Design: Responsive Design, UX/UI Principles</li>
     </ul>
 
-    <div className="flex flex-wrap justify-center space-x-4">
+    <div className="flex flex-wrap justify-center space-x-10">
       {skills.map((skill, index) => (
         <SkillBadge key={index} icon={skill.icon} />
       ))}

@@ -16,8 +16,8 @@ const SkillBadge = ({ icon, bgColor }) => (
     <MotionDiv
       className="
         relative w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 
-        rounded-full flex items-center justify-center 
-        text-my-color-4 text-3xl shadow-md 
+        rounded-full flex items-center justify-center bg-my-color-4
+        text-my-color-2 text-3xl shadow-md 
         transition-transform duration-200 ease-in-out"
       whileHover={{ y: -5 }}
       transition={{ type: 'spring', stiffness: 200 }}
