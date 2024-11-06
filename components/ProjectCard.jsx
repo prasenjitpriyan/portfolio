@@ -10,11 +10,11 @@ const ProjectCard = ({ project }) => {
       {/* Full Page Image */}
       <div className="relative w-full h-60 md:h-96">
         <Image
+          priority
           src={project.image}
           alt={`${project.title} Screenshot`}
-          layout="fill" // Cover the entire container
-          objectFit="cover" // Maintain aspect ratio
-          className="rounded-t-lg"
+          fill // Replaces layout="fill"
+          className="object-cover rounded-t-lg"
         />
       </div>
       {/* Description Container */}

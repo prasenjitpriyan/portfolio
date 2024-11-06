@@ -3,8 +3,8 @@ import ImageComponent from '@/components/ImageComponent'
 
 const ContactPage = () => {
   return (
-    <section className="h-auto bg-my-color-2 max-w-8xl p-8">
-      <div className="mx-auto rounded-lg shadow-lg p-6 md:flex md:p-12">
+    <section className="h-auto bg-my-color-2 max-w-8xl">
+      <div className="mx-auto rounded-lg shadow-lg p-8 md:flex">
         {/* Left Column: Image */}
         <div className="flex-shrink-0 mb-6 md:mb-0 md:w-1/2 md:pr-6">
           <ImageComponent src="/myIMG.jpg" alt="Description of the image" />

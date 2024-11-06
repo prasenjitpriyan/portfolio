@@ -4,7 +4,7 @@ import React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 
-const MotionImage = motion(Image)
+const MotionImage = motion.create(Image)
 
 const ImageComponent = ({ src, alt }) => {
   return (
