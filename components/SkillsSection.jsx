@@ -1,71 +1,107 @@
 import React from 'react'
-import SkillBadge from './SkillBadge'
+import { FaHtml5, FaCss3Alt, FaJs, FaNode, FaReact } from 'react-icons/fa'
 import {
-  SiJavascript,
-  SiTypescript,
-  SiReact,
-  SiNodedotjs,
-  SiAngular,
-  SiVuedotjs,
-  SiGithub,
-  SiCss3,
-  SiHtml5,
-  SiBootstrap,
-  SiTailwindcss,
-  SiGit,
-  SiWebpack,
-  SiBabel,
-  SiJest,
-  SiCypress,
-  SiExpress,
   SiMongodb,
-  SiNextdotjs
-} from 'react-icons/si'
+  SiExpress,
+  SiTailwindcss,
+  SiTypescript
+} from 'react-icons/si' // Import new icons
+import MotionDiv from './MotionDiv'
 
 const skills = [
-  { name: 'HTML', icon: <SiHtml5 /> },
-  { name: 'CSS', icon: <SiCss3 /> },
-  { name: 'Bootstrap', icon: <SiBootstrap /> },
-  { name: 'Tailwind CSS', icon: <SiTailwindcss /> },
-  { name: 'JavaScript', icon: <SiJavascript /> },
-  { name: 'TypeScript', icon: <SiTypescript /> },
-  { name: 'React.js', icon: <SiReact /> },
-  { name: 'Next.js', icon: <SiNextdotjs /> },
-  { name: 'Node.js', icon: <SiNodedotjs /> },
-  { name: 'Express.js', icon: <SiExpress /> },
-  { name: 'MongoDB', icon: <SiMongodb /> },
-  { name: 'Angular.js', icon: <SiAngular /> },
-  { name: 'Vue.js', icon: <SiVuedotjs /> },
-  { name: 'Git', icon: <SiGit /> },
-  { name: 'Webpack', icon: <SiWebpack /> },
-  { name: 'Babel', icon: <SiBabel /> },
-  { name: 'Jest', icon: <SiJest /> },
-  { name: 'Cypress', icon: <SiCypress /> },
-  { name: 'Github', icon: <SiGithub /> }
+  { name: 'HTML', icon: <FaHtml5 />, color: 'text-red-500', percentage: 98 },
+  { name: 'CSS', icon: <FaCss3Alt />, color: 'text-blue-500', percentage: 98 },
+  {
+    name: 'JavaScript',
+    icon: <FaJs />,
+    color: 'text-yellow-500',
+    percentage: 98
+  },
+  {
+    name: 'Node.js',
+    icon: <FaNode />,
+    color: 'text-green-500',
+    percentage: 98
+  },
+  { name: 'React', icon: <FaReact />, color: 'text-blue-300', percentage: 98 },
+  {
+    name: 'MongoDB',
+    icon: <SiMongodb />,
+    color: 'text-green-600',
+    percentage: 90
+  },
+  {
+    name: 'Express',
+    icon: <SiExpress />,
+    color: 'text-gray-500',
+    percentage: 85
+  },
+  {
+    name: 'Tailwind CSS',
+    icon: <SiTailwindcss />,
+    color: 'text-teal-400',
+    percentage: 95
+  },
+  {
+    name: 'TypeScript',
+    icon: <SiTypescript />,
+    color: 'text-blue-500',
+    percentage: 90
+  }
 ]
 
-const SkillsSection = () => (
-  <div>
-    <h2 className="text-2xl font-semibold text-my-color-5 mb-4">Skills:</h2>
-    <ul className="list-disc list-inside text-my-color-4 mb-6 space-y-2">
-      <li className="text-lg">HTML</li>
-      <li className="text-lg">CSS, Bootstrap, Tailwind CSS</li>
-      <li className="text-lg">JavaScript (ES6+)</li>
-      <li className="text-lg">TypeScript</li>
-      <li className="text-lg">
-        Frameworks/Libraries: React, Node.js, Angular, Vue.js, Next.js
-      </li>
-      <li className="text-lg">Tools: Git, Webpack, Babel</li>
-      <li className="text-lg">Testing: Jest, Cypress</li>
-      <li className="text-lg">Design: Responsive Design, UX/UI Principles</li>
-    </ul>
+const SkillSection = () => {
+  return (
+    <section className="text-center py-16 bg-my-color-2 text-my-color-4">
+      <h2 className="text-4xl font-bold mb-8">Skills</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-8xl mx-auto">
+        {skills.map((skill, index) => (
+          <MotionDiv
+            key={index}
+            className="flex flex-col items-center p-4 rounded-lg"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.2 }}
+          >
+            <div className="relative w-24 h-24 flex items-center justify-center">
+              <svg className="absolute w-full h-full">
+                <circle
+                  cx="50%"
+                  cy="50%"
+                  r="40"
+                  stroke="currentColor"
+                  strokeWidth="8"
+                  className="text-gray-700"
+                  fill="none"
+                />
+                <circle
+                  cx="50%"
+                  cy="50%"
+                  r="40"
+                  stroke="currentColor"
+                  strokeWidth="8"
+                  strokeDasharray="251.2"
+                  strokeDashoffset={(251.2 * (100 - skill.percentage)) / 100}
+                  className={`${skill.color}`}
+                  fill="none"
+                />
+              </svg>
+              <span className="absolute text-2xl font-semibold">
+                {skill.percentage}%
+              </span>
+            </div>
 
-    <div className="flex flex-wrap justify-center space-x-10">
-      {skills.map((skill, index) => (
-        <SkillBadge key={index} icon={skill.icon} />
-      ))}
-    </div>
-  </div>
-)
+            <div className={`text-5xl mt-4 ${skill.color}`}>{skill.icon}</div>
+            <h3 className="mt-2 text-xl font-bold">{skill.name}</h3>
+            <p className="text-my-color-4 text-sm mt-2">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Consequatur, delectus!
+            </p>
+          </MotionDiv>
+        ))}
+      </div>
+    </section>
+  )
+}
 
-export default SkillsSection
+export default SkillSection
