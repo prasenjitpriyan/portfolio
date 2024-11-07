@@ -1,8 +1,6 @@
 'use client'
 
 import React, { useState } from 'react'
-import MiniProfile from '@/components/MiniProfile'
-import { SignedIn, SignedOut, SignInButton, SignOutButton } from '@clerk/nextjs'
 import Image from 'next/image'
 
 const BlogPage = () => {
@@ -115,18 +113,9 @@ const BlogPage = () => {
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-2xl font-bold">Blogs</h1>
           <div className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
-            <SignedIn>
-              <SignOutButton />
-            </SignedIn>
-            <SignedOut>
-              <SignInButton />
-            </SignedOut>
+            <button>Sign In</button>
           </div>
         </div>
-
-        <SignedIn>
-          <MiniProfile />
-        </SignedIn>
 
         {/* Blogs Listing */}
         <div className="grid gap-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
