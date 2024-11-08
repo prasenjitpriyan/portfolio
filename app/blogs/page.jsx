@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import { signIn } from 'next-auth/react'
+import { FaGoogle } from 'react-icons/fa'
 
 const BlogPage = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
@@ -115,9 +116,10 @@ const BlogPage = () => {
           <h1 className="text-2xl font-bold text-my-color-4">Blogs</h1>
           <button
             onClick={() => signIn('google')}
-            className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+            className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 flex items-center gap-4"
           >
-            Sign In
+            <FaGoogle />
+            <span>Sign In</span>
           </button>
         </div>
 
