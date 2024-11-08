@@ -1,13 +1,14 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import Image from 'next/image'
-import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
+import { signIn, useSession, getProviders } from 'next-auth/react'
 import { FaGoogle } from 'react-icons/fa'
+import Profile from '@/components/Profile'
+import SavedBlogs from '@/components/SavedBlogs'
+import SignOutButton from '@/components/SignOutButton'
 
 const BlogPage = () => {
   const { data: session } = useSession()
-  const profileImage = session?.user?.image
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [visibleBlogs, setVisibleBlogs] = useState(6)
@@ -93,21 +94,8 @@ const BlogPage = () => {
           <h1 className="text-2xl font-bold text-my-color-4">Blogs</h1>
           {session ? (
             <div className="flex items-center gap-2">
-              {profileImage && (
-                <Image
-                  src={profileImage}
-                  alt="Profile Image"
-                  width={32}
-                  height={32}
-                  className="rounded-full"
-                />
-              )}
-              <button
-                onClick={() => signOut()}
-                className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
-              >
-                Sign Out
-              </button>
+              <Profile />
+              <SignOutButton />
             </div>
           ) : (
             <button
@@ -121,28 +109,7 @@ const BlogPage = () => {
         </div>
 
         {/* Blogs Listing */}
-        <div className="grid gap-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
-          {blogs.slice(0, visibleBlogs).map((blog) => (
-            <div
-              key={blog.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg"
-            >
-              <Image
-                priority
-                width={1080}
-                height={720}
-                src={blog.image}
-                alt={blog.title}
-                className="w-full h-40 object-cover"
-              />
-              <div className="p-4">
-                <h2 className="text-xl font-semibold">{blog.title}</h2>
-                <p className="text-gray-600">{blog.description}</p>
-                <button className="mt-2 text-blue-500">Read More</button>
-              </div>
-            </div>
-          ))}
-        </div>
+        <SavedBlogs blogs={blogs.slice(0, visibleBlogs)} />
 
         {/* Load More Button */}
         {visibleBlogs < blogs.length && (
