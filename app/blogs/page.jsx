@@ -1,13 +1,25 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { signIn } from 'next-auth/react'
+import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
 import { FaGoogle } from 'react-icons/fa'
 
 const BlogPage = () => {
+  const { data: session } = useSession()
+  const profileImage = session?.user?.image
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [visibleBlogs, setVisibleBlogs] = useState(6)
+  const [providers, setProviders] = useState(null)
+
+  useEffect(() => {
+    const setAuthProviders = async () => {
+      const res = await getProviders()
+      setProviders(res)
+    }
+    setAuthProviders()
+  }, [])
 
   const blogs = [
     {
@@ -27,43 +39,8 @@ const BlogPage = () => {
       title: 'Blog Title 3',
       description: 'This is a short description of the third blog post.',
       image: '/myIMG.jpg'
-    },
-    {
-      id: 4,
-      title: 'Blog Title 4',
-      description: 'This is a short description of the first blog post.',
-      image: '/myIMG.jpg'
-    },
-    {
-      id: 5,
-      title: 'Blog Title 5',
-      description: 'This is a short description of the second blog post.',
-      image: '/myIMG.jpg'
-    },
-    {
-      id: 6,
-      title: 'Blog Title 6',
-      description: 'This is a short description of the third blog post.',
-      image: '/myIMG.jpg'
-    },
-    {
-      id: 7,
-      title: 'Blog Title 7',
-      description: 'This is a short description of the third blog post.',
-      image: '/myIMG.jpg'
-    },
-    {
-      id: 8,
-      title: 'Blog Title 8',
-      description: 'This is a short description of the third blog post.',
-      image: '/myIMG.jpg'
-    },
-    {
-      id: 9,
-      title: 'Blog Title 9',
-      description: 'This is a short description of the third blog post.',
-      image: '/myIMG.jpg'
     }
+    // ... (other blogs)
   ]
 
   const loadMoreBlogs = () => {
@@ -114,13 +91,33 @@ const BlogPage = () => {
         {/* Header */}
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-2xl font-bold text-my-color-4">Blogs</h1>
-          <button
-            onClick={() => signIn('google')}
-            className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 flex items-center gap-4"
-          >
-            <FaGoogle />
-            <span>Sign In</span>
-          </button>
+          {session ? (
+            <div className="flex items-center gap-2">
+              {profileImage && (
+                <Image
+                  src={profileImage}
+                  alt="Profile Image"
+                  width={32}
+                  height={32}
+                  className="rounded-full"
+                />
+              )}
+              <button
+                onClick={() => signOut()}
+                className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
+              >
+                Sign Out
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => signIn('google')}
+              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 flex items-center gap-2"
+            >
+              <FaGoogle />
+              <span className="font-semibold">Sign In</span>
+            </button>
+          )}
         </div>
 
         {/* Blogs Listing */}
