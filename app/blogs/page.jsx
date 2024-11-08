@@ -69,10 +69,10 @@ const BlogPage = () => {
   }
 
   return (
-    <div className="min-h-[calc(100svh-4rem)] bg-my-color-2 text-my-color-4 flex">
+    <div className="min-h-[calc(100svh-4rem)] bg-my-color-2 flex">
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 w-64 h-full bg-white p-4 transition-transform transform ${
+        className={`fixed top-0 left-0 w-64 min-h-[calc(100svh-4rem)] bg-my-color-4 p-4 transition-transform transform ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } lg:relative lg:translate-x-0 lg:w-1/4`}
       >
@@ -108,10 +108,10 @@ const BlogPage = () => {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 lg:ml-64 p-4">
+      <main className="flex-1 lg:ml-2 p-4">
         {/* Header */}
         <div className="flex justify-between items-center mb-4">
-          <h1 className="text-2xl font-bold">Blogs</h1>
+          <h1 className="text-2xl font-bold text-my-color-4">Blogs</h1>
           <button className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
             Sign In
           </button>

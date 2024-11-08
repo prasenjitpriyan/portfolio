@@ -44,7 +44,6 @@ const ProjectsPage = () => {
       image: '/myIMG.jpg',
       date: new Date(2023, 2, 15)
     }
-    // Additional projects can be added here
   ]
 
   // Sort projects based on sortOrder
@@ -58,12 +57,12 @@ const ProjectsPage = () => {
   }
 
   return (
-    <section className="min-h-[calc(100svh-4rem)] bg-my-color-2 text-my-color-4 p-4">
-      <h2 className="text-2xl font-bold mb-4">Projects</h2>
+    <section className="min-h-[calc(100svh-4rem)] bg-my-color-2 p-4">
+      <h2 className="text-2xl text-my-color-4 font-bold mb-4">Projects</h2>
 
       {/* Sorting Options */}
       <div className="flex justify-end mb-4">
-        <label className="text-gray-600 mr-2">Sort by:</label>
+        <label className="text-my-color-2 mr-2">Sort by:</label>
         <select
           value={sortOrder}
           onChange={(e) => setSortOrder(e.target.value)}
@@ -79,7 +78,7 @@ const ProjectsPage = () => {
         {sortedProjects.slice(0, visibleProjects).map((project) => (
           <div
             key={project.id}
-            className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg"
+            className="bg-my-color-4 rounded-lg shadow-md overflow-hidden hover:shadow-lg"
           >
             <Image
               priority
@@ -91,8 +90,8 @@ const ProjectsPage = () => {
             />
             <div className="p-4">
               <h3 className="text-xl font-semibold">{project.title}</h3>
-              <p className="text-gray-600">{project.description}</p>
-              <p className="text-gray-700 mt-2">
+              <p className="text-my-color-2">{project.description}</p>
+              <p className="text-my-color-1 mt-2">
                 <span className="font-semibold">Technologies Used:</span>{' '}
                 {project.technologies.join(', ')}
               </p>
@@ -101,7 +100,7 @@ const ProjectsPage = () => {
                   href={project.liveDemo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-500 hover:underline"
+                  className="text-my-color-8 hover:underline"
                 >
                   Live Demo
                 </Link>
