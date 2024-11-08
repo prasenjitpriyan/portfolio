@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
+import { signIn } from 'next-auth/react'
 
 const BlogPage = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
@@ -112,7 +113,10 @@ const BlogPage = () => {
         {/* Header */}
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-2xl font-bold text-my-color-4">Blogs</h1>
-          <button className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+          <button
+            onClick={() => signIn('google')}
+            className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+          >
             Sign In
           </button>
         </div>

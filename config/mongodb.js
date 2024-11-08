@@ -1,23 +1,27 @@
-import mongoose from 'mongoose'
+// lib/mongodb.js
+import { MongoClient } from 'mongodb'
 
-let connected = false
+const uri = process.env.MONGODB_URI
+const options = {}
 
-const connectDB = async () => {
-  mongoose.set('strictQuery', true)
-  // If the database is already connected, don't connect again
+let client
+let clientPromise
 
-  if (connected) {
-    console.log('mongoDB is already connected.....')
-    return
-  }
-  // Connect to MongoDB
-  try {
-    await mongoose.connect(process.env.MONGODB_URI)
-    connected = true
-    console.log('mongoDB is connected.....')
-  } catch (error) {
-    console.log(error)
-  }
+if (!process.env.MONGODB_URI) {
+  throw new Error('Please add your MongoDB URI to .env.local')
 }
 
-export default connectDB
+if (process.env.NODE_ENV === 'development') {
+  // In development mode, use a global variable to prevent multiple connections
+  if (!global._mongoClientPromise) {
+    client = new MongoClient(uri, options)
+    global._mongoClientPromise = client.connect()
+  }
+  clientPromise = global._mongoClientPromise
+} else {
+  // In production mode, create a new client each time
+  client = new MongoClient(uri, options)
+  clientPromise = client.connect()
+}
+
+export default clientPromise
