@@ -4,21 +4,15 @@ const UserSchema = new mongoose.Schema(
   {
     username: {
       type: String,
-      required: true
+      required: [true, 'Username is required']
     },
     email: {
       type: String,
-      required: true,
-      unique: true
+      unique: [true, 'Email already exists'],
+      required: [true, 'Email is required']
     },
-    password: {
-      type: String,
-      required: true
-    },
-    profileImage: {
-      type: String,
-      default:
-        'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+    image: {
+      type: String
     }
   },
   { timestamps: true }
