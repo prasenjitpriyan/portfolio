@@ -7,7 +7,6 @@ export default withAuth({
   }
 })
 
-// This config specifies which routes are protected
 export const config = {
   matcher: ['/protected-route/:path*', '/dashboard/:path*'] // Add any routes you want to protect here
 }
