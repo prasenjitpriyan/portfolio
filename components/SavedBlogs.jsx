@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Image from 'next/image'
-import { FaTimes } from 'react-icons/fa'
+import BlogList from './BlogList'
+import BlogModal from './BlogModal'
 
 const SavedBlogs = ({ blogs }) => {
   const [selectedBlog, setSelectedBlog] = useState(null)
@@ -26,64 +26,15 @@ const SavedBlogs = ({ blogs }) => {
   return (
     <div>
       {/* Blog List */}
-      <div className="grid gap-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
-        {blogs.map((blog) => (
-          <div
-            key={blog._id}
-            className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg"
-          >
-            <Image
-              priority
-              width={1080}
-              height={720}
-              src={blog.image}
-              alt={blog.title}
-              className="w-full h-40 object-cover"
-            />
-            <div className="p-4">
-              <h2 className="text-xl font-semibold">{blog.title}</h2>
-              <p className="text-gray-600 line-clamp-4">{blog.description}</p>
-              <button
-                onClick={() => handleReadMore(blog)} // Open modal
-                className="mt-2 text-blue-500"
-              >
-                Read More
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
+      <BlogList blogs={blogs} handleReadMore={handleReadMore} />
 
       {/* Modal to show full blog details */}
       {selectedBlog && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-8 rounded-lg max-w-lg w-full relative">
-            <button
-              onClick={closeModal}
-              className="absolute top-4 right-4 text-gray-600"
-            >
-              <FaTimes size={24} />
-            </button>
-
-            <div className="mb-4">
-              <Image
-                priority
-                width={1080}
-                height={720}
-                src={selectedBlog.image}
-                alt={selectedBlog.title}
-                className="w-full h-64 object-cover"
-              />
-            </div>
-
-            <h2 className="text-2xl font-semibold">{selectedBlog.title}</h2>
-            <p className="text-gray-800 mt-4">{selectedBlog.description}</p>
-
-            <div className="mt-4 text-gray-500">
-              <p>Date: {formatDate(selectedBlog.createdAt)}</p>
-            </div>
-          </div>
-        </div>
+        <BlogModal
+          selectedBlog={selectedBlog}
+          closeModal={closeModal}
+          formatDate={formatDate}
+        />
       )}
     </div>
   )
