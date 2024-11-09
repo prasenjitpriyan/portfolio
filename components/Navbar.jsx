@@ -71,7 +71,7 @@ const Navbar = () => {
               aria-label="Toggle Menu"
               aria-expanded={isOpen}
             >
-              <RxHamburgerMenu className="text-my-color-1 text-3xl hover:text-my-color-6" />
+              <RxHamburgerMenu className="text-my-color-4 text-3xl hover:text-my-color-6" />
             </button>
           </div>
         </div>
@@ -79,7 +79,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden">
-          <div className="flex flex-col bg-white rounded shadow-md p-4">
+          <div className="flex flex-col bg-my-color-4 shadow-md p-4">
             {links.map((link) => (
               <MotionDiv
                 key={link.href}

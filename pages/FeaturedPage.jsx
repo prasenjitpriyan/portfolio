@@ -36,14 +36,14 @@ const FeaturedPage = () => {
   return (
     <div className="min-h-screen bg-my-color-2 text-my-color-4">
       <div className="max-w-8xl p-8 mx-auto">
-        <h1 className="text-4xl font-bold text-center text-blue-600 mb-8">
+        <h1 className="text-4xl font-bold text-center text-my-color-4 mb-8">
           Featured Projects
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <MotionDiv
               key={index}
-              className="relative group bg-white rounded-lg shadow-lg overflow-hidden"
+              className="relative group bg-my-color-4 rounded-lg shadow-lg overflow-hidden"
               whileHover={{ scale: 1.05 }} // Slight zoom on hover
               initial={{ opacity: 0, y: 20 }} // Initial entrance effect
               animate={{ opacity: 1, y: 0 }} // Final position
@@ -60,7 +60,7 @@ const FeaturedPage = () => {
 
               {/* Hover Overlay */}
               <MotionDiv
-                className="absolute inset-0 flex flex-col justify-center items-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white bg-opacity-90"
+                className="absolute inset-0 flex flex-col justify-center items-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-my-color-4 bg-opacity-90"
                 initial={{ y: -20, opacity: 0 }} // Overlay entrance from top
                 whileHover={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
