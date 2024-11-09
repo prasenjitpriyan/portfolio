@@ -8,12 +8,12 @@ import SavedBlogs from '@/components/SavedBlogs'
 import SignOutButton from '@/components/SignOutButton'
 
 const BlogPage = () => {
-  const { data: session } = useSession()
-
+  const { data: session } = useSession() // Check if user is signed in
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [visibleBlogs, setVisibleBlogs] = useState(6)
   const [providers, setProviders] = useState(null)
 
+  // Fetching authentication providers for the sign-in button
   useEffect(() => {
     const setAuthProviders = async () => {
       const res = await getProviders()
@@ -41,18 +41,19 @@ const BlogPage = () => {
       description: 'This is a short description of the third blog post.',
       image: '/myIMG.jpg'
     }
-    // ... (other blogs)
+    // More blogs can be added here...
   ]
 
+  // Load more blogs when the "Load More" button is clicked
   const loadMoreBlogs = () => {
     setVisibleBlogs((prevVisibleBlogs) => prevVisibleBlogs + 3)
   }
 
   return (
-    <div className="min-h-[calc(100svh-4rem)] bg-my-color-2 flex">
+    <div className="min-h-[calc(100vh-4rem)] bg-my-color-2 flex">
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 w-64 min-h-[calc(100svh-4rem)] bg-my-color-4 p-4 transition-transform transform ${
+        className={`fixed top-0 left-0 w-64 min-h-[calc(100vh-4rem)] bg-my-color-4 p-4 transition-transform transform ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } lg:relative lg:translate-x-0 lg:w-1/4`}
       >
@@ -94,8 +95,7 @@ const BlogPage = () => {
           <h1 className="text-2xl font-bold text-my-color-4">Blogs</h1>
           {session ? (
             <div className="flex items-center gap-2">
-              <Profile />
-              <SignOutButton />
+              <Profile /> {/* Display profile information if logged in */}
             </div>
           ) : (
             <button
