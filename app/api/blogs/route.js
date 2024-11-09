@@ -1,5 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server'
 import clientPromise from '@/config/mongodb'
+import Blog from '@/models/Blog'
+
+// API route handler to fetch blogs
+export default async function handler(req, res) {
+  // Connect to MongoDB
+  await connectDb()
+
+  try {
+    // Fetch blogs from MongoDB
+    const blogs = await Blog.find()
+      .populate('user', 'name email') // Populate user data (you can modify this as per your requirements)
+      .sort({ createdAt: -1 }) // Sort blogs by creation date, newest first
+
+    // Send the fetched blogs as a JSON response
+    res.status(200).json({ blogs })
+  } catch (error) {
+    console.error('Error fetching blogs:', error)
+    res.status(500).json({ message: 'Failed to fetch blogs' })
+  }
+}
 
 export async function POST(req) {
   try {

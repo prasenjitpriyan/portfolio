@@ -5,6 +5,7 @@ import { signIn, useSession, getProviders } from 'next-auth/react'
 import { FaGoogle } from 'react-icons/fa'
 import Profile from '@/components/Profile'
 import SavedBlogs from '@/components/SavedBlogs'
+import Spinner from '@/components/Spinner'
 
 const BlogPage = () => {
   const { data: session } = useSession() // Check if user is signed in
@@ -12,6 +13,7 @@ const BlogPage = () => {
   const [visibleBlogs, setVisibleBlogs] = useState(6)
   const [blogs, setBlogs] = useState([]) // State to store fetched blogs
   const [providers, setProviders] = useState(null)
+  const [loading, setLoading] = useState(true) // Loading state for fetching blogs
 
   // Fetching authentication providers for the sign-in button
   useEffect(() => {
@@ -27,7 +29,9 @@ const BlogPage = () => {
     const fetchBlogs = async () => {
       try {
         const response = await fetch('/api/blogs')
+
         const data = await response.json()
+        console.log(data)
 
         if (response.ok) {
           setBlogs(data.blogs) // Store the fetched blogs in state
@@ -36,6 +40,8 @@ const BlogPage = () => {
         }
       } catch (error) {
         console.error('Error fetching blogs:', error)
+      } finally {
+        setLoading(false) // Stop loading when the data has been fetched
       }
     }
 
@@ -106,8 +112,12 @@ const BlogPage = () => {
           )}
         </div>
 
-        {/* Blogs Listing */}
-        <SavedBlogs blogs={blogs.slice(0, visibleBlogs)} />
+        {/* Display Loading Spinner or Blogs Listing */}
+        {loading ? (
+          <Spinner /> // Show the spinner while loading
+        ) : (
+          <SavedBlogs blogs={blogs.slice(0, visibleBlogs)} /> // Show blogs after loading
+        )}
 
         {/* Load More Button */}
         {visibleBlogs < blogs.length && (

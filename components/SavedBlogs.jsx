@@ -14,6 +14,13 @@ const SavedBlogs = ({ blogs }) => {
     setSelectedBlog(null) // Close modal by clearing the selected blog
   }
 
+  // Helper function to format the date into a readable format
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' }
+    const date = new Date(dateString)
+    return date.toLocaleDateString('en-US', options)
+  }
+
   if (!blogs || blogs.length === 0) {
     return <p>No blogs available.</p>
   }
@@ -84,8 +91,8 @@ const SavedBlogs = ({ blogs }) => {
 
             {/* Blog Date and Creator */}
             <div className="mt-4 text-gray-500">
-              <p>Date: {selectedBlog.date}</p>
-              <p>Creator: {selectedBlog.creator}</p>
+              <p>Date: {formatDate(selectedBlog.createdAt)}</p>
+              <p>Creator: {selectedBlog.creator || 'Unknown'}</p>
             </div>
           </div>
         </div>
