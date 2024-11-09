@@ -1,59 +1,53 @@
-// app/api/blogs/route.js
-import { getSession } from 'next-auth/react'
-import dbConnect from '@/lib/dbConnect'
+import { NextRequest, NextResponse } from 'next/server'
+import clientPromise from '@/config/mongodb'
 
 export async function POST(req) {
   try {
-    // Get the request body (data sent from the client)
+    // Parse the incoming JSON body
     const { title, description, image } = await req.json()
 
-    // Connect to the database
-    const db = await dbConnect()
-
-    // Get session to ensure the user is authenticated
-    const session = await getSession()
-
-    console.log('Session:', session) // Debugging line
-
-    if (!session) {
-      return new Response(
-        JSON.stringify({ message: 'You must be logged in to create a blog' }),
-        { status: 401 }
+    // Validate required fields
+    if (!title || !description || !image) {
+      return NextResponse.json(
+        { message: 'Title, description, and image URL are required' },
+        { status: 400 }
       )
     }
 
-    // Create a new blog post object
+    // Establish DB connection
+    const client = await clientPromise // Resolving the client
+    const db = client.db() // Access the database
+    const blogCollection = db.collection('blogs') // Access the 'blogs' collection
+
+    // Create the new blog post object
     const newBlog = {
       title,
       description,
       image,
-      user: session.user.id, // Use user ID from session to associate the blog
       createdAt: new Date()
     }
 
-    // Insert the new blog into the collection
-    const blogCollection = db.collection('blogs')
+    // Insert into the 'blogs' collection
     const result = await blogCollection.insertOne(newBlog)
 
-    // Fetch the newly inserted blog
+    // Check if insertion was successful
+    if (!result.acknowledged) {
+      throw new Error('Failed to insert blog into database')
+    }
+
+    // Fetch the newly inserted blog to return it
     const insertedBlog = await blogCollection.findOne({
       _id: result.insertedId
     })
 
-    return new Response(
-      JSON.stringify({
-        message: 'Blog created successfully',
-        blog: insertedBlog
-      }),
+    return NextResponse.json(
+      { message: 'Blog created successfully', blog: insertedBlog },
       { status: 201 }
     )
   } catch (error) {
-    console.error('Error creating blog:', error)
-    return new Response(
-      JSON.stringify({
-        message: 'Failed to create blog',
-        error: error.message
-      }),
+    console.error('Error creating blog:', error) // Log the full error for debugging
+    return NextResponse.json(
+      { message: 'Failed to create blog', error: error.message },
       { status: 500 }
     )
   }
