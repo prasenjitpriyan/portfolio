@@ -57,7 +57,7 @@ const BlogPage = () => {
     <div className="min-h-[calc(100vh-4rem)] bg-my-color-2 flex">
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 w-64 min-h-[calc(100vh-4rem)] bg-my-color-4 p-4 transition-transform transform ${
+        className={`fixed top-0 left-0 w-64 min-h-[calc(100vh-4rem)] bg-my-color-1 p-4 transition-transform transform ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } lg:relative lg:translate-x-0 lg:w-1/4`}
       >
@@ -81,13 +81,6 @@ const BlogPage = () => {
             <option>Sort by</option>
             <option>Newest</option>
             <option>Oldest</option>
-            <option>Popular</option>
-          </select>
-          <select className="w-full p-2 border rounded-lg">
-            <option>Filter by Category</option>
-            <option>Tech</option>
-            <option>Design</option>
-            <option>Development</option>
           </select>
         </div>
       </aside>

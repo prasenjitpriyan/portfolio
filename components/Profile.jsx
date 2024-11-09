@@ -29,10 +29,6 @@ const Profile = () => {
     setDropdownVisible((prev) => !prev)
   }
 
-  const goToProfile = () => {
-    router.push('/profile') // Use router.push() from next/navigation
-  }
-
   const goToAddBlog = () => {
     router.push('/add-blog') // Use router.push() from next/navigation
   }
@@ -69,17 +65,9 @@ const Profile = () => {
       {dropdownVisible && (
         <div
           ref={dropdownRef}
-          className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg"
+          className="absolute right-0 mt-2 w-48 bg-my-color-4 rounded-lg shadow-lg"
         >
           <ul className="py-2">
-            <li>
-              <button
-                onClick={goToProfile}
-                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              >
-                Profile
-              </button>
-            </li>
             <li>
               <button
                 onClick={goToAddBlog}
