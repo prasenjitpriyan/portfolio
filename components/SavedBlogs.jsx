@@ -1,20 +1,18 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
-import { FaTimes } from 'react-icons/fa' // Import React Icon for close button
+import { FaTimes } from 'react-icons/fa'
 
 const SavedBlogs = ({ blogs }) => {
   const [selectedBlog, setSelectedBlog] = useState(null)
 
-  // Function to handle the "Read More" click
   const handleReadMore = (blog) => {
-    setSelectedBlog(blog) // Set the selected blog for modal display
+    setSelectedBlog(blog)
   }
 
   const closeModal = () => {
-    setSelectedBlog(null) // Close modal by clearing the selected blog
+    setSelectedBlog(null)
   }
 
-  // Helper function to format the date into a readable format
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' }
     const date = new Date(dateString)
@@ -31,7 +29,7 @@ const SavedBlogs = ({ blogs }) => {
       <div className="grid gap-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
         {blogs.map((blog) => (
           <div
-            key={blog._id} // Use _id if it's available in your blog data
+            key={blog._id}
             className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg"
           >
             <Image
@@ -44,12 +42,9 @@ const SavedBlogs = ({ blogs }) => {
             />
             <div className="p-4">
               <h2 className="text-xl font-semibold">{blog.title}</h2>
-
-              {/* Truncate description to 4 lines using line-clamp */}
               <p className="text-gray-600 line-clamp-4">{blog.description}</p>
-
               <button
-                onClick={() => handleReadMore(blog)} // Open modal on "Read More"
+                onClick={() => handleReadMore(blog)} // Open modal
                 className="mt-2 text-blue-500"
               >
                 Read More
@@ -63,15 +58,13 @@ const SavedBlogs = ({ blogs }) => {
       {selectedBlog && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-8 rounded-lg max-w-lg w-full relative">
-            {/* Close Button */}
             <button
-              onClick={closeModal} // Close modal
+              onClick={closeModal}
               className="absolute top-4 right-4 text-gray-600"
             >
               <FaTimes size={24} />
             </button>
 
-            {/* Blog Image */}
             <div className="mb-4">
               <Image
                 priority
@@ -83,16 +76,11 @@ const SavedBlogs = ({ blogs }) => {
               />
             </div>
 
-            {/* Blog Title */}
             <h2 className="text-2xl font-semibold">{selectedBlog.title}</h2>
-
-            {/* Full Blog Description */}
             <p className="text-gray-800 mt-4">{selectedBlog.description}</p>
 
-            {/* Blog Date and Creator */}
             <div className="mt-4 text-gray-500">
               <p>Date: {formatDate(selectedBlog.createdAt)}</p>
-              <p>Creator: {selectedBlog.creator || 'Unknown'}</p>
             </div>
           </div>
         </div>
