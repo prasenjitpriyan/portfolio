@@ -52,3 +52,27 @@ export async function POST(req) {
     )
   }
 }
+
+// GET method to retrieve all blog posts
+export async function GET() {
+  try {
+    // Establish DB connection
+    const client = await clientPromise // Resolving the client
+    const db = client.db() // Access the database
+    const blogCollection = db.collection('blogs') // Access the 'blogs' collection
+
+    // Retrieve all blogs
+    const blogs = await blogCollection.find().toArray()
+
+    return NextResponse.json(
+      { message: 'Blogs fetched successfully', blogs },
+      { status: 200 }
+    )
+  } catch (error) {
+    console.error('Error fetching blogs:', error) // Log the full error for debugging
+    return NextResponse.json(
+      { message: 'Failed to fetch blogs', error: error.message },
+      { status: 500 }
+    )
+  }
+}

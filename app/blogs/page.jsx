@@ -5,12 +5,12 @@ import { signIn, useSession, getProviders } from 'next-auth/react'
 import { FaGoogle } from 'react-icons/fa'
 import Profile from '@/components/Profile'
 import SavedBlogs from '@/components/SavedBlogs'
-import SignOutButton from '@/components/SignOutButton'
 
 const BlogPage = () => {
   const { data: session } = useSession() // Check if user is signed in
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [visibleBlogs, setVisibleBlogs] = useState(6)
+  const [blogs, setBlogs] = useState([]) // State to store fetched blogs
   const [providers, setProviders] = useState(null)
 
   // Fetching authentication providers for the sign-in button
@@ -22,27 +22,25 @@ const BlogPage = () => {
     setAuthProviders()
   }, [])
 
-  const blogs = [
-    {
-      id: 1,
-      title: 'Blog Title 1',
-      description: 'This is a short description of the first blog post.',
-      image: '/myIMG.jpg'
-    },
-    {
-      id: 2,
-      title: 'Blog Title 2',
-      description: 'This is a short description of the second blog post.',
-      image: '/myIMG.jpg'
-    },
-    {
-      id: 3,
-      title: 'Blog Title 3',
-      description: 'This is a short description of the third blog post.',
-      image: '/myIMG.jpg'
+  // Fetching blogs from the API
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await fetch('/api/blogs')
+        const data = await response.json()
+
+        if (response.ok) {
+          setBlogs(data.blogs) // Store the fetched blogs in state
+        } else {
+          console.error('Failed to fetch blogs:', data.message)
+        }
+      } catch (error) {
+        console.error('Error fetching blogs:', error)
+      }
     }
-    // More blogs can be added here...
-  ]
+
+    fetchBlogs() // Fetch blogs when the component mounts
+  }, [])
 
   // Load more blogs when the "Load More" button is clicked
   const loadMoreBlogs = () => {

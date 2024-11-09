@@ -48,7 +48,7 @@ const Profile = () => {
               alt="User Profile Picture"
               width={50}
               height={50}
-              className="rounded-full cursor-pointer hover:opacity-80"
+              className="rounded-full border-2 border-my-color-5 cursor-pointer hover:opacity-80"
               onClick={toggleDropdown}
             />
             {/* Optional: small indicator for dropdown */}
@@ -58,8 +58,10 @@ const Profile = () => {
           </div>
         )}
         <div>
-          <h2 className="font-semibold text-lg">{user?.name}</h2>
-          <p className="text-sm text-gray-500">{user?.email}</p>
+          <h2 className="font-semibold text-lg text-my-color-5">
+            {user?.name}
+          </h2>
+          <p className="text-sm text-my-color-4">{user?.email}</p>
         </div>
       </div>
 
