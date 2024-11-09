@@ -11,7 +11,7 @@ import CertificatesShowcasePage from '@/pages/CertificatesShowcasePage'
 
 const Home = () => {
   return (
-    <main>
+    <main className="overflow-hidden">
       <HomePage />
       <AboutPage />
       <CertificatesShowcasePage />
