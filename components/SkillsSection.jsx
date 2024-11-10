@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import {
   FaHtml5,
@@ -13,7 +15,7 @@ import {
   SiTailwindcss,
   SiTypescript
 } from 'react-icons/si'
-import MotionDiv from './MotionDiv'
+import { motion } from 'framer-motion' // Import motion from framer-motion
 
 const skills = [
   { name: 'HTML', icon: <FaHtml5 />, color: 'text-red-500', percentage: 98 },
@@ -69,11 +71,12 @@ const SkillSection = () => {
       <h2 className="text-4xl font-bold mb-8">Skills</h2>
       <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-8 max-w-8xl mx-auto">
         {skills.map((skill, index) => (
-          <MotionDiv
+          <motion.div
             key={index}
             className="flex flex-col items-center p-4 rounded-lg"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }} // Adjust `amount` as needed (percentage of the element in view)
             transition={{ duration: 0.5, delay: index * 0.2 }}
           >
             <div className="relative w-24 h-24 flex items-center justify-center">
@@ -87,14 +90,18 @@ const SkillSection = () => {
                   className="text-gray-700"
                   fill="none"
                 />
-                <circle
+                <motion.circle
                   cx="50%"
                   cy="50%"
                   r="40"
                   stroke="currentColor"
                   strokeWidth="8"
-                  strokeDasharray="251.2"
-                  strokeDashoffset={(251.2 * (100 - skill.percentage)) / 100}
+                  strokeDasharray="251.2" // Circumference of the circle (2 * π * r)
+                  initial={{ strokeDashoffset: 251.2 }} // Start with full circumference (no progress)
+                  whileInView={{
+                    strokeDashoffset: (251.2 * (100 - skill.percentage)) / 100
+                  }} // Animate to the desired offset when in view
+                  transition={{ duration: 1.5, ease: 'easeInOut' }} // Smooth transition
                   className={`${skill.color}`}
                   fill="none"
                 />
@@ -106,7 +113,7 @@ const SkillSection = () => {
 
             <div className={`text-5xl mt-4 ${skill.color}`}>{skill.icon}</div>
             <h3 className="mt-2 text-xl font-bold">{skill.name}</h3>
-          </MotionDiv>
+          </motion.div>
         ))}
       </div>
     </section>
