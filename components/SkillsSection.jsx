@@ -67,7 +67,7 @@ const skills = [
 
 const SkillSection = () => {
   return (
-    <section className="text-center py-16 bg-my-color-2 text-my-color-4">
+    <section className="text-center py-16 bg-transparent text-my-color-4">
       <h2 className="text-4xl font-bold mb-8">Skills</h2>
       <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-8 max-w-8xl mx-auto">
         {skills.map((skill, index) => (

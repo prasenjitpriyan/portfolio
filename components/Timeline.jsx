@@ -54,7 +54,7 @@ const Timeline = () => {
           type === 'education' ? 'border-purple-400' : 'border-blue-400'
         }`}
       >
-        <div className="flex items-center text-gray-600">
+        <div className="flex items-center text-my-color-4">
           <FaCalendarAlt className="mr-2" />
           <span>{item.date}</span>
         </div>
