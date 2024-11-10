@@ -1,11 +1,18 @@
 import React from 'react'
-import { FaHtml5, FaCss3Alt, FaJs, FaNode, FaReact } from 'react-icons/fa'
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaNode,
+  FaReact,
+  FaBootstrap
+} from 'react-icons/fa'
 import {
   SiMongodb,
   SiExpress,
   SiTailwindcss,
   SiTypescript
-} from 'react-icons/si' // Import new icons
+} from 'react-icons/si'
 import MotionDiv from './MotionDiv'
 
 const skills = [
@@ -47,6 +54,12 @@ const skills = [
     icon: <SiTypescript />,
     color: 'text-blue-500',
     percentage: 90
+  },
+  {
+    name: 'Bootstrap',
+    icon: <FaBootstrap />,
+    color: 'text-purple-600',
+    percentage: 95
   }
 ]
 
@@ -54,7 +67,7 @@ const SkillSection = () => {
   return (
     <section className="text-center py-16 bg-my-color-2 text-my-color-4">
       <h2 className="text-4xl font-bold mb-8">Skills</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-8xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-8 max-w-8xl mx-auto">
         {skills.map((skill, index) => (
           <MotionDiv
             key={index}
@@ -93,10 +106,6 @@ const SkillSection = () => {
 
             <div className={`text-5xl mt-4 ${skill.color}`}>{skill.icon}</div>
             <h3 className="mt-2 text-xl font-bold">{skill.name}</h3>
-            <p className="text-my-color-4 text-sm mt-2">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Consequatur, delectus!
-            </p>
           </MotionDiv>
         ))}
       </div>

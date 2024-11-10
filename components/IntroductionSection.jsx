@@ -157,7 +157,7 @@ const IntroductionSection = () => {
         About Me
       </h1>
       <motion.div
-        className="text-lg mb-6 text-center text-my-color-4"
+        className="text-lg mb-6 text-my-color-4"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
