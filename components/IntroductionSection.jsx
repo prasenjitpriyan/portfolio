@@ -152,47 +152,49 @@ const IntroductionSection = () => {
   ]
 
   return (
-    <div>
-      <h1 className="text-4xl font-bold text-center text-my-color-4 mb-6">
-        About Me
-      </h1>
-      <motion.div
-        className="text-lg mb-6 text-my-color-4"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          visible: { transition: { staggerChildren: 0.05 } }
-        }}
-      >
-        {paragraphWords.map((word, index) => (
-          <motion.span
-            key={index}
-            className={
-              [
-                'JavaScript',
-                'TypeScript',
-                'Postal',
-                'Assistant',
-                'Government',
-                'India',
-                'technology',
-                'web',
-                'development'
-              ].includes(word)
-                ? 'font-bold'
-                : ''
-            }
-            variants={{
-              hidden: { opacity: 0, y: 10 },
-              visible: { opacity: 1, y: 0 }
-            }}
-            transition={{ duration: 0.3 }}
-          >
-            {word + ' '}
-          </motion.span>
-        ))}
-      </motion.div>
+    <div className="px-6 py-16 flex justify-center ">
+      <div className="max-w-7xl w-full">
+        <h1 className="text-4xl font-bold text-center text-my-color-4 mb-6">
+          About Me
+        </h1>
+        <motion.div
+          className="text-lg text-justify mb-6 text-my-color-4 leading-7"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            visible: { transition: { staggerChildren: 0.05 } }
+          }}
+        >
+          {paragraphWords.map((word, index) => (
+            <motion.span
+              key={index}
+              className={
+                [
+                  'JavaScript',
+                  'TypeScript',
+                  'Postal',
+                  'Assistant',
+                  'Government',
+                  'India',
+                  'technology',
+                  'web',
+                  'development'
+                ].includes(word)
+                  ? 'font-bold'
+                  : ''
+              }
+              variants={{
+                hidden: { opacity: 0, y: 10 },
+                visible: { opacity: 1, y: 0 }
+              }}
+              transition={{ duration: 0.3 }}
+            >
+              {word + ' '}
+            </motion.span>
+          ))}
+        </motion.div>
+      </div>
     </div>
   )
 }

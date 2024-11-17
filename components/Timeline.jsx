@@ -1,12 +1,10 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 import { FaCalendarAlt, FaGraduationCap, FaBriefcase } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 
 const Timeline = () => {
-  const [activeTab, setActiveTab] = useState('education')
-
   const educationData = [
     {
       date: 'July 2009 - July 2012',
@@ -14,32 +12,22 @@ const Timeline = () => {
       institution: 'Web Development Institute, Berlin'
     },
     {
-      date: 'July 2009 - July 2012',
-      title: 'Graduation in Web Development',
-      institution: 'Web Development Institute, Berlin'
-    },
-    {
-      date: 'July 2009 - July 2012',
-      title: 'Graduation in Web Development',
-      institution: 'Web Development Institute, Berlin'
+      date: 'August 2012 - June 2013',
+      title: 'Advanced JavaScript Certification',
+      institution: 'JS Mastery Academy'
     }
   ]
 
   const workData = [
     {
       date: 'July 2013 - July 2022',
-      title: 'Working as a Web Developer',
+      title: 'Web Developer',
       company: 'Creative Labs'
     },
     {
-      date: 'July 2013 - July 2022',
-      title: 'Working as a Web Developer',
-      company: 'Creative Labs'
-    },
-    {
-      date: 'July 2013 - July 2022',
-      title: 'Working as a Web Developer',
-      company: 'Creative Labs'
+      date: 'August 2022 - Present',
+      title: 'Frontend Developer',
+      company: 'Innovatech Solutions'
     }
   ]
 
@@ -84,36 +72,18 @@ const Timeline = () => {
         <h2 className="text-4xl font-bold mb-2">My Experience</h2>
         <p className="text-yellow-500 mb-10">Timeline</p>
       </div>
-      <div className="flex justify-center space-x-4 mb-8">
-        <button
-          onClick={() => setActiveTab('education')}
-          className={`px-6 py-2 font-semibold rounded-full ${
-            activeTab === 'education'
-              ? 'bg-purple-400 text-white'
-              : 'bg-gray-200 text-gray-600'
-          }`}
-        >
-          My Education
-        </button>
-        <button
-          onClick={() => setActiveTab('work')}
-          className={`px-6 py-2 font-semibold rounded-full ${
-            activeTab === 'work'
-              ? 'bg-blue-400 text-white'
-              : 'bg-gray-200 text-gray-600'
-          }`}
-        >
-          Work Experience
-        </button>
-      </div>
-
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div>
-          {activeTab === 'education' &&
-            renderTimelineItems(educationData, 'education')}
+          <h3 className="text-2xl font-semibold mb-4 text-purple-400">
+            Education
+          </h3>
+          {renderTimelineItems(educationData, 'education')}
         </div>
         <div>
-          {activeTab === 'work' && renderTimelineItems(workData, 'work')}
+          <h3 className="text-2xl font-semibold mb-4 text-blue-400">
+            Work Experience
+          </h3>
+          {renderTimelineItems(workData, 'work')}
         </div>
       </div>
     </section>

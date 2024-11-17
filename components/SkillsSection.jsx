@@ -15,7 +15,7 @@ import {
   SiTailwindcss,
   SiTypescript
 } from 'react-icons/si'
-import { motion } from 'framer-motion' // Import motion from framer-motion
+import { motion } from 'framer-motion'
 
 const skills = [
   { name: 'HTML', icon: <FaHtml5 />, color: 'text-red-500', percentage: 98 },
@@ -67,18 +67,19 @@ const skills = [
 
 const SkillSection = () => {
   return (
-    <section className="text-center py-16 bg-transparent text-my-color-4">
+    <section className="py-16 bg-transparent text-my-color-4 text-center">
       <h2 className="text-4xl font-bold mb-8">Skills</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-8 max-w-8xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-8 max-w-7xl mx-auto">
         {skills.map((skill, index) => (
           <motion.div
             key={index}
             className="flex flex-col items-center p-4 rounded-lg"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }} // Adjust `amount` as needed (percentage of the element in view)
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
           >
+            {/* Progress Circle */}
             <div className="relative w-24 h-24 flex items-center justify-center">
               <svg className="absolute w-full h-full">
                 <circle
@@ -96,12 +97,12 @@ const SkillSection = () => {
                   r="40"
                   stroke="currentColor"
                   strokeWidth="8"
-                  strokeDasharray="251.2" // Circumference of the circle (2 * π * r)
-                  initial={{ strokeDashoffset: 251.2 }} // Start with full circumference (no progress)
+                  strokeDasharray="251.2"
+                  initial={{ strokeDashoffset: 251.2 }}
                   whileInView={{
                     strokeDashoffset: (251.2 * (100 - skill.percentage)) / 100
-                  }} // Animate to the desired offset when in view
-                  transition={{ duration: 1.5, ease: 'easeInOut' }} // Smooth transition
+                  }}
+                  transition={{ duration: 1.5, ease: 'easeInOut' }}
                   className={`${skill.color}`}
                   fill="none"
                 />
@@ -111,7 +112,10 @@ const SkillSection = () => {
               </span>
             </div>
 
+            {/* Skill Icon */}
             <div className={`text-5xl mt-4 ${skill.color}`}>{skill.icon}</div>
+
+            {/* Skill Name */}
             <h3 className="mt-2 text-xl font-bold">{skill.name}</h3>
           </motion.div>
         ))}
