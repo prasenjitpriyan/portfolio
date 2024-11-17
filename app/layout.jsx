@@ -1,7 +1,6 @@
 import localFont from 'next/font/local'
 import './globals.css'
 import Navbar from '@/components/Navbar'
-import AuthProvider from '@/components/AuthProvider'
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -40,53 +39,48 @@ export default function RootLayout({ children }) {
   const openGraphImages = metadata.openGraph.images?.[0] // Safely access the image data
 
   return (
-    <AuthProvider>
-      <html lang="en">
-        <head>
-          {/* Open Graph Meta Tags */}
-          <meta property="og:title" content={metadata.openGraph.title} />
-          <meta
-            property="og:description"
-            content={metadata.openGraph.description}
-          />
-          <meta property="og:url" content={metadata.openGraph.url} />
-          <meta property="og:type" content={metadata.openGraph.type} />
+    <html lang="en">
+      <head>
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content={metadata.openGraph.title} />
+        <meta
+          property="og:description"
+          content={metadata.openGraph.description}
+        />
+        <meta property="og:url" content={metadata.openGraph.url} />
+        <meta property="og:type" content={metadata.openGraph.type} />
 
-          {/* Only render these meta tags if openGraphImages exists */}
-          {openGraphImages && (
-            <>
-              <meta property="og:image" content={openGraphImages.url} />
-              <meta property="og:image:width" content={openGraphImages.width} />
-              <meta
-                property="og:image:height"
-                content={openGraphImages.height}
-              />
-              <meta property="og:image:alt" content={openGraphImages.alt} />
-            </>
-          )}
+        {/* Only render these meta tags if openGraphImages exists */}
+        {openGraphImages && (
+          <>
+            <meta property="og:image" content={openGraphImages.url} />
+            <meta property="og:image:width" content={openGraphImages.width} />
+            <meta property="og:image:height" content={openGraphImages.height} />
+            <meta property="og:image:alt" content={openGraphImages.alt} />
+          </>
+        )}
 
-          {/* Twitter Card Meta Tags */}
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content={metadata.openGraph.title} />
-          <meta
-            name="twitter:description"
-            content={metadata.openGraph.description}
-          />
-          {openGraphImages && (
-            <meta name="twitter:image" content={openGraphImages.url} />
-          )}
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={metadata.openGraph.title} />
+        <meta
+          name="twitter:description"
+          content={metadata.openGraph.description}
+        />
+        {openGraphImages && (
+          <meta name="twitter:image" content={openGraphImages.url} />
+        )}
 
-          {/* Default Title and Description */}
-          <title>{metadata.title}</title>
-          <meta name="description" content={metadata.description} />
-        </head>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          <Navbar />
-          {children}
-        </body>
-      </html>
-    </AuthProvider>
+        {/* Default Title and Description */}
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+      </head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <Navbar />
+        {children}
+      </body>
+    </html>
   )
 }
