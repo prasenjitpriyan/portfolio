@@ -29,9 +29,7 @@ const BlogPage = () => {
     const fetchBlogs = async () => {
       try {
         const response = await fetch('/api/blogs')
-
         const data = await response.json()
-        console.log(data)
 
         if (response.ok) {
           setBlogs(data.blogs) // Store the fetched blogs in state

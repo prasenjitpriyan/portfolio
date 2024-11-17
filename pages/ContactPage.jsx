@@ -1,15 +1,105 @@
+'use client'
+
 import React from 'react'
-import ImageComponent from '@/components/ImageComponent'
 import MotionWrapper from '@/components/MotionWrapper'
+import { motion } from 'framer-motion'
+
+const MotionSVG = motion.svg
 
 const ContactPage = () => {
   return (
     <section className="h-auto bg-my-color-2">
       <MotionWrapper>
         <div className="mx-auto rounded-lg shadow-lg p-8 md:flex max-w-7xl">
-          {/* Left Column: Image */}
-          <div className="flex-shrink-0 mb-6 md:mb-0 md:w-1/2 md:pr-6">
-            <ImageComponent src="/myIMG.jpg" alt="Description of the image" />
+          {/* Left Column: Animated SVG */}
+          <div className="flex-shrink-0 mb-6 md:mb-0 md:w-1/2 md:pr-6 flex justify-center items-center">
+            <MotionSVG
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 500 500"
+              className="w-72 h-72 text-my-color-4"
+              initial={{ scale: 0.8, rotate: 0, opacity: 0 }}
+              animate={{ scale: 1, rotate: 360, opacity: 1 }}
+              transition={{
+                type: 'spring',
+                stiffness: 100,
+                damping: 20,
+                duration: 2,
+                loop: Infinity
+              }}
+              whileHover={{
+                scale: 1.1,
+                rotate: 5,
+                transition: { duration: 0.3 }
+              }}
+            >
+              <rect width="500" height="500" fill="none" />
+              <motion.circle
+                cx="250"
+                cy="250"
+                r="240"
+                fill="#ebebeb"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 1, delay: 0.5 }}
+              />
+              <motion.circle
+                cx="250"
+                cy="160"
+                r="70"
+                fill="#61dbfb"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.5, delay: 1 }}
+              />
+              <motion.rect
+                x="130"
+                y="260"
+                width="240"
+                height="140"
+                rx="20"
+                fill="#f06529"
+                initial={{ x: -200 }}
+                animate={{ x: 0 }}
+                transition={{ duration: 1, delay: 1.5 }}
+              />
+              <motion.rect
+                x="140"
+                y="270"
+                width="220"
+                height="80"
+                rx="10"
+                fill="#2965f1"
+                initial={{ y: 200 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1, delay: 2 }}
+              />
+              <motion.path
+                d="M160 290h60v40h-60zm90 0h60v40h-60z"
+                fill="#007acc"
+                opacity="0.8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.2, delay: 2.5 }}
+              />
+              <motion.circle
+                cx="240"
+                cy="290"
+                r="10"
+                fill="#f0db4f"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.8, delay: 3 }}
+              />
+              <motion.circle
+                cx="290"
+                cy="290"
+                r="10"
+                fill="#f0db4f"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.8, delay: 3.2 }}
+              />
+            </MotionSVG>
           </div>
 
           {/* Right Column: Contact Form */}
