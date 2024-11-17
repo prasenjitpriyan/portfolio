@@ -41,7 +41,7 @@ const TestimonialsPage = () => {
 
   return (
     <section className="min-h-[30rem] bg-my-color-2 py-12">
-      <div className="max-w-8xl p-8 mx-auto text-center">
+      <div className="max-w-7xl p-8 mx-auto text-center">
         <h1 className="text-4xl font-bold text-my-color-4 mb-8">
           Testimonials
         </h1>

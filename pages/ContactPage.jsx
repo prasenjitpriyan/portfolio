@@ -4,9 +4,9 @@ import MotionWrapper from '@/components/MotionWrapper'
 
 const ContactPage = () => {
   return (
-    <section className="h-auto bg-my-color-2 max-w-8xl">
+    <section className="h-auto bg-my-color-2">
       <MotionWrapper>
-        <div className="mx-auto rounded-lg shadow-lg p-8 md:flex">
+        <div className="mx-auto rounded-lg shadow-lg p-8 md:flex max-w-7xl">
           {/* Left Column: Image */}
           <div className="flex-shrink-0 mb-6 md:mb-0 md:w-1/2 md:pr-6">
             <ImageComponent src="/myIMG.jpg" alt="Description of the image" />

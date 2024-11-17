@@ -34,7 +34,7 @@ const BlogPage = () => {
 
   return (
     <section className="h-auto bg-my-color-2">
-      <div className="max-w-8xl mx-auto p-8">
+      <div className="max-w-7xl mx-auto p-8">
         <h1 className="text-4xl font-bold text-center text-my-color-4 mb-8">
           Blog
         </h1>

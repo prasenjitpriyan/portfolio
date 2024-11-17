@@ -35,7 +35,7 @@ const FeaturedPage = () => {
   ]
   return (
     <div className="min-h-screen bg-my-color-2 text-my-color-4">
-      <div className="max-w-8xl p-8 mx-auto">
+      <div className="max-w-7xl p-8 mx-auto">
         <h1 className="text-4xl font-bold text-center text-my-color-4 mb-8">
           Featured Projects
         </h1>
