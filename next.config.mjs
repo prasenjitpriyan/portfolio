@@ -1,7 +1,23 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['lh3.googleusercontent.com', 'example.com', 'blog.openreplay.com']
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'example.com',
+        pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'blog.openreplay.com',
+        pathname: '/**'
+      }
+    ]
   }
 }
 
