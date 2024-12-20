@@ -9,14 +9,9 @@ module.exports = {
     extend: {
       colors: {
         'my-color-1': '#222831',
-        'my-color-2': '#323330',
-        'my-color-3': '#61dbfb',
-        'my-color-4': '#ebebeb',
-        'my-color-5': '#f0db4f',
-        'my-color-6': '#f06529',
-        'my-color-7': '#2965f1',
-        'my-color-8': '#007acc',
-        'my-color-9': '#764abc'
+        'my-color-2': '#393E46',
+        'my-color-3': '#00ADB5',
+        'my-color-4': '#EEEEEE'
       }
     }
   },
