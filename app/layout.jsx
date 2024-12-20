@@ -1,12 +1,6 @@
 import localFont from 'next/font/local'
 import './globals.css'
-import Navbar from '@/components/Navbar'
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900'
-})
 const geistMono = localFont({
   src: './fonts/GeistMonoVF.woff',
   variable: '--font-geist-mono',
@@ -14,29 +8,36 @@ const geistMono = localFont({
 })
 
 export const metadata = {
-  title:
-    'Dynamic Solutions: JavaScript & TypeScript Development with Prasenjit Das',
+  title: 'Prasenjit Das - JavaScript & TypeScript Developer Portfolio',
   description:
-    'Welcome to my portfolio! I’m a dedicated JavaScript and TypeScript developer passionate about building robust and scalable web applications. Here, you will find a collection of my projects that highlight my expertise in crafting seamless user experiences, optimizing performance, and implementing best practices. Dive into my work to see how I transform ideas into dynamic solutions, leveraging the power of modern frameworks and libraries.',
+    'Welcome to my portfolio! Explore my journey from delivering postal services to delivering code with JavaScript and TypeScript. Discover my skills, achievements, and projects that showcase my dedication to building impactful web applications.',
+  metadataBase: new URL('https://portfolio-theta-inky-13.vercel.app'),
   openGraph: {
-    title: 'Prasenjit Das - JavaScript & TypeScript Developer',
+    title: 'Prasenjit Das - JavaScript & TypeScript Developer Portfolio',
     description:
-      'Welcome to my portfolio! I’m a dedicated JavaScript and TypeScript developer passionate about building robust and scalable web applications. Here, you will find a collection of my projects that highlight my expertise in crafting seamless user experiences, optimizing performance, and implementing best practices. Dive into my work to see how I transform ideas into dynamic solutions, leveraging the power of modern frameworks and libraries.',
+      'Welcome to my portfolio! Explore my journey from delivering postal services to delivering code with JavaScript and TypeScript. Discover my skills, achievements, and projects that showcase my dedication to building impactful web applications.',
     url: 'https://portfolio-theta-inky-13.vercel.app',
     images: [
       {
-        url: '/og-image.png', // Ensure image is in the public folder
+        url: '/og-image.png',
         width: 800,
         height: 600,
         alt: "Prasenjit Das's Portfolio"
       }
     ],
     type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Prasenjit Das - JavaScript & TypeScript Developer Portfolio',
+    description:
+      'Welcome to my portfolio! Explore my journey from delivering postal services to delivering code with JavaScript and TypeScript. Discover my skills, achievements, and projects that showcase my dedication to building impactful web applications.',
+    image: '/og-image.png'
   }
 }
 
 export default function RootLayout({ children }) {
-  const openGraphImages = metadata.openGraph.images?.[0] // Safely access the image data
+  const openGraphImages = metadata.openGraph.images?.[0]
 
   return (
     <html lang="en">
@@ -49,8 +50,6 @@ export default function RootLayout({ children }) {
         />
         <meta property="og:url" content={metadata.openGraph.url} />
         <meta property="og:type" content={metadata.openGraph.type} />
-
-        {/* Only render these meta tags if openGraphImages exists */}
         {openGraphImages && (
           <>
             <meta property="og:image" content={openGraphImages.url} />
@@ -61,26 +60,19 @@ export default function RootLayout({ children }) {
         )}
 
         {/* Twitter Card Meta Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={metadata.openGraph.title} />
+        <meta name="twitter:card" content={metadata.twitter.card} />
+        <meta name="twitter:title" content={metadata.twitter.title} />
         <meta
           name="twitter:description"
-          content={metadata.openGraph.description}
+          content={metadata.twitter.description}
         />
-        {openGraphImages && (
-          <meta name="twitter:image" content={openGraphImages.url} />
-        )}
+        <meta name="twitter:image" content={metadata.twitter.image} />
 
         {/* Default Title and Description */}
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Navbar />
-        {children}
-      </body>
+      <body className={`${geistMono.variable} antialiased`}>{children}</body>
     </html>
   )
 }
