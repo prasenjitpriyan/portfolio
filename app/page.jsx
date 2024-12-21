@@ -17,7 +17,7 @@ const Home = () => {
     <div className="flex min-h-screen">
       <Sidebar isOpen={isOpen} />
       <HamburgerButton toggleSidebar={toggleSidebar} />
-      <div className="ml-0 xl:ml-64 flex-1 p-10 bg-my-color-2 text-my-color-4 min-h-screen">
+      <div className="ml-0 xl:ml-64 flex-1 bg-my-color-2 text-my-color-4">
         <HeroSection />
         <Footer />
       </div>
