@@ -16,12 +16,14 @@ const SocialLinks = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: 'easeOut' }}
       >
-        <Link
-          href="#"
-          className="text-my-color-4 hover:text-my-color-3 text-xl"
-        >
-          <FaTwitter />
-        </Link>
+        <div className="bg-my-color-2 p-2 rounded-full">
+          <Link
+            href="#"
+            className="text-my-color-4 hover:text-my-color-3 text-xl"
+          >
+            <FaTwitter />
+          </Link>
+        </div>
       </MotionWrapper>
 
       <MotionWrapper
@@ -29,12 +31,14 @@ const SocialLinks = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: 'easeOut', delay: 0.1 }}
       >
-        <Link
-          href="#"
-          className="text-my-color-4 hover:text-my-color-3 text-xl"
-        >
-          <FaFacebookF />
-        </Link>
+        <div className="bg-my-color-2 p-2 rounded-full">
+          <Link
+            href="#"
+            className="text-my-color-4 hover:text-my-color-3 text-xl"
+          >
+            <FaFacebookF />
+          </Link>
+        </div>
       </MotionWrapper>
 
       <MotionWrapper
@@ -42,12 +46,14 @@ const SocialLinks = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: 'easeOut', delay: 0.2 }}
       >
-        <Link
-          href="#"
-          className="text-my-color-4 hover:text-my-color-3 text-xl"
-        >
-          <FaInstagram />
-        </Link>
+        <div className="bg-my-color-2 p-2 rounded-full">
+          <Link
+            href="#"
+            className="text-my-color-4 hover:text-my-color-3 text-xl"
+          >
+            <FaInstagram />
+          </Link>
+        </div>
       </MotionWrapper>
 
       <MotionWrapper
@@ -55,12 +61,14 @@ const SocialLinks = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: 'easeOut', delay: 0.3 }}
       >
-        <Link
-          href="#"
-          className="text-my-color-4 hover:text-my-color-3 text-xl"
-        >
-          <FaLinkedinIn />
-        </Link>
+        <div className="bg-my-color-2 p-2 rounded-full">
+          <Link
+            href="#"
+            className="text-my-color-4 hover:text-my-color-3 text-xl"
+          >
+            <FaLinkedinIn />
+          </Link>
+        </div>
       </MotionWrapper>
 
       <MotionWrapper
@@ -68,12 +76,14 @@ const SocialLinks = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: 'easeOut', delay: 0.4 }}
       >
-        <Link
-          href="#"
-          className="text-my-color-4 hover:text-my-color-3 text-xl"
-        >
-          <FaGithub />
-        </Link>
+        <div className="bg-my-color-2 p-2 rounded-full">
+          <Link
+            href="#"
+            className="text-my-color-4 hover:text-my-color-3 text-xl"
+          >
+            <FaGithub />
+          </Link>
+        </div>
       </MotionWrapper>
     </div>
   )

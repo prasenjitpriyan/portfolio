@@ -12,19 +12,31 @@ const Sidebar = ({ isOpen }) => {
     >
       <div className="flex flex-col items-center">
         {/* Profile Image */}
-        <MotionWrapper
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-        >
-          <Image
-            src="/myIMG.jpg"
-            width={80}
-            height={80}
-            alt="Prasenjit Das"
-            className="rounded-full mb-4 border-2 border-my-color-3"
-          />
-        </MotionWrapper>
+        <div className="mb-4 bg-my-color-2 p-2 rounded-full border-8 border-my-color-3 shadow-lg">
+          <MotionWrapper
+            initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{
+              duration: 0.8,
+              ease: 'easeInOut',
+              type: 'spring',
+              stiffness: 100
+            }}
+            whileHover={{
+              scale: 1.1, // Slight zoom effect
+              rotate: 5, // Subtle rotation
+              transition: { type: 'spring', stiffness: 150, damping: 10 }
+            }}
+          >
+            <Image
+              src="/myIMG.jpg"
+              width={140}
+              height={140}
+              alt="Prasenjit Das"
+              className="rounded-full"
+            />
+          </MotionWrapper>
+        </div>
 
         {/* Name */}
         <MotionWrapper
@@ -32,7 +44,7 @@ const Sidebar = ({ isOpen }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
         >
-          <h1 className="text-lg text-my-color-3 font-bold mb-6">
+          <h1 className="text-2xl text-my-color-3 font-bold mb-6">
             Prasenjit Das
           </h1>
         </MotionWrapper>

@@ -28,7 +28,7 @@ const NavLinks = () => {
         >
           <Link
             href={`#${name}`}
-            className="flex w-44 items-center space-x-2 p-2 rounded-md transition-all duration-300 hover:bg-my-color-2 hover:text-my-color-3"
+            className="flex w-64 items-center space-x-2 p-2 transition-all duration-300 hover:bg-my-color-2 hover:text-my-color-3"
           >
             {icon}
             <span>{name.charAt(0).toUpperCase() + name.slice(1)}</span>
