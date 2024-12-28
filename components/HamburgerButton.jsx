@@ -8,7 +8,7 @@ const HamburgerButton = () => {
 
   return (
     <button
-      className="fixed top-4 left-4 z-50 text-my-color-4 text-xl cursor-pointer xl:hidden"
+      className="fixed top-0 left-0 z-50 text-my-color-4 text-xl cursor-pointer xl:hidden"
       onClick={toggleSidebar}
     >
       {isOpen ? <FaTimes /> : <FaBars />}
