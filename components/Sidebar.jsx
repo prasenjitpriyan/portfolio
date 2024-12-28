@@ -34,6 +34,7 @@ const Sidebar = ({ isOpen }) => {
               src="/myIMG.jpg"
               width={140}
               height={140}
+              priority
               alt="Prasenjit Das"
               className="rounded-full"
             />
