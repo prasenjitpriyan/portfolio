@@ -55,7 +55,7 @@ const NavLinks = () => {
         >
           <Link
             href={`/${name}`}
-            className={`flex w-64 items-center space-x-2 p-2 transition-all duration-300 ${
+            className={`flex rounded w-64 items-center space-x-2 p-2 transition-all duration-300 ${
               activeSection === name
                 ? 'bg-my-color-3 text-my-color-1 font-bold'
                 : 'hover:bg-my-color-2 hover:text-my-color-3'

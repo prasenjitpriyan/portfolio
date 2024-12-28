@@ -6,7 +6,7 @@ import MotionWrapper from '@/components/MotionWrapper' // Import MotionWrapper
 const Sidebar = ({ isOpen }) => {
   return (
     <div
-      className={`fixed left-0 top-0 bottom-0 w-64 p-6 bg-my-color-1 text-my-color-4 z-50 shadow-lg transform ${
+      className={`fixed left-0 top-0 bottom-0 w-64 p-6 bg-my-color-1 text-my-color-4 z-50 transform ${
         isOpen ? 'translate-x-0' : '-translate-x-full'
       } transition-transform duration-300 xl:translate-x-0 h-screen`}
     >
