@@ -1,15 +1,8 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import Link from 'next/link'
-import {
-  FaTwitter,
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-  FaGithub
-} from 'react-icons/fa'
 import { motion } from 'framer-motion'
+import SocialLinks from '@/components/SocialLinks' // Import the SocialLinks component
 
 const Footer = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -51,32 +44,8 @@ const Footer = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={isVisible ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-          className="flex space-x-4"
         >
-          {[
-            { href: '#', icon: <FaTwitter /> },
-            { href: '#', icon: <FaFacebookF /> },
-            { href: '#', icon: <FaInstagram /> },
-            { href: '#', icon: <FaLinkedinIn /> },
-            { href: '#', icon: <FaGithub /> }
-          ].map((link, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={isVisible ? { opacity: 1, scale: 1 } : {}}
-              whileHover={{ scale: 1.2, rotate: 10 }}
-              transition={{
-                duration: 0.4,
-                ease: 'easeOut',
-                delay: isVisible ? index * 0.1 : 0
-              }}
-              className="p-2 bg-my-color-2 rounded-full shadow-lg"
-            >
-              <Link href={link.href} className="text-my-color-4 text-lg">
-                {link.icon}
-              </Link>
-            </motion.div>
-          ))}
+          <SocialLinks /> {/* Use the imported SocialLinks component */}
         </motion.div>
 
         {/* Dynamic Year */}
