@@ -2,9 +2,13 @@
 
 import React, { useState } from 'react'
 import Sidebar from '@/components/Sidebar'
+import Introduction from '@/components/Introduction'
 import HamburgerButton from '@/components/HamburgerButton'
-import HeroSection from '@/components/HeroSection'
 import Footer from '@/components/Footer'
+import Skills from '@/components/skills'
+import Projects from '@/components/Projects'
+import Achievements from '@/components/Achievements'
+import Contact from '@/components/Contact'
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -18,7 +22,11 @@ const Home = () => {
       <Sidebar isOpen={isOpen} />
       <HamburgerButton toggleSidebar={toggleSidebar} />
       <div className="ml-0 xl:ml-64 flex-1 bg-my-color-2 text-my-color-4">
-        <HeroSection />
+        <Introduction />
+        <Skills />
+        <Projects />
+        <Achievements />
+        <Contact />
         <Footer />
       </div>
     </div>
