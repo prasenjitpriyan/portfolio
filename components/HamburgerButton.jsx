@@ -1,18 +1,15 @@
-import React, { useState } from 'react'
+'use client'
+
 import { FaBars, FaTimes } from 'react-icons/fa'
+import { useSidebar } from '@/context/SidebarContext'
 
-const HamburgerButton = ({ toggleSidebar }) => {
-  const [isOpen, setIsOpen] = useState(false)
-
-  const handleClick = () => {
-    setIsOpen(!isOpen)
-    toggleSidebar()
-  }
+const HamburgerButton = () => {
+  const { isOpen, toggleSidebar } = useSidebar()
 
   return (
     <button
       className="fixed top-4 left-4 z-50 text-my-color-4 text-xl cursor-pointer xl:hidden"
-      onClick={handleClick}
+      onClick={toggleSidebar}
     >
       {isOpen ? <FaTimes /> : <FaBars />}
     </button>

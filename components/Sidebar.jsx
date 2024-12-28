@@ -4,8 +4,11 @@ import Image from 'next/image'
 import SocialLinks from './SocialLinks'
 import NavLinks from './NavLinks'
 import MotionWrapper from '@/components/MotionWrapper'
+import { useSidebar } from '@/context/SidebarContext' // Import the custom hook
 
-const Sidebar = ({ isOpen }) => {
+const Sidebar = () => {
+  const { isOpen } = useSidebar() // Consume state
+
   return (
     <div
       className={`fixed left-0 top-0 bottom-0 w-64 p-6 bg-my-color-1 text-my-color-4 z-50 transform ${

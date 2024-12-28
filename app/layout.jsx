@@ -1,5 +1,14 @@
 import localFont from 'next/font/local'
 import './globals.css'
+import { SidebarProvider } from '@/context/SidebarContext'
+import Sidebar from '@/components/Sidebar'
+import HamburgerButton from '@/components/HamburgerButton'
+import IntroductionPage from './(navs)/introduction/page'
+import SkillsPage from './(navs)/skills/page'
+import ProjectsPage from './(navs)/projects/page'
+import AchievementPage from './(navs)/achievements/page'
+import ContactPage from './(navs)/contact/page'
+import Footer from '@/components/Footer'
 
 const geistMono = localFont({
   src: './fonts/GeistMonoVF.woff',
@@ -72,7 +81,19 @@ export default function RootLayout({ children }) {
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
       </head>
-      <body className={`${geistMono.variable} antialiased`}>{children}</body>
+      <SidebarProvider>
+        <body className={`${geistMono.variable} antialiased`}>
+          <div className="flex min-h-screen">
+            <Sidebar />
+            <HamburgerButton />
+
+            <div className="ml-0 xl:ml-64 flex-1 bg-my-color-2 text-my-color-4">
+              {children}
+              <Footer />
+            </div>
+          </div>
+        </body>
+      </SidebarProvider>
     </html>
   )
 }
