@@ -5,6 +5,7 @@ import SocialLinks from './SocialLinks'
 import NavLinks from './NavLinks'
 import MotionWrapper from '@/components/MotionWrapper'
 import { useSidebar } from '@/context/SidebarContext' // Import the custom hook
+import Link from 'next/link'
 
 const Sidebar = () => {
   const { isOpen } = useSidebar() // Consume state
@@ -33,14 +34,16 @@ const Sidebar = () => {
               transition: { type: 'spring', stiffness: 150, damping: 10 }
             }}
           >
-            <Image
-              src="/myIMG.jpg"
-              width={140}
-              height={140}
-              priority
-              alt="Prasenjit Das"
-              className="rounded-full"
-            />
+            <Link href={'/'}>
+              <Image
+                src="/myIMG.jpg"
+                width={140}
+                height={140}
+                priority
+                alt="Prasenjit Das"
+                className="rounded-full"
+              />
+            </Link>
           </MotionWrapper>
         </div>
 
