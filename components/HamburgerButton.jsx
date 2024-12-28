@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
+import { FaBars, FaTimes } from 'react-icons/fa' // Import icons
 
 const HamburgerButton = ({ toggleSidebar }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleClick = () => {
-    setIsOpen(!isOpen) // Toggle the state
-    toggleSidebar() // Toggle the sidebar visibility
+    setIsOpen(!isOpen)
+    toggleSidebar()
   }
 
   return (
     <button
-      className="absolute top-4 left-4 z-50 text-my-color-4 text-3xl cursor-pointer xl:hidden"
+      className="absolute top-4 left-4 z-50 text-my-color-4 text-xl cursor-pointer xl:hidden"
       onClick={handleClick}
     >
-      {isOpen ? '×' : '☰'} {/* Cross icon when open, Hamburger when closed */}
+      {isOpen ? <FaTimes /> : <FaBars />}
     </button>
   )
 }
