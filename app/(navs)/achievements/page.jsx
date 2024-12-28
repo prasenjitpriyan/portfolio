@@ -1,7 +1,7 @@
 import React from 'react'
 
 const AchievementPage = () => {
-  return <div>AchievementPage</div>
+  return <section className="min-h-screen p-10">AchievementPage</section>
 }
 
 export default AchievementPage
