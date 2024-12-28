@@ -1,7 +1,9 @@
+'use client'
+
 import Image from 'next/image'
 import SocialLinks from './SocialLinks'
 import NavLinks from './NavLinks'
-import MotionWrapper from '@/components/MotionWrapper' // Import MotionWrapper
+import MotionWrapper from '@/components/MotionWrapper'
 
 const Sidebar = ({ isOpen }) => {
   return (
