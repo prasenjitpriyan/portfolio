@@ -3,11 +3,6 @@ import './globals.css'
 import { SidebarProvider } from '@/context/SidebarContext'
 import Sidebar from '@/components/Sidebar'
 import HamburgerButton from '@/components/HamburgerButton'
-import IntroductionPage from './(navs)/introduction/page'
-import SkillsPage from './(navs)/skills/page'
-import ProjectsPage from './(navs)/projects/page'
-import AchievementPage from './(navs)/achievements/page'
-import ContactPage from './(navs)/contact/page'
 import Footer from '@/components/Footer'
 
 const geistMono = localFont({
