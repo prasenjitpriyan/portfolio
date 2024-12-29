@@ -1,18 +1,21 @@
 import React from 'react'
+import Link from 'next/link'
 import MotionWrapper from '@/components/MotionWrapper'
 import { ImagesSlider } from '@/components/ui/images-slider'
 import firstPhase from '@/assets/images/First.jpeg'
 import secondPhase from '@/assets/images/second.jpeg'
 import thirdPhase from '@/assets/images/third.jpeg'
 import fourthPhase from '@/assets/images/four.jpeg'
-import Link from 'next/link'
 
 const Home = () => {
   const images = [firstPhase, secondPhase, thirdPhase, fourthPhase]
 
   return (
-    <section className="min-h-[calc(100vh-2rem)] bg-my-color-1 m-4 p-4 rounded-md">
-      <ImagesSlider className="h-[40rem] rounded" images={images}>
+    <section className="min-h-[calc(100vh-2rem)] bg-my-color-1 m-4 p-4 rounded-md shadow-lg">
+      <ImagesSlider
+        className="h-[40rem] rounded overflow-hidden"
+        images={images}
+      >
         <MotionWrapper
           initial={{ opacity: 0, y: -80 }}
           animate={{ opacity: 1, y: 0 }}
@@ -20,29 +23,58 @@ const Home = () => {
           className="z-50 flex flex-col justify-center items-center"
         >
           {/* Tagline */}
-          <MotionWrapper className="font-bold text-xl md:text-6xl text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 py-4">
+          <MotionWrapper className="font-bold text-2xl md:text-6xl text-center text-my-color-4 py-4">
             From Delivering Postal Services to Delivering Code <br />
-            <span className="text-lg md:text-3xl">
+            <span className="text-lg md:text-3xl text-my-color-3">
               Crafting Solutions with JavaScript & TypeScript
             </span>
           </MotionWrapper>
 
           {/* Call-to-Actions */}
-          <div className="flex gap-4 mt-6">
-            <Link
-              href="/projects"
-              className="px-4 py-2 backdrop-blur-sm border bg-emerald-300/10 border-emerald-500/20 text-white mx-auto text-center rounded-full relative"
-            >
-              <span>View My Projects</span>
-              <div className="absolute inset-x-0 h-px -bottom-px bg-gradient-to-r w-3/4 mx-auto from-transparent via-emerald-500 to-transparent" />
-            </Link>
-            <Link
-              href="/contact"
-              className="px-4 py-2 backdrop-blur-sm border bg-sky-300/10 border-sky-500/20 text-white mx-auto text-center rounded-full relative"
-            >
-              <span>Get in Touch</span>
-              <div className="absolute inset-x-0 h-px -bottom-px bg-gradient-to-r w-3/4 mx-auto from-transparent via-sky-500 to-transparent" />
-            </Link>
+          <div className="flex gap-6 mt-8">
+            {/* View My Projects CTA */}
+            <MotionWrapper className="relative group">
+              <Link
+                href="/projects"
+                className="px-6 py-3 bg-my-color-3 text-my-color-4 font-semibold rounded-full shadow-md relative z-10"
+              >
+                View My Projects
+              </Link>
+              <MotionWrapper
+                animate={{
+                  scaleX: [1, 0, 1],
+                  scaleY: [0, 1, 0]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatType: 'loop'
+                }}
+                className="absolute inset-0 border-2 border-my-color-3 rounded-full"
+              />
+            </MotionWrapper>
+
+            {/* Get in Touch CTA */}
+            <MotionWrapper className="relative group">
+              <Link
+                href="/contact"
+                className="px-6 py-3 bg-my-color-2 text-my-color-4 font-semibold rounded-full shadow-md relative z-10"
+              >
+                Get in Touch
+              </Link>
+              <MotionWrapper
+                animate={{
+                  scaleX: [1, 0, 1],
+                  scaleY: [0, 1, 0]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatType: 'loop'
+                }}
+                className="absolute inset-0 border-2 border-my-color-2 rounded-full"
+              />
+            </MotionWrapper>
           </div>
         </MotionWrapper>
       </ImagesSlider>
