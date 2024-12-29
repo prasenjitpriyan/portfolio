@@ -65,7 +65,7 @@ export const BackgroundBeamsWithCollision = ({ children }) => {
     <div
       ref={parentRef}
       className={cn(
-        'h-[38rem] relative flex items-center w-full justify-center overflow-hidden bg-my-color-1'
+        'min-h-[38rem] relative flex items-center w-full justify-center overflow-hidden bg-my-color-1'
       )}
     >
       {beams.map((beam) => (
