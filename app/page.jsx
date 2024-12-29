@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import MotionWrapper from '@/components/MotionWrapper'
 import { ImagesSlider } from '@/components/ui/images-slider'
@@ -9,6 +11,21 @@ import fourthPhase from '@/assets/images/four.jpeg'
 
 const Home = () => {
   const images = [firstPhase, secondPhase, thirdPhase, fourthPhase]
+  const [text, setText] = useState('')
+  const fullText = 'Crafting Solutions with JavaScript & TypeScript'
+
+  useEffect(() => {
+    let index = 0
+    const timer = setInterval(() => {
+      if (index < fullText.length) {
+        setText((prev) => prev + fullText.charAt(index)) // Safely get the character
+        index++
+      } else {
+        clearInterval(timer)
+      }
+    }, 100) // Adjust speed by changing the interval duration (in milliseconds)
+    return () => clearInterval(timer) // Cleanup on unmount
+  }, [])
 
   return (
     <section className="min-h-[calc(100vh-2rem)] bg-my-color-1 m-4 p-4 rounded-md shadow-lg">
@@ -26,7 +43,8 @@ const Home = () => {
           <MotionWrapper className="font-bold text-2xl md:text-6xl text-center text-my-color-4 py-4">
             From Delivering Postal Services to Delivering Code <br />
             <span className="text-lg md:text-3xl text-my-color-3">
-              Crafting Solutions with JavaScript & TypeScript
+              {text}
+              <span className="animate-blink">|</span>
             </span>
           </MotionWrapper>
 
