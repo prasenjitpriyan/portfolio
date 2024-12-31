@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <section className="min-h-[calc(100svh-2rem)] bg-my-color-1 m-4 p-4 rounded-md shadow-lg">
       <ImagesSlider
-        className="h-[calc(93svh)] rounded overflow-hidden"
+        className="min-h-[calc(100svh-4rem)] rounded overflow-hidden"
         images={images}
       >
         <HeroContent />
