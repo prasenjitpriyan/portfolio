@@ -10,9 +10,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        'jet-black': '363636',
-        'ghost-white': '#F9F9F9',
-        'pearl-white': '#F8F6F0'
+        'jet-black': '#363636',
+        'ghost-white': '#F9F9F9'
       },
       fontFamily: {
         roboto: ['var(--roboto)', ...defaultTheme.fontFamily.sans]
