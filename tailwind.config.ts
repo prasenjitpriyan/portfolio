@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 export default {
   content: [
@@ -12,6 +13,9 @@ export default {
         'jet-black': '363636',
         'ghost-white': '#F9F9F9',
         'pearl-white': '#F8F6F0'
+      },
+      fontFamily: {
+        roboto: ['var(--roboto)', ...defaultTheme.fontFamily.sans]
       }
     }
   },
