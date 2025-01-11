@@ -1,5 +1,6 @@
 import React from 'react'
-import Link from 'next/link'
+import Button from './Button'
+import { GoArrowRight } from 'react-icons/go'
 
 const HeroLeftSection: React.FC = () => {
   return (
@@ -11,12 +12,14 @@ const HeroLeftSection: React.FC = () => {
         Hi, I&apos;m <span className="font-bold">Prasenjit Das</span>, a
         passionate Front-end Developer, based in India.
       </p>
-
-      <Link href="/works">
-        <button className="mt-4 px-6 py-3 bg-jet-black text-ghost-white font-medium rounded hover:bg-pearl-white">
-          See My Works
-        </button>
-      </Link>
+      <div className="flex justify-center md:justify-start">
+        <Button
+          text="SEE MY WORKS"
+          href="/works"
+          icon={<GoArrowRight className="text-2xl" />}
+          className="relative inline-flex items-center"
+        />
+      </div>
     </div>
   )
 }

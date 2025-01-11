@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { IoMdClose } from 'react-icons/io'
 import { RxHamburgerMenu } from 'react-icons/rx'
+import { FaFacebook, FaTwitter, FaLinkedin, FaGithub } from 'react-icons/fa'
 
 interface MobileMenuProps {
   isMenuOpen: boolean
@@ -26,53 +27,80 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isMenuOpen, toggleMenu }) => {
 
       {/* Full-Screen Menu for Small Screens */}
       {isMenuOpen && (
-        <div className="h-screen md:hidden absolute inset-0 bg-jet-black z-40 flex flex-col items-center justify-center text-white space-y-6">
-          <Link
-            href="/"
-            className="absolute top-0 left-0 w-full flex justify-between items-center px-8 py-4"
-          >
-            <Image
-              width={50}
-              height={50}
-              src="/pd-logo-black-and-white.png"
-              alt="Prasenjit Das"
-              className="rounded-lg max-w-full cursor-pointer"
-            />
-          </Link>
-          <button
-            className="absolute px-8 top-0 right-0 text-2xl font-bold cursor-pointer"
-            onClick={toggleMenu}
-          >
-            <IoMdClose className="text-3xl" />
-          </button>
-          <Link
-            href="/"
-            className="text-2xl hover:text-gray-400"
-            onClick={toggleMenu}
-          >
-            Home
-          </Link>
-          <Link
-            href="/about"
-            className="text-2xl hover:text-gray-400"
-            onClick={toggleMenu}
-          >
-            About
-          </Link>
-          <Link
-            href="/works"
-            className="text-2xl hover:text-gray-400"
-            onClick={toggleMenu}
-          >
-            Works
-          </Link>
-          <Link
-            href="/contact"
-            className="text-2xl hover:text-gray-400"
-            onClick={toggleMenu}
-          >
-            Contact
-          </Link>
+        <div className="h-screen md:hidden absolute inset-0 bg-black z-40 flex flex-col items-center justify-between text-white">
+          {/* Logo and Close Button */}
+          <div className="w-full flex justify-between items-center px-8 py-4">
+            <Link href="/" onClick={toggleMenu}>
+              <Image
+                width={50}
+                height={50}
+                src="/pd-logo-black-and-white.png"
+                alt="Prasenjit Das"
+                className="rounded-lg max-w-full cursor-pointer"
+              />
+            </Link>
+            <button
+              className="text-7xl font-bold cursor-pointer"
+              onClick={toggleMenu}
+            >
+              <IoMdClose className="text-3xl" />
+            </button>
+          </div>
+
+          {/* Navigation Links */}
+          <nav className="flex flex-col items-center space-y-12">
+            {[
+              { label: 'Home', href: '/', number: '01' },
+              { label: 'About', href: '/about', number: '02' },
+              { label: 'Works', href: '/works', number: '03' },
+              { label: 'Contact', href: '/contact', number: '04' }
+            ].map((item) => (
+              <div key={item.number} className="relative group">
+                <Link
+                  href={item.href}
+                  className="text-4xl hover:text-gray-200 flex items-center"
+                  onClick={toggleMenu}
+                >
+                  {item.label}
+                </Link>
+                <span
+                  className="absolute inset-0 flex items-center justify-center text-8xl text-gray-100 opacity-0 group-hover:opacity-20 group-hover:translate-y-0 transition-all duration-300"
+                  style={{ pointerEvents: 'none' }}
+                >
+                  {item.number}
+                </span>
+              </div>
+            ))}
+          </nav>
+
+          {/* Footer Section */}
+          <footer className="w-full flex flex-col items-center pb-6">
+            <div className="flex space-x-4 mb-4">
+              <Link
+                href="https://facebook.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaFacebook className="text-xl hover:text-blue-500" />
+              </Link>
+              <Link href="https://twitter.com" target="_blank" rel="noreferrer">
+                <FaTwitter className="text-xl hover:text-blue-400" />
+              </Link>
+              <Link
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaLinkedin className="text-xl hover:text-blue-700" />
+              </Link>
+              <Link href="https://github.com" target="_blank" rel="noreferrer">
+                <FaGithub className="text-xl hover:text-gray-300" />
+              </Link>
+            </div>
+            <p className="text-xs text-gray-500">
+              © 2025 Prasenjit Das. All rights reserved.
+            </p>
+          </footer>
         </div>
       )}
     </>
