@@ -1,8 +1,14 @@
 import React from 'react'
 
-const CircleSvg: React.FC = () => {
+interface CircleSvgProps {
+  className?: string
+}
+
+const CircleSvg: React.FC<CircleSvgProps> = ({ className }) => {
   return (
-    <div className="absolute inset-x-0 top-1/2 transform -translate-y-1/2 flex justify-center">
+    <div
+      className={`absolute inset-x-0 top-1/2 transform -translate-y-1/2 flex justify-center ${className}`}
+    >
       <svg
         width="500"
         height="500"

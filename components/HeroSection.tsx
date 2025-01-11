@@ -1,129 +1,75 @@
-import React from 'react'
-import Image from 'next/image'
+'use client'
+
+import React, { useState } from 'react'
 import Link from 'next/link'
 import CircleSvg from './CircleSvg'
+import Logo from './Logo'
+import HeroSocialLinks from './HeroSocialLinks'
+import HeroLeftSection from './HeroLeftSection'
+import HeroRightSection from './HeroRightSection'
+import MobileMenu from './MobileMenu'
+import { IoIosArrowRoundDown } from 'react-icons/io'
 
 const HeroSection: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev)
+  }
+
   return (
     <section className="relative h-screen bg-ghost-white text-jet-black flex flex-col">
-      <div className="absolute top-0 left-0 w-full flex justify-between items-center px-8 py-4 z-20">
+      {/* CircleSvg */}
+      <CircleSvg className="z-0" />
+
+      {/* Header */}
+      <div className="absolute top-0 left-0 w-full flex justify-between items-center px-8 py-4 z-30">
         {/* Logo */}
-        <Link href="/">
-          <Image
-            width={50}
-            height={50}
-            src="/pd-logo-black-and-white.png"
-            alt="Prasenjit Das"
-            className="rounded-lg max-w-full cursor-pointer"
-          />
-        </Link>
-        {/* Navigation */}
-        <nav>
+        <Logo />
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:block">
           <ul className="flex space-x-6 text-lg">
             <li>
-              <Link href="/about" className="hover:text-ghost-white">
+              <Link href="/about" className="relative group">
                 About
+                <span className="absolute left-0 top-1/2 w-0 h-[2px] bg-black transform -translate-y-1/2 group-hover:w-full transition-all duration-300 ease-in-out"></span>
               </Link>
             </li>
             <li>
-              <Link href="/works" className="hover:text-ghost-white">
+              <Link href="/works" className="relative group">
                 Works
+                <span className="absolute left-0 top-1/2 w-0 h-[2px] bg-black transform -translate-y-1/2 group-hover:w-full transition-all duration-300 ease-in-out"></span>
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-ghost-white">
+              <Link href="/contact" className="relative group">
                 Contact
+                <span className="absolute left-0 top-1/2 w-0 h-[2px] bg-black transform -translate-y-1/2 group-hover:w-full transition-all duration-300 ease-in-out"></span>
               </Link>
             </li>
           </ul>
         </nav>
+
+        {/* Mobile Menu */}
+        <MobileMenu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
       </div>
 
-      <div className="relative flex flex-1 items-center px-8 py-20 md:flex-row flex-col-reverse">
-        {/* Left Section */}
-        <div className="flex-1 space-y-6 z-10 text-center md:text-left">
-          <h1 className="text-3xl md:text-5xl font-semibold">
-            From Delivering Postal Services to Delivering Code
-          </h1>
-          <p className="text-lg">
-            Hi, I&apos;m <span className="font-bold">Prasenjit Das</span>, a
-            passionate Front-end Developer, based in India.
-          </p>
-
-          <Link href="/works">
-            <button className="mt-4 px-6 py-3 bg-jet-black text-ghost-white font-medium rounded hover:bg-pearl-white">
-              See My Works
-            </button>
-          </Link>
-        </div>
-
-        {/* Right Section */}
-        <div className="flex-1 flex justify-center z-20 h-80 md:h-full">
-          <Image
-            width={500}
-            height={500}
-            src="/x.svg"
-            alt="Prasenjit Das"
-            className="rounded-lg max-w-full"
-          />
-        </div>
+      {/* Hero Section Content */}
+      <div className="relative flex flex-1 items-center px-20 py-20 md:flex-row flex-col-reverse z-20">
+        <HeroLeftSection />
+        <HeroRightSection />
       </div>
 
-      {/* Circle SVG */}
-      <CircleSvg />
+      {/* Social Links */}
+      <div className="absolute bottom-0 left-0 w-full flex flex-col items-center px-20 pb-4 z-30 space-y-4 md:flex-row md:space-y-0 md:justify-between">
+        <HeroSocialLinks />
 
-      {/* Social Links and Scroll Down */}
-      <div className="absolute bottom-0 left-0 w-full flex flex-col items-center px-8 pb-4 z-30 space-y-4 md:flex-row md:space-y-0 md:justify-between">
-        {/* Social Links (Visible only on medium and larger screens) */}
-        <div className="hidden md:flex gap-4 justify-center">
-          <Link
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block hover:text-ghost-white"
-          >
-            GitHub
-          </Link>
-          <span className="text-jet-black">/</span>
-          <Link
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block hover:text-ghost-white"
-          >
-            LinkedIn
-          </Link>
-          <span className="text-jet-black">/</span>
-          <Link
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block hover:text-ghost-white"
-          >
-            Facebook
-          </Link>
-        </div>
-
-        {/* Scroll Down */}
+        {/* Scroll Down Indicator */}
         <div className="flex flex-col items-center">
-          <p className="text-sm">Scroll Down</p>
+          <p className="text-sm capitalize">Scroll Down</p>
           <div className="animate-bounce">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="text-jet-black"
-            >
-              <path
-                d="M12 16V4M12 16L8 12M12 16L16 12"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <IoIosArrowRoundDown className="text-jet-black" />
           </div>
         </div>
       </div>
