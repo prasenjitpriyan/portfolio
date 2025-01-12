@@ -3,6 +3,7 @@ import Footer from '@/components/Footer'
 import HeroSection from '@/components/HeroSection'
 import MoreProjects from '@/components/MoreProjects'
 import ProjectSection from '@/components/ProjectSection'
+import ScrollToTop from '@/components/ScrollToTop'
 import React from 'react'
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
       <ProjectSection />
       <MoreProjects />
       <Footer />
+      <ScrollToTop />
     </main>
   )
 }
