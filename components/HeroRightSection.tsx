@@ -18,10 +18,10 @@ const HeroRightSection: React.FC = () => {
       <Image
         width={200}
         height={200}
-        src="/my.jpg"
+        src="/3.png"
         alt="Additional Image"
         priority={true}
-        className="absolute rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-2 w-[150px] h-[150px] md:w-[300px] md:h-[300px] animate-bounce-in-place"
+        className="absolute rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] md:w-[400px] md:h-[400px] animate-bounce-in-place"
       />
     </div>
   )
