@@ -15,22 +15,6 @@ export default {
       },
       fontFamily: {
         roboto: ['var(--roboto)', ...defaultTheme.fontFamily.sans]
-      },
-      animation: {
-        'bounce-in-place': 'bounceInPlace 1s ease-in-out infinite'
-      },
-      keyframes: {
-        bounceInPlace: {
-          '0%': {
-            transform: 'translate(-50%, -50%) translateY(0)'
-          },
-          '50%': {
-            transform: 'translate(-50%, -50%) translateY(-15px)'
-          },
-          '100%': {
-            transform: 'translate(-50%, -50%) translateY(0)'
-          }
-        }
       }
     }
   },

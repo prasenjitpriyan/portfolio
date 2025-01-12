@@ -14,7 +14,7 @@ const Header: React.FC<{ toggleMenu: () => void; isMenuOpen: boolean }> = ({
   ]
 
   return (
-    <div className="absolute top-0 left-0 w-full flex justify-between items-center px-8 py-4 z-30">
+    <div className="fixed top-0 left-0 w-full flex justify-between items-center px-8 py-4 z-30">
       <Logo />
 
       {/* Desktop Navigation */}

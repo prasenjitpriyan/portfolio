@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { FaArrowUp } from 'react-icons/fa6'
+import { IoIosArrowRoundDown } from 'react-icons/io'
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -31,16 +31,13 @@ const ScrollToTop = () => {
         onClick={scrollToHero}
         className="fixed bottom-16 right-8 rotate-[90deg]"
       >
-        <span className="flex items-center font-bold text-gray-500">
+        <span className="flex items-center text-gray-500">
           {/* Arrow Icon */}
           <span className="flex items-center">
-            <FaArrowUp className="rotate-[270deg] text-gray-500" />
-            <span className="w-6 h-[2px] bg-gray-500 ml-[-2px]"></span>
+            <IoIosArrowRoundDown className="rotate-[90deg] text-gray-500 text-3xl" />
           </span>
           {/* Text */}
-          <span className="ml-2 text-gray-500 uppercase text-sm transform">
-            TOP
-          </span>
+          <span className="text-gray-500 tracking-widest">TOP</span>
         </span>
       </button>
     )

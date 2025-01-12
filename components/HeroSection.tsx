@@ -7,6 +7,7 @@ import HeroRightSection from './HeroRightSection'
 import Header from './Header'
 import HeroSocialLinks from './HeroSocialLinks'
 import ScrollIndicator from './ScrollIndicator'
+import { LuMouse } from 'react-icons/lu'
 
 const HeroSection: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -35,8 +36,11 @@ const HeroSection: React.FC = () => {
       {/* Social Links */}
       <div className="absolute bottom-0 left-0 w-full flex flex-col items-center px-20 pb-4 z-30 space-y-4 md:flex-row md:space-y-0 md:justify-between">
         <HeroSocialLinks />
-        <ScrollIndicator />
+        <div className="block sm:hidden">
+          <LuMouse className="text-jet-black" />
+        </div>
       </div>
+      <ScrollIndicator />
     </section>
   )
 }

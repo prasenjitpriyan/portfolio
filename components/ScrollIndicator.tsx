@@ -1,20 +1,14 @@
 import React from 'react'
 import { IoIosArrowRoundDown } from 'react-icons/io'
-import { LuMouse } from 'react-icons/lu'
 
 const ScrollIndicator: React.FC = () => {
   return (
-    <div className="flex flex-col items-center">
-      <p className="hidden sm:block text-sm capitalize">Scroll Down</p>
-
-      {/* Show on larger screens */}
-      <div className="hidden sm:block animate-bounce">
-        <IoIosArrowRoundDown className="text-jet-black" />
-      </div>
-
-      {/* Show on small screens */}
-      <div className="block sm:hidden animate-bounce">
-        <LuMouse className="text-jet-black" />
+    <div className="absolute bottom-20 right-0 rotate-[90deg]">
+      <div className="hidden sm:block">
+        <p className="flex justify-center items-center">
+          <span className="text-gray-500 tracking-widest">SCROLL DOWN</span>
+          <IoIosArrowRoundDown className="rotate-[270deg] text-gray-500 text-3xl" />
+        </p>
       </div>
     </div>
   )
