@@ -1,20 +1,5 @@
-import Crafted from '@/components/Crafted'
-import Footer from '@/components/Footer'
-import HeroSection from '@/components/HeroSection'
-import MoreProjects from '@/components/MoreProjects'
-import ProjectSection from '@/components/ProjectSection'
-import React from 'react'
+import { redirect } from 'next/navigation'
 
-const Home = () => {
-  return (
-    <main className="min-h-screen overflow-hidden">
-      <HeroSection />
-      <Crafted />
-      <ProjectSection />
-      <MoreProjects />
-      <Footer />
-    </main>
-  )
+export default function RootRedirect() {
+  redirect('/loading')
 }
-
-export default Home

@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const Logo: React.FC = () => {
   return (
-    <Link href="/">
+    <Link href="/home">
       <Image
         width={50}
         height={50}

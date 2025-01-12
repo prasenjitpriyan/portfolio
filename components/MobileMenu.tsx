@@ -30,7 +30,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isMenuOpen, toggleMenu }) => {
         <div className="h-screen md:hidden absolute inset-0 bg-black z-40 flex flex-col items-center justify-between text-white">
           {/* Logo and Close Button */}
           <div className="w-full flex justify-between items-center px-8 py-4">
-            <Link href="/" onClick={toggleMenu}>
+            <Link href="/home" onClick={toggleMenu}>
               <Image
                 width={50}
                 height={50}

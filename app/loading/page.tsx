@@ -12,20 +12,22 @@ const Loading: React.FC = () => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval)
-          router.replace('/home') // Redirect automatically to the home page
           return 100
         }
-        return prev + 5 // Progress speed
+        return prev + 5
       })
-    }, 100) // Progress interval time
+    }, 100)
+    if (progress === 100) {
+      router.replace('/home')
+    }
 
     return () => clearInterval(interval)
-  }, [router])
+  }, [progress, router])
 
   return (
     <div className="h-screen bg-black flex flex-col justify-center items-center text-white">
       <h1 className="text-4xl font-bold mb-4">PRASENJIT DAS</h1>
-      <div className="w-2/3 h-2 bg-gray-700 rounded">
+      <div className="w-2/3 h-[1px] bg-gray-700 rounded">
         <div
           className="h-full bg-white rounded transition-all duration-150"
           style={{ width: `${progress}%` }}
