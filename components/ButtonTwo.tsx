@@ -64,7 +64,7 @@ const ButtonTwo: React.FC<ButtonProps> = ({ text, icon, href, className }) => {
       {/* Decorative Circle */}
       <div
         ref={circleRef}
-        className="absolute left-[-10px] top-0 bottom-0 m-auto w-12 h-12 bg-slate-700 rounded-full transition-all duration-300 z-[1]"
+        className="absolute left-[-10px] top-0 bottom-0 m-auto w-12 h-12 bg-gray-500 rounded-full transition-all duration-300 z-[1]"
       ></div>
     </div>
   )

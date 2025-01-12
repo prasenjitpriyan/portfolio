@@ -19,12 +19,12 @@ const Header: React.FC<{ toggleMenu: () => void; isMenuOpen: boolean }> = ({
 
       {/* Desktop Navigation */}
       <nav className="hidden md:block">
-        <ul className="flex space-x-6 text-lg">
+        <ul className="flex space-x-6 text-lg text-gray-500">
           {navLinks.map((link, index) => (
             <li key={index}>
               <Link href={link.href} className="relative group">
                 {link.label}
-                <span className="absolute left-0 top-1/2 w-0 h-[2px] bg-black transform -translate-y-1/2 group-hover:w-full transition-all duration-300 ease-in-out"></span>
+                <span className="absolute left-0 top-1/2 w-0 h-[2px] bg-gray-500 transform -translate-y-1/2 group-hover:w-full transition-all duration-300 ease-in-out"></span>
               </Link>
             </li>
           ))}
