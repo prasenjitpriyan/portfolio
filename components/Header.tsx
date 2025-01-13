@@ -35,7 +35,7 @@ const Header: React.FC<{ toggleMenu: () => void; isMenuOpen: boolean }> = ({
               >
                 {link.label}
                 <span
-                  className={`absolute left-0 top-1/2 h-[2px] bg-gray-500 transform -translate-y-1/2 transition-all duration-300 ease-in-out`}
+                  className={`absolute left-0 top-1/2 h-[2px] bg-gray-500 transform -translate-y-1/2 transition-all duration-300 ease-in-out group-hover:w-full`}
                 ></span>
               </Link>
             </li>
