@@ -1,5 +1,8 @@
+'use client'
+
 import React from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import Logo from './Logo'
 import MobileMenu from './MobileMenu'
 
@@ -7,6 +10,8 @@ const Header: React.FC<{ toggleMenu: () => void; isMenuOpen: boolean }> = ({
   toggleMenu,
   isMenuOpen
 }) => {
+  const pathname = usePathname()
+
   const navLinks = [
     { href: '/about', label: 'About' },
     { href: '/works', label: 'Works' },
@@ -19,12 +24,21 @@ const Header: React.FC<{ toggleMenu: () => void; isMenuOpen: boolean }> = ({
 
       {/* Desktop Navigation */}
       <nav className="hidden md:block">
-        <ul className="flex space-x-6 text-lg text-gray-500">
-          {navLinks.map((link, index) => (
-            <li key={index}>
-              <Link href={link.href} className="relative group">
+        <ul className="flex space-x-6 text-lg">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className={`relative group ${
+                  pathname === link.href ? 'text-black' : 'text-gray-500'
+                }`}
+              >
                 {link.label}
-                <span className="absolute left-0 top-1/2 w-0 h-[2px] bg-gray-500 transform -translate-y-1/2 group-hover:w-full transition-all duration-300 ease-in-out"></span>
+                <span
+                  className={`absolute left-0 top-1/2 h-[2px] bg-black transform -translate-y-1/2 transition-all duration-300 ease-in-out ${
+                    pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
+                ></span>
               </Link>
             </li>
           ))}
