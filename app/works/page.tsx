@@ -1,7 +1,12 @@
 import React from 'react'
+import WorksSection from '@/components/WorksSection'
 
 const WorksPage = () => {
-  return <div>WorksPage</div>
+  return (
+    <main className="min-h-screen overflow-hidden">
+      <WorksSection />
+    </main>
+  )
 }
 
 export default WorksPage

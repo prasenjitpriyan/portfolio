@@ -1,7 +1,12 @@
 import React from 'react'
+import ContactSection from '@/components/ContactSection'
 
 const ContactPage = () => {
-  return <div>ContactPage</div>
+  return (
+    <main className="min-h-screen overflow-hidden">
+      <ContactSection />
+    </main>
+  )
 }
 
 export default ContactPage
