@@ -26,8 +26,8 @@ const Loading: React.FC = () => {
 
   return (
     <div className="h-screen bg-black flex flex-col justify-center items-center text-white">
-      <h1 className="text-4xl font-bold mb-4">PRASENJIT DAS</h1>
-      <div className="w-2/3 h-[1px] bg-gray-700 rounded">
+      <h1 className="text-2xl text-pretty font-thin mb-4">PRASENJIT DAS</h1>
+      <div className="w-2/3 h-[1px] rounded">
         <div
           className="h-full bg-white rounded transition-all duration-150"
           style={{ width: `${progress}%` }}
