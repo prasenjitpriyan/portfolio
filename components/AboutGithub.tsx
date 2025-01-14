@@ -143,7 +143,7 @@ const AboutGithub: React.FC = () => {
   }
 
   return (
-    <div className="h-screen w-full overflow-hidden bg-ghost-white text-jet-black flex flex-wrap px-20 py-20">
+    <div className="min-h-screen w-full overflow-hidden bg-ghost-white text-jet-black flex flex-wrap px-20 py-20">
       {/* Left Grid */}
       <div className="w-full h-1/6 md:w-1/3 p-4 md:h-full">
         <div className="flex gap-12">
@@ -153,20 +153,20 @@ const AboutGithub: React.FC = () => {
       </div>
       {/* Right Grid */}
       <div className="w-full h-5/6 md:w-2/3 p-4 md:h-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="flex flex-col lg:flex-row justify-between">
           {/* GitHub Stats */}
           <div className="pb-4 text-center">
             <h2 className="text-2xl font-semibold text-jet-black capitalize">
               GitHub Stats
             </h2>
-            <p className="mt-2 text-jet-black">
+            <p className="pt-2 text-jet-black">
               Total Repositories: {repos.length}
             </p>
-            <p className="mt-1 text-jet-black">
+            <p className="pt-1 text-jet-black">
               Total Stars:{' '}
               {repos.reduce((acc, repo) => acc + repo.stargazers_count, 0)}
             </p>
-            <p className="mt-1 text-jet-black">
+            <p className="pt-1 text-jet-black">
               Total Forks:{' '}
               {repos.reduce((acc, repo) => acc + repo.forks_count, 0)}
             </p>

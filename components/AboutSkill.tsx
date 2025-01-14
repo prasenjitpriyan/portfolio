@@ -48,7 +48,7 @@ const AboutSkill: React.FC = () => {
       </div>
       {/* Right Grid */}
       <div className="w-full h-5/6 md:w-2/3 p-4 md:h-full">
-        <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {sections.map((section, index) => (
             <div key={index} className="mb-8">
               <h2 className="text-xl font-semibold text-my-color-1 mb-4">
