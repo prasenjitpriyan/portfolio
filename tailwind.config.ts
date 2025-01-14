@@ -17,7 +17,9 @@ export default {
         roboto: ['var(--roboto)', ...defaultTheme.fontFamily.sans]
       },
       animation: {
-        'bounce-in-place': 'bounceInPlace 1s ease-in-out infinite'
+        'bounce-in-place': 'bounceInPlace 1s ease-in-out infinite',
+        'marquee-ltr': 'marqueeLTR 10s linear infinite',
+        'marquee-rtl': 'marqueeRTL 10s linear infinite'
       },
       keyframes: {
         bounceInPlace: {
@@ -30,6 +32,14 @@ export default {
           '100%': {
             transform: 'translate(-50%, -50%) translateY(0)'
           }
+        },
+        marqueeLTR: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' }
+        },
+        marqueeRTL: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-100%)' }
         }
       }
     }

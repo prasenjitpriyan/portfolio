@@ -1,10 +1,12 @@
-import AboutSection from '@/components/AboutSection'
 import React from 'react'
+import AboutSection from '@/components/AboutSection'
+import AboutMe from '@/components/AboutMe'
 
 const AboutPage = () => {
   return (
-    <main className="min-h-screen overflow-hidden">
+    <main className="min-h-screen relative overflow-hidden">
       <AboutSection />
+      <AboutMe />
     </main>
   )
 }
