@@ -14,7 +14,7 @@ const WorksSection: React.FC = () => {
   return (
     <section
       id="hero-section"
-      className="relative h-screen overflow-hidden bg-ghost-white text-jet-black flex flex-col"
+      className="relative h-screen overflow-hidden bg-white text-jet-black flex flex-col"
     >
       {/* Header */}
       <Header toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
