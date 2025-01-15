@@ -31,6 +31,7 @@ const AboutSection: React.FC = () => {
               alt="about"
               width={500}
               height={500}
+              priority
               className="object-contain"
             />
           </div>

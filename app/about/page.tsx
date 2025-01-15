@@ -6,6 +6,7 @@ import AboutSkill from '@/components/AboutSkill'
 import AboutGithub from '@/components/AboutGithub'
 import AboutExpertise from '@/components/AboutExpertise'
 import AboutTools from '@/components/AboutTools'
+import AboutContact from '@/components/AboutContact'
 
 const AboutPage = () => {
   return (
@@ -17,6 +18,7 @@ const AboutPage = () => {
       <AboutGithub />
       <AboutExpertise />
       <AboutTools />
+      <AboutContact />
     </main>
   )
 }
