@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
         />
       </div>
 
-      <Circle className="absolute w-48 h-48 bottom-[-36] left-[-100]" />
+      <Circle className="absolute overflow-hidden w-48 h-48 bottom-[-36] left-[-100]" />
       {/* Bottom Section */}
       <footer className="w-full flex justify-center items-center p-12 gap-4">
         <p className="text-xs text-gray-500">© 2025 Prasenjit Das.</p>
