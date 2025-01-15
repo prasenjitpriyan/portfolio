@@ -21,7 +21,7 @@ const AboutExpertise: React.FC = () => {
   ]
 
   return (
-    <section className="min-h-[50svh] w-full overflow-hidden bg-ghost-white text-jet-black flex flex-wrap px-20 py-20">
+    <section className="min-h-[50svh] w-full overflow-hidden bg-ghost-white text-jet-black flex flex-wrap px-20">
       {/* Left Grid */}
       <div className="w-full h-1/6 md:w-1/3 p-4 md:h-full">
         <div className="flex gap-12">

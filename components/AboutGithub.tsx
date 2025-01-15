@@ -92,7 +92,7 @@ const AboutGithub: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="h-screen flex justify-center items-center text-jet-black">
+      <div className="min-h-[70svh] w-full overflow-hidden bg-ghost-white text-jet-black flex px-20 py-20 justify-center items-center">
         Loading...
       </div>
     )
@@ -100,7 +100,7 @@ const AboutGithub: React.FC = () => {
 
   if (error) {
     return (
-      <div className="h-screen flex justify-center items-center textjettext-jet-black">
+      <div className="min-h-[70svh] w-full overflow-hidden bg-ghost-white text-jet-black flex px-20 py-20 justify-center items-center">
         {error}
       </div>
     )
@@ -114,20 +114,20 @@ const AboutGithub: React.FC = () => {
         label: 'Languages Used',
         data: Object.values(languages),
         backgroundColor: [
-          '#FF6384',
-          '#36A2EB',
-          '#FFCE56',
-          '#4BC0C0',
-          '#9966FF',
-          '#FF9F40'
+          '#222831', // dark charcoal
+          '#323330', // another black shade
+          '#4F4F4F', // medium gray
+          '#696969', // dim gray
+          '#808080', // gray
+          '#A9A9A9' // dark gray
         ],
         hoverBackgroundColor: [
-          '#FF6384',
-          '#36A2EB',
-          '#FFCE56',
-          '#4BC0C0',
-          '#9966FF',
-          '#FF9F40'
+          '#222831', // dark charcoal
+          '#323330', // another black shade
+          '#4F4F4F', // medium gray
+          '#696969', // dim gray
+          '#808080', // gray
+          '#A9A9A9' // dark gray
         ]
       }
     ]
@@ -143,7 +143,7 @@ const AboutGithub: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen w-full overflow-hidden bg-ghost-white text-jet-black flex flex-wrap px-20 py-20">
+    <div className="min-h-[70svh] w-full overflow-hidden bg-ghost-white text-jet-black flex flex-wrap px-20 py-20">
       {/* Left Grid */}
       <div className="w-full h-1/6 md:w-1/3 p-4 md:h-full">
         <div className="flex gap-12">
@@ -153,7 +153,7 @@ const AboutGithub: React.FC = () => {
       </div>
       {/* Right Grid */}
       <div className="w-full h-5/6 md:w-2/3 p-4 md:h-full">
-        <div className="flex flex-col lg:flex-row justify-between">
+        <div className="flex flex-col justify-between md:flex-row items-center md:items-start">
           {/* GitHub Stats */}
           <div className="pb-4 text-center">
             <h2 className="text-2xl font-semibold text-jet-black capitalize">
@@ -173,7 +173,7 @@ const AboutGithub: React.FC = () => {
           </div>
 
           {/* Most Used Languages */}
-          <div>
+          <div className="w-96 h-96">
             <h2 className="text-2xl font-semibold text-gray-800 text-center pb-2">
               Most Used Languages
             </h2>
