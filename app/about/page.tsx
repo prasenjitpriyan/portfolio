@@ -8,6 +8,8 @@ import AboutExpertise from '@/components/AboutExpertise'
 import AboutTools from '@/components/AboutTools'
 import AboutContact from '@/components/AboutContact'
 import ScrollToTop from '@/components/ScrollToTop'
+import AboutQuote from '@/components/AboutQuote'
+import Footer from '@/components/Footer'
 
 const AboutPage = () => {
   return (
@@ -20,6 +22,8 @@ const AboutPage = () => {
       <AboutExpertise />
       <AboutTools />
       <AboutContact />
+      <AboutQuote />
+      <Footer />
       <ScrollToTop />
     </main>
   )
