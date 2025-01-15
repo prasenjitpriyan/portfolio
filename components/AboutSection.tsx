@@ -12,7 +12,10 @@ const AboutSection: React.FC = () => {
   }
 
   return (
-    <section className="relative h-screen overflow-hidden bg-ghost-white text-jet-black flex flex-col">
+    <section
+      id="hero-section"
+      className="relative h-screen overflow-hidden bg-ghost-white text-jet-black flex flex-col"
+    >
       <Header toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
       <div className="fixed left-8 top-[50%] rotate-[270deg] w-8 h-8">
         <p className="text-xs">ABOUT</p>

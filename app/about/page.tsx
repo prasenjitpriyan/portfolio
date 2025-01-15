@@ -7,10 +7,11 @@ import AboutGithub from '@/components/AboutGithub'
 import AboutExpertise from '@/components/AboutExpertise'
 import AboutTools from '@/components/AboutTools'
 import AboutContact from '@/components/AboutContact'
+import ScrollToTop from '@/components/ScrollToTop'
 
 const AboutPage = () => {
   return (
-    <main className="min-h-screen relative overflow-hidden">
+    <main className="min-h-screen overflow-hidden">
       <AboutSection />
       <AboutMe />
       <AboutMarquee />
@@ -19,6 +20,7 @@ const AboutPage = () => {
       <AboutExpertise />
       <AboutTools />
       <AboutContact />
+      <ScrollToTop />
     </main>
   )
 }
