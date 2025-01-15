@@ -7,8 +7,8 @@ const AboutTools: React.FC = () => {
       {/* Left Grid */}
       <div className="w-full h-1/6 md:w-1/3 p-4 md:h-full">
         <div className="flex gap-12">
-          <p className="font-thin">/ 01 -</p>
-          <p className="font-thin">SKILLS</p>
+          <p className="font-thin">/ 04 -</p>
+          <p className="font-thin">TOOLS</p>
         </div>
       </div>
       {/* Right Grid */}
