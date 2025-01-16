@@ -4,15 +4,17 @@ import React from 'react'
 const HeroRightSection: React.FC = () => {
   return (
     <div className="flex-1 flex justify-center items-center relative z-20 h-96 md:h-full">
-      {/* First Image */}
-      <Image
-        width={600}
-        height={600}
-        src="/x.svg"
-        alt="Prasenjit Das"
-        priority={true}
-        className="w-full h-full object-cover"
-      />
+      {/* First Image with circulating animation */}
+      <div className="w-full h-full animate-rotate-once">
+        <Image
+          width={600}
+          height={600}
+          src="/x.svg"
+          alt="Prasenjit Das"
+          priority={true}
+          className="w-full h-full object-cover"
+        />
+      </div>
 
       {/* Second Image on top, centered with bounce effect */}
       <Image
