@@ -1,14 +1,36 @@
+'use client'
+
 import React from 'react'
-import { IoIosArrowRoundDown } from 'react-icons/io'
+import { GoArrowRight } from 'react-icons/go'
+import { motion } from 'framer-motion'
 
 const ScrollIndicator: React.FC = () => {
   return (
     <div className="absolute bottom-20 right-0 rotate-[90deg]">
       <div className="hidden sm:block">
-        <p className="flex justify-center items-center">
-          <span className="text-gray-500 tracking-widest">SCROLL DOWN</span>
-          <IoIosArrowRoundDown className="rotate-[270deg] text-gray-500 text-3xl" />
-        </p>
+        <motion.div
+          className="flex justify-center items-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <span className="text-gray-500 tracking-widest pl-2">
+            SCROLL DOWN
+          </span>
+          <motion.div
+            className="text-gray-500 text-3xl"
+            animate={{
+              x: [0, -10, 0]
+            }}
+            transition={{
+              repeat: Infinity,
+              duration: 1.5,
+              ease: 'easeInOut'
+            }}
+          >
+            <GoArrowRight />
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   )

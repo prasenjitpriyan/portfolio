@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import Header from './Header'
 import Image from 'next/image'
+import ScrollIndicator from './ScrollIndicator'
 
 const AboutSection: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -40,6 +41,7 @@ const AboutSection: React.FC = () => {
           </div>
         </div>
       </div>
+      <ScrollIndicator />
     </section>
   )
 }
