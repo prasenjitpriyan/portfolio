@@ -14,7 +14,7 @@ const ScrollIndicator: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <span className="text-gray-500 tracking-widest pl-2">
+          <span className="text-gray-500 tracking-widest pr-4">
             SCROLL DOWN
           </span>
           <motion.div
