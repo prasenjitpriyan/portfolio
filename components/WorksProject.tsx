@@ -2,75 +2,9 @@ import React from 'react'
 import Button from './Button'
 import { GoArrowRight } from 'react-icons/go'
 import Image from 'next/image'
+import projects from '../data/projects'
 
 const WorksProject: React.FC = () => {
-  const projects = [
-    {
-      id: 1,
-      number: '01',
-      title: 'Project One',
-      category: 'WEB APP',
-      link: '/projects/salinaka',
-      image: '/my.jpg'
-    },
-    {
-      id: 2,
-      number: '02',
-      title: 'Project Two',
-      category: 'WEB APP',
-      link: '/projects/project-two',
-      image: '/my.jpg'
-    },
-    {
-      id: 3,
-      number: '03',
-      title: 'Project Three',
-      category: 'MOBILE APP',
-      link: '/projects/project-three',
-      image: '/my.jpg'
-    },
-    {
-      id: 4,
-      number: '04',
-      title: 'Project Four',
-      category: 'DESIGN SYSTEM',
-      link: '/projects/project-four',
-      image: '/my.jpg'
-    },
-    {
-      id: 5,
-      number: '05',
-      title: 'Project Five',
-      category: 'E-COMMERCE',
-      link: '/projects/project-five',
-      image: '/my.jpg'
-    },
-    {
-      id: 6,
-      number: '06',
-      title: 'Project Six',
-      category: 'SAAS PLATFORM',
-      link: '/projects/project-six',
-      image: '/my.jpg'
-    },
-    {
-      id: 7,
-      number: '07',
-      title: 'Project Seven',
-      category: 'BLOG PLATFORM',
-      link: '/projects/project-seven',
-      image: '/my.jpg'
-    },
-    {
-      id: 8,
-      number: '08',
-      title: 'Project Eight',
-      category: 'PORTFOLIO WEBSITE',
-      link: '/projects/project-eight',
-      image: '/my.jpg'
-    }
-  ]
-
   return (
     <div className="h-[320svh] bg-ghost-white text-gray-300 overflow-hidden">
       {projects.map((project) => (
@@ -111,7 +45,7 @@ const WorksProject: React.FC = () => {
             <div className="flex items-center justify-center w-full sm:w-1/4">
               <Button
                 text="VIEW PROJECT"
-                href={project.link}
+                href={`/works/${project.id}`}
                 icon={<GoArrowRight className="text-2xl" />}
                 className="relative inline-flex items-center transition-all duration-300 ease-in-out"
               />
