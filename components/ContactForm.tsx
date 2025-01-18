@@ -1,21 +1,73 @@
-import React, { useState } from 'react'
+'use client'
+
+import React, { useState, useRef } from 'react'
+import { motion } from 'framer-motion'
 import Button from './Button'
 import { GoArrowRight } from 'react-icons/go'
 
 const ContactForm: React.FC = () => {
   const [message, setMessage] = useState('')
+  const buttonRef = useRef<HTMLDivElement | null>(null)
   const maxLength = 1000
 
   const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMessage(e.target.value)
   }
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2
+      }
+    }
+  }
+
+  const inputVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: 'easeOut' }
+    },
+    hover: { scale: 1.02, transition: { duration: 0.3, ease: 'easeInOut' } }
+  }
+
+  const buttonVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: 'easeOut',
+        delay: 1.2 // Delays button appearance to match form completion
+      }
+    },
+    hover: {
+      scale: 1.1,
+      y: -2,
+      transition: { duration: 0.4, ease: 'easeInOut' }
+    }
+  }
+
   return (
-    <div>
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+      className="space-y-6"
+    >
       {/* Form Section */}
-      <form onSubmit={(e) => e.preventDefault()}>
+      <motion.form
+        onSubmit={(e) => e.preventDefault()}
+        className="space-y-6"
+        variants={containerVariants}
+      >
         {/* Name */}
-        <div className="mb-6">
+        <motion.div className="mb-6" variants={inputVariants}>
           <input
             type="text"
             id="name"
@@ -24,12 +76,10 @@ const ContactForm: React.FC = () => {
             placeholder="Your Name"
             required
           />
-          {/* Animated Border */}
-          <div className="w-full h-0.5 bg-black scale-x-0 transform origin-left transition-transform duration-300 ease-in-out focus-within:scale-x-100"></div>
-        </div>
+        </motion.div>
 
         {/* Email */}
-        <div className="mb-6">
+        <motion.div className="mb-6" variants={inputVariants}>
           <input
             type="email"
             id="email"
@@ -38,10 +88,10 @@ const ContactForm: React.FC = () => {
             placeholder="Your Email"
             required
           />
-        </div>
+        </motion.div>
 
         {/* Subject */}
-        <div className="mb-6">
+        <motion.div className="mb-6" variants={inputVariants}>
           <input
             type="text"
             id="subject"
@@ -50,10 +100,10 @@ const ContactForm: React.FC = () => {
             placeholder="Subject"
             required
           />
-        </div>
+        </motion.div>
 
         {/* Message */}
-        <div className="mb-6 relative">
+        <motion.div className="mb-6 relative" variants={inputVariants}>
           <textarea
             id="message"
             name="message"
@@ -69,19 +119,27 @@ const ContactForm: React.FC = () => {
           <div className="absolute bottom-2 right-4 text-sm text-gray-500">
             {`${message.length}/${maxLength}`}
           </div>
-        </div>
-      </form>
+        </motion.div>
+      </motion.form>
 
       {/* Submit Button */}
-      <div className="flex justify-end">
+      <motion.div
+        ref={buttonRef}
+        className="flex justify-end"
+        initial="hidden"
+        animate="visible"
+        variants={buttonVariants}
+        whileHover="hover"
+      >
         <Button
           text="SEND MESSAGE"
           href={'/'}
           icon={<GoArrowRight className="text-2xl" />}
           className="relative inline-flex items-center transition-all duration-300 ease-in-out"
+          hoverWidth="180px"
         />
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
 
