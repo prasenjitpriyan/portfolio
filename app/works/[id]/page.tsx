@@ -1,14 +1,14 @@
 import React from 'react'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import projects from '../../../data/projects'
 import Image from 'next/image'
+import projects from '../../../data/projects'
 
 interface ProjectPageProps {
   params: { id: string }
 }
 
-const WorksIdPage: React.FC<ProjectPageProps> = ({ params }) => {
+const WorksIdPage = async ({ params }: ProjectPageProps) => {
   const project = projects.find((p) => p.id === params.id)
 
   if (!project) {
@@ -17,7 +17,7 @@ const WorksIdPage: React.FC<ProjectPageProps> = ({ params }) => {
   }
 
   return (
-    <div>
+    <div className="p-4">
       <Image
         width={500}
         height={500}
@@ -25,7 +25,7 @@ const WorksIdPage: React.FC<ProjectPageProps> = ({ params }) => {
         alt={project.title}
         className="w-full h-64 object-cover"
       />
-      <h1>
+      <h1 className="text-2xl font-bold mt-4">
         {project.number}. {project.title}
       </h1>
       <p className="text-sm text-gray-500">{project.category}</p>
@@ -37,3 +37,10 @@ const WorksIdPage: React.FC<ProjectPageProps> = ({ params }) => {
 }
 
 export default WorksIdPage
+
+// This function generates paths for dynamic routes
+export async function generateStaticParams() {
+  return projects.map((project) => ({
+    id: project.id
+  }))
+}
