@@ -7,8 +7,8 @@ const HeroRightSection: React.FC = () => {
       {/* First Image with circulating animation */}
       <div className="w-full h-full animate-rotate-once">
         <Image
-          width={600}
-          height={600}
+          width={420}
+          height={420}
           src="/x.svg"
           alt="Prasenjit Das"
           priority={true}
