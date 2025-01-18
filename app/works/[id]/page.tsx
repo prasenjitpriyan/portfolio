@@ -5,15 +5,16 @@ import Image from 'next/image'
 import projects from '../../../data/projects'
 
 interface ProjectPageProps {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
-const WorksIdPage = async ({ params }: ProjectPageProps) => {
+const WorksIdPage = async (props: ProjectPageProps) => {
+  const params = await props.params
   const project = projects.find((p) => p.id === params.id)
 
   if (!project) {
     notFound()
-    return <div>Project not found.</div>
+    return null
   }
 
   return (
@@ -38,7 +39,6 @@ const WorksIdPage = async ({ params }: ProjectPageProps) => {
 
 export default WorksIdPage
 
-// This function generates paths for dynamic routes
 export async function generateStaticParams() {
   return projects.map((project) => ({
     id: project.id
