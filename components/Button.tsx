@@ -62,7 +62,7 @@ const Button: React.FC<ButtonProps> = ({
       <Link
         href={href}
         ref={linkRef}
-        className={`relative inline-flex items-center text-[15px] font-bold tracking-[0.5px] font-circular transition-all duration-300 z-[2] ${className}`}
+        className={`relative inline-flex items-center font-bold tracking-[0.5px] font-circular transition-all duration-300 z-[2] ${className}`}
       >
         <span className="z-[3]">{text}</span>
 

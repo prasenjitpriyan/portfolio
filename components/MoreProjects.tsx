@@ -1,22 +1,28 @@
-import Link from 'next/link'
 import React from 'react'
+import Button from './Button'
+import { GoArrowRight } from 'react-icons/go'
 
 const MoreProjects = () => {
   return (
     <section className="h-[50svh] relative px-20 py-28 overflow-hidden">
       {/* Heading */}
       <div className="overflow-hidden">
-        <p className="revealer relative text-3xl md:text-5xl font-semibold inline-block text-jet-black">
-          There is More
+        <p className="revealer relative text-xs inline-block text-jet-black">
+          THERE&apos;S MORE
         </p>
       </div>
       <br />
 
       {/* Paragraph */}
-      <div className="overflow-hidden">
-        <button className="bg-jet-black text-white py-2 px-4 rounded border-none hover:bg-ghost-white hover:text-jet-black">
-          <Link href={'/works'}>View all projects</Link>
-        </button>
+      <div className="flex">
+        <Button
+          text="View all projects"
+          href="/works"
+          icon={<GoArrowRight className="text-4xl" />}
+          className="text-black text-3xl"
+          circleColor="bg-gray-200"
+          hoverWidth="300px"
+        />
       </div>
     </section>
   )
