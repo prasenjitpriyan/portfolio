@@ -1,25 +1,47 @@
 'use client'
 
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
 import Link from 'next/link'
+import { motion, useAnimation } from 'framer-motion'
 
 interface ButtonProps {
   text: string
   icon?: React.ReactNode
   href: string
   className?: string
+  circleColor?: string
+  hoverWidth?: string
 }
 
-const Button: React.FC<ButtonProps> = ({ text, icon, href, className }) => {
+const Button: React.FC<ButtonProps> = ({
+  text,
+  icon,
+  href,
+  className,
+  circleColor = 'bg-gray-200',
+  hoverWidth = '170px'
+}) => {
   const linkRef = useRef<HTMLAnchorElement | null>(null)
-  const circleRef = useRef<HTMLDivElement | null>(null)
-  const [isHovered, setIsHovered] = useState(false)
+  const circleAnimation = useAnimation()
 
   useEffect(() => {
     const linkNode = linkRef.current
 
-    const handleMouseEnter = () => setIsHovered(true)
-    const handleMouseLeave = () => setIsHovered(false)
+    const handleMouseEnter = () => {
+      circleAnimation.start({
+        scale: 1.2,
+        width: hoverWidth,
+        transition: { duration: 0.1, ease: 'easeInOut' }
+      })
+    }
+
+    const handleMouseLeave = () => {
+      circleAnimation.start({
+        scale: 1,
+        width: '48px',
+        transition: { duration: 0.1, ease: 'easeInOut' }
+      })
+    }
 
     if (linkNode) {
       linkNode.addEventListener('mouseenter', handleMouseEnter)
@@ -32,20 +54,7 @@ const Button: React.FC<ButtonProps> = ({ text, icon, href, className }) => {
         linkNode.removeEventListener('mouseleave', handleMouseLeave)
       }
     }
-  }, [])
-
-  // Use isHovered to trigger hover effect on the circle
-  useEffect(() => {
-    if (circleRef.current) {
-      if (isHovered) {
-        circleRef.current.style.transform = 'scale(1.1)'
-        circleRef.current.style.width = '170px'
-      } else {
-        circleRef.current.style.transform = 'scale(1)'
-        circleRef.current.style.width = '48px'
-      }
-    }
-  }, [isHovered])
+  }, [circleAnimation, hoverWidth])
 
   return (
     <div className="relative group">
@@ -53,19 +62,20 @@ const Button: React.FC<ButtonProps> = ({ text, icon, href, className }) => {
       <Link
         href={href}
         ref={linkRef}
-        className={`relative inline-flex items-center text-black text-[15px] font-bold tracking-[0.5px] font-circular transition-all duration-300 group ${className}`}
+        className={`relative inline-flex items-center text-[15px] font-bold tracking-[0.5px] font-circular transition-all duration-300 z-[2] ${className}`}
       >
-        <span className="link-text z-[2]">{text}</span>
+        <span className="z-[3]">{text}</span>
 
         {/* Optional Icon */}
-        {icon && <span className="relative ml-2 text-7xl z-[2]">{icon}</span>}
+        {icon && <span className="relative ml-2 text-xl z-[3]">{icon}</span>}
       </Link>
 
       {/* Decorative Circle */}
-      <div
-        ref={circleRef}
-        className="absolute left-[-10px] top-0 bottom-0 m-auto w-12 h-12 bg-gray-200 rounded-full transition-all duration-300 z-[1]"
-      ></div>
+      <motion.div
+        animate={circleAnimation}
+        initial={{ scale: 1, width: '48px', height: '48px' }}
+        className={`absolute left-[-10px] top-0 bottom-0 m-auto rounded-full z-[1] transition-all duration-300 ${circleColor}`}
+      />
     </div>
   )
 }

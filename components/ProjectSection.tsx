@@ -47,7 +47,7 @@ const ProjectSection: React.FC = () => {
                 text="VIEW PROJECT"
                 href={`/works/${project.id}`}
                 icon={<GoArrowRight className="text-2xl" />}
-                className="relative inline-flex items-center transition-all duration-300 ease-in-out"
+                className="relative text-black inline-flex items-center transition-all duration-300 ease-in-out"
               />
             </div>
           </div>

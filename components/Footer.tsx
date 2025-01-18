@@ -4,7 +4,7 @@ import { GoArrowRight } from 'react-icons/go'
 import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 import Round from './Round'
 import Circle from './Circle'
-import ButtonTwo from './ButtonTwo'
+import Button from './Button'
 
 const Footer: React.FC = () => {
   return (
@@ -20,11 +20,13 @@ const Footer: React.FC = () => {
         <h3 className="text-lg font-semibold p-4 text-gray-400">
           I&apos;m available for freelance work.
         </h3>
-        <ButtonTwo
+        <Button
           text="SAY HELLO"
           href="/contact"
           icon={<GoArrowRight className="text-2xl" />}
           className="text-white"
+          circleColor="bg-gray-500"
+          hoverWidth="140px"
         />
       </div>
 
