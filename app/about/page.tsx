@@ -11,6 +11,12 @@ import ScrollToTop from '@/components/ScrollToTop'
 import AboutQuote from '@/components/AboutQuote'
 import Footer from '@/components/Footer'
 
+export const metadata = {
+  title: 'Prasenjit Das || About',
+  description:
+    'From delivering postal services to delivering code – Crafting solutions with JavaScript & TypeScript.'
+}
+
 const AboutPage = () => {
   return (
     <main className="min-h-screen overflow-hidden">

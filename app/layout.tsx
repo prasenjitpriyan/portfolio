@@ -9,11 +9,11 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
-  title: 'Prasenjit Das | Portfolio',
+  title: 'Prasenjit Das || Portfolio',
   description:
     'From delivering postal services to delivering code – Crafting solutions with JavaScript & TypeScript.',
   openGraph: {
-    title: 'Prasenjit Das | Portfolio',
+    title: 'Prasenjit Das || Portfolio',
     description:
       'Crafting modern web solutions with React, TypeScript, and Tailwind CSS.',
     url: 'https://portfolio-one-blond-61.vercel.app',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@yourTwitterHandle',
-    title: 'Prasenjit Das | Portfolio',
+    title: 'Prasenjit Das || Portfolio',
     description:
       'Crafting modern web solutions with React, TypeScript, and Tailwind CSS.',
     images: ['/my.jpg']
