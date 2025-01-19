@@ -7,6 +7,8 @@ import Circle from './Circle'
 import Button from './Button'
 
 const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear()
+
   return (
     <section className="h-screen relative bg-black text-white flex flex-col justify-between">
       <Round className="absolute top-0 right-80" />
@@ -30,22 +32,23 @@ const Footer: React.FC = () => {
         />
       </div>
 
-      <Circle className="absolute overflow-hidden w-48 h-48 bottom-[-36] left-[-100]" />
+      <Circle className="absolute overflow-hidden w-48 h-48 left-[-70px] bottom-[-70px]" />
       {/* Bottom Section */}
-      <footer className="w-full flex justify-center items-center p-12 gap-4">
-        <p className="text-xs text-gray-500">© 2025 Prasenjit Das.</p>
+      <footer className="w-full flex justify-center items-center p-12 gap-8 text-xs">
+        <p className=" text-white">© {currentYear} Prasenjit Das</p>
+        <p className="text-xl">||</p>
         <div className="flex gap-2">
           <Link href="https://facebook.com" target="_blank" rel="noreferrer">
-            <FaFacebook className="text-xl hover:text-blue-500" />
+            <FaFacebook className="" />
           </Link>
           <Link href="https://twitter.com" target="_blank" rel="noreferrer">
-            <FaTwitter className="text-xl hover:text-blue-400" />
+            <FaTwitter className="" />
           </Link>
           <Link href="https://linkedin.com" target="_blank" rel="noreferrer">
-            <FaLinkedin className="text-xl hover:text-blue-700" />
+            <FaLinkedin className="" />
           </Link>
           <Link href="https://github.com" target="_blank" rel="noreferrer">
-            <FaGithub className="text-xl hover:text-gray-300" />
+            <FaGithub className="" />
           </Link>
         </div>
       </footer>
