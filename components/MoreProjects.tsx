@@ -1,9 +1,10 @@
 'use client'
 
 import React, { useEffect, useState, useRef } from 'react'
-import Button from './Button'
 import { GoArrowRight } from 'react-icons/go'
+import { motion } from 'framer-motion'
 import MotionDiv from './MotionDiv'
+import Button from './Button'
 
 const MoreProjects = () => {
   const [inView, setInView] = useState(false)
@@ -20,7 +21,7 @@ const MoreProjects = () => {
           setInView(false)
         }
       },
-      { threshold: 0.5 } // Trigger when 50% of the section is visible
+      { threshold: 0.5 }
     )
 
     if (currentRef) {
@@ -42,67 +43,79 @@ const MoreProjects = () => {
       {/* Left Content */}
       <div className="text-left">
         {/* Heading */}
-        <div className="overflow-hidden">
+        <MotionDiv className="overflow-hidden" animationType="fadeIn">
           <p className="revealer relative text-xs inline-block text-jet-black uppercase">
             THERE&apos;S MORE
           </p>
-        </div>
+        </MotionDiv>
         <br />
 
         {/* Button */}
-        <Button
-          text="View all projects"
-          href="/works"
-          icon={<GoArrowRight className="text-4xl" />}
-          className="text-black text-3xl"
-          circleColor="bg-gray-200"
-          hoverWidth="300px"
-        />
+        <MotionDiv animationType="fadeInUp" delay={0.3}>
+          <Button
+            text="View all projects"
+            href="/works"
+            icon={<GoArrowRight className="text-4xl" />}
+            className="text-black text-3xl"
+            circleColor="bg-gray-200"
+            hoverWidth="300px"
+          />
+        </MotionDiv>
       </div>
 
-      {/* Decorative SVG with Animation */}
       <MotionDiv
         className="w-[200px] sm:w-[250px] md:w-[300px] aspect-square relative flex items-center"
-        animate={inView ? { rotate: [0, 360] } : { rotate: 0 }}
-        transition={{
-          duration: 20,
-          repeat: inView ? Infinity : 0,
-          ease: 'linear'
-        }}
+        animationType="fadeInScale"
+        delay={0.5}
       >
-        <svg
-          viewBox="0 0 400 400"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full opacity-80"
+        <motion.div
+          animate={inView ? { rotate: [0, 360] } : { rotate: 0 }}
+          transition={{
+            duration: 20,
+            repeat: inView ? Infinity : 0,
+            ease: 'linear'
+          }}
         >
-          <defs>
-            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#111827" />
-              <stop offset="100%" stopColor="#374151" />
-            </linearGradient>
-          </defs>
-          <circle cx="200" cy="200" r="180" fill="url(#gradient1)" />
-          <circle cx="200" cy="200" r="140" stroke="white" strokeWidth="5" />
-          <path
-            d="M200 60 L250 340 M200 60 L150 340"
-            stroke="white"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeDasharray="5, 10"
-          />
-          <text
-            x="50%"
-            y="50%"
-            textAnchor="middle"
-            fill="white"
-            fontSize="20"
-            fontWeight="bold"
-            dy=".3em"
+          <svg
+            viewBox="0 0 400 400"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-full opacity-80"
           >
-            Explore Projects
-          </text>
-        </svg>
+            <defs>
+              <linearGradient
+                id="gradient1"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
+                <stop offset="0%" stopColor="#111827" />
+                <stop offset="100%" stopColor="#374151" />
+              </linearGradient>
+            </defs>
+            <circle cx="200" cy="200" r="180" fill="url(#gradient1)" />
+            <circle cx="200" cy="200" r="140" stroke="white" strokeWidth="5" />
+            <path
+              d="M200 60 L250 340 M200 60 L150 340"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeDasharray="5, 10"
+            />
+            <text
+              x="50%"
+              y="50%"
+              textAnchor="middle"
+              fill="white"
+              fontSize="20"
+              fontWeight="bold"
+              dy=".3em"
+            >
+              Explore Projects
+            </text>
+          </svg>
+        </motion.div>
       </MotionDiv>
     </section>
   )
