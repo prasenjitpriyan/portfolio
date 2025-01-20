@@ -9,6 +9,7 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://portfolio-one-blond-61.vercel.app'),
   title: 'Prasenjit Das || Portfolio',
   description:
     'From delivering postal services to delivering code – Crafting solutions with JavaScript & TypeScript.',
@@ -44,7 +45,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} antialiased`}>{children}</body>
+      <body className={`${roboto.variable} antialiased scrollbar`}>
+        {children}
+      </body>
     </html>
   )
 }

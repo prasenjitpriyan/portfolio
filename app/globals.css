@@ -2,15 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
+.animate-rotate-once {
+  animation: rotateOnce 2s ease-in-out forwards;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #000000;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background-color: #ffffff;
+}
+
 @media (max-width: 640px) {
   .group:hover .absolute {
     transform: translateX(-50%) scale(1.2);
   }
 }
 
-.animate-rotate-once {
-  animation: rotateOnce 2s ease-in-out forwards;
-}
 @keyframes rotateOnce {
   0% {
     transform: rotate(0deg);
