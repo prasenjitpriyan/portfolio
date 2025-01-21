@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Pie } from 'react-chartjs-2'
+import { motion } from 'framer-motion'
 import {
   Chart as ChartJS,
   ArcElement,
@@ -145,14 +146,26 @@ const AboutGithub: React.FC = () => {
   return (
     <div className="min-h-[70svh] w-full overflow-hidden bg-ghost-white text-jet-black flex flex-wrap px-20 py-20">
       {/* Left Grid */}
-      <div className="w-full h-1/6 md:w-1/3 p-4 md:h-full">
+      <motion.div
+        className="w-full h-1/6 md:w-1/3 p-4 md:h-full"
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="flex gap-12">
           <p className="font-thin">/ 02 -</p>
           <p className="font-thin">GITHUB</p>
         </div>
-      </div>
+      </motion.div>
       {/* Right Grid */}
-      <div className="w-full h-5/6 md:w-2/3 p-4 md:h-full">
+      <motion.div
+        className="w-full h-5/6 md:w-2/3 p-4 md:h-full"
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="flex flex-col justify-between md:flex-row items-center md:items-start">
           {/* GitHub Stats */}
           <div className="pb-4 text-center">
@@ -171,7 +184,6 @@ const AboutGithub: React.FC = () => {
               {repos.reduce((acc, repo) => acc + repo.forks_count, 0)}
             </p>
           </div>
-
           {/* Most Used Languages */}
           <div className="w-96 h-96">
             <h2 className="text-2xl font-semibold text-gray-800 text-center pb-2">
@@ -180,7 +192,7 @@ const AboutGithub: React.FC = () => {
             <Pie data={chartData} options={options} />
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }

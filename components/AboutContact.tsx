@@ -1,5 +1,8 @@
-import Link from 'next/link'
+'use client'
+
 import React from 'react'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 const AboutContact: React.FC = () => {
   const socialLinks = [
@@ -12,12 +15,18 @@ const AboutContact: React.FC = () => {
   return (
     <section className="min-h-[40svh] w-full overflow-hidden bg-ghost-white text-jet-black flex flex-wrap px-20">
       {/* Left Grid */}
-      <div className="w-full h-1/6 md:w-1/3 p-4 md:h-full">
+      <motion.div
+        className="w-full h-1/6 md:w-1/3 p-4 md:h-full"
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="flex gap-12">
           <p className="font-thin">/ 05 -</p>
           <p className="font-thin">CONTACT</p>
         </div>
-      </div>
+      </motion.div>
       {/* Right Grid */}
       <div className="w-full h-5/6 md:w-2/3 p-4 md:h-full">
         <div className="pb-12">
@@ -46,7 +55,9 @@ const AboutContact: React.FC = () => {
         <div>
           <h2 className="text-xl font-semibold text-my-color-1 pb-8">Email.</h2>
           <p className="text-justify pb-8 block underline relative group">
-            prasenjitpriyan@gmail.com
+            <Link href="mailto:prasenjitpriyan@gmail.com?subject=Hello&body=Hi Prasenjit,">
+              prasenjitpriyan@gmail.com
+            </Link>
           </p>
         </div>
       </div>
