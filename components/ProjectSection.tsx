@@ -45,7 +45,7 @@ const ProjectSection: React.FC = () => {
             <div className="flex items-center justify-center w-full sm:w-1/4">
               <Button
                 text="VIEW PROJECT"
-                href={`/works/${project.id}`}
+                href={`/works/${project.slug}`}
                 icon={<GoArrowRight className="text-2xl" />}
                 className="relative text-black inline-flex items-center transition-all duration-300 ease-in-out"
               />

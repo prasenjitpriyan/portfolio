@@ -5,12 +5,12 @@ import Image from 'next/image'
 import projects from '../../../data/projects'
 
 interface ProjectPageProps {
-  params: Promise<{ id: string }>
+  params: Promise<{ slug: string }>
 }
 
-const WorksIdPage = async (props: ProjectPageProps) => {
+const WorksSlugPage = async (props: ProjectPageProps) => {
   const params = await props.params
-  const project = projects.find((p) => p.id === params.id)
+  const project = projects.find((p) => p.slug === params.slug)
 
   if (!project) {
     notFound()
@@ -22,25 +22,26 @@ const WorksIdPage = async (props: ProjectPageProps) => {
       <Image
         width={1200}
         height={300}
+        priority
         src={project.image}
         alt={project.title}
-        className="w-full h-[300px] object-cover"
+        className="w-full h-full object-cover"
       />
       <h1 className="text-2xl font-bold mt-4">
         {project.number}. {project.title}
       </h1>
       <p className="text-sm text-gray-500">{project.category}</p>
-      <Link href={`/works/${project.id}`}>
+      <Link href={`/works/${project.slug}`}>
         <button className="btn-primary mt-4">Visit Project</button>
       </Link>
     </div>
   )
 }
 
-export default WorksIdPage
+export default WorksSlugPage
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
-    id: project.id
+    slug: project.slug
   }))
 }

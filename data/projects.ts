@@ -3,6 +3,7 @@ import { Projects } from '@/types/projects'
 const projects: Projects[] = [
   {
     id: '1',
+    slug: 'weather-app',
     number: '01',
     title: 'Weather App',
     category: 'WEB APP',
@@ -10,6 +11,7 @@ const projects: Projects[] = [
   },
   {
     id: '2',
+    slug: 'task-manager',
     number: '02',
     title: 'Task Manager',
     category: 'PRODUCTIVITY',
@@ -17,6 +19,7 @@ const projects: Projects[] = [
   },
   {
     id: '3',
+    slug: 'portfolio-website',
     number: '03',
     title: 'Portfolio Website',
     category: 'PORTFOLIO',
@@ -24,6 +27,7 @@ const projects: Projects[] = [
   },
   {
     id: '4',
+    slug: 'e-commerce-platform',
     number: '04',
     title: 'E-Commerce Platform',
     category: 'E-COMMERCE',
@@ -31,6 +35,7 @@ const projects: Projects[] = [
   },
   {
     id: '5',
+    slug: 'blog-platform',
     number: '05',
     title: 'Blog Platform',
     category: 'BLOG',
@@ -38,6 +43,7 @@ const projects: Projects[] = [
   },
   {
     id: '6',
+    slug: 'social-media-app',
     number: '06',
     title: 'Social Media App',
     category: 'SOCIAL MEDIA',
@@ -45,6 +51,7 @@ const projects: Projects[] = [
   },
   {
     id: '7',
+    slug: 'finance-tracker',
     number: '07',
     title: 'Finance Tracker',
     category: 'FINANCE',
@@ -52,6 +59,7 @@ const projects: Projects[] = [
   },
   {
     id: '8',
+    slug: 'online-learning',
     number: '08',
     title: 'Online Learning',
     category: 'EDUCATION',
