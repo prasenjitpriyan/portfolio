@@ -1,9 +1,11 @@
+'use client'
+
 import React from 'react'
 import Marquee from 'react-fast-marquee'
+import { motion } from 'framer-motion'
 
 const AboutMarquee: React.FC = () => {
   const keywords = [
-    // Front-End Development
     'HTML',
     'CSS',
     'JavaScript',
@@ -31,9 +33,7 @@ const AboutMarquee: React.FC = () => {
     'DOM Manipulation',
     'CSS Animations',
     'Web Accessibility',
-    'Progressive Web Apps (PWA)',
-
-    // Back-End Development
+    'PWA',
     'Node.js',
     'Express',
     'MongoDB',
@@ -42,46 +42,13 @@ const AboutMarquee: React.FC = () => {
     'JWT',
     'Serverless',
     'Firebase',
-
-    // UI/UX Design
     'Wireframing',
     'Prototyping',
-    'Figma',
-    'Adobe XD',
-    'Sketch',
-    'InVision',
-    'User Research',
-    'Usability Testing',
-    'User Flows',
-    'Persona Creation',
-    'UI Design',
-    'UX Design',
-    'Interaction Design',
-    'Responsive Design',
-    'Mobile First Design',
-    'Information Architecture',
-    'Design Systems',
-    'Typography',
-    'Color Theory',
-    'Iconography',
-    'Design Thinking',
-    'A/B Testing',
-    'User-Centered Design',
-    'Usability Heuristics',
-    'Journey Mapping',
-    'Wireframe Sketches',
-    'Click-through Prototypes',
-    'High-Fidelity Design',
-    'Low-Fidelity Design',
-    'UX/UI Strategy',
-    'Accessibility Design',
-    'Responsive Prototyping',
-    'UI Guidelines'
+    'Figma'
   ]
 
   return (
     <div className="h-[40svh] bg-black text-white flex flex-col items-center justify-center gap-16 py-8">
-      {/* Marquee component to display keywords continuously */}
       <Marquee
         pauseOnHover
         direction="right"
@@ -90,7 +57,7 @@ const AboutMarquee: React.FC = () => {
         className="overflow-hidden"
       >
         {keywords.map((keyword, index) => (
-          <span
+          <motion.span
             key={index}
             className="px-12 text-4xl"
             style={{
@@ -99,9 +66,12 @@ const AboutMarquee: React.FC = () => {
               textShadow:
                 '1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff'
             }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.05 }}
           >
             {keyword.toUpperCase()}
-          </span>
+          </motion.span>
         ))}
       </Marquee>
       <Marquee
@@ -111,9 +81,8 @@ const AboutMarquee: React.FC = () => {
         speed={100}
         className="overflow-hidden"
       >
-        {/* Render each keyword inside the marquee with capitalization */}
         {keywords.map((keyword, index) => (
-          <span
+          <motion.span
             key={index}
             className="px-12 text-4xl"
             style={{
@@ -122,9 +91,12 @@ const AboutMarquee: React.FC = () => {
               textShadow:
                 '1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff'
             }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.05 }}
           >
             {keyword.toUpperCase()}
-          </span>
+          </motion.span>
         ))}
       </Marquee>
     </div>
