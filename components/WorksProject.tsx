@@ -16,8 +16,8 @@ const WorksProject: React.FC = () => {
           <div className="absolute inset-y-0 left-0 w-full group-hover:translate-x-0 translate-x-[-100%] transition-all duration-500 ease-in-out">
             <div className="relative w-full h-full opacity-25 group-hover:opacity-100 transition-opacity duration-500 ease-in-out">
               <Image
-                width={300}
-                height={600}
+                width={1200}
+                height={300}
                 src={project.image}
                 alt={project.title}
                 className="object-cover w-full h-full"

@@ -20,11 +20,11 @@ const WorksIdPage = async (props: ProjectPageProps) => {
   return (
     <div className="p-4">
       <Image
-        width={500}
-        height={500}
+        width={1200}
+        height={300}
         src={project.image}
         alt={project.title}
-        className="w-full h-64 object-cover"
+        className="w-full h-[300px] object-cover"
       />
       <h1 className="text-2xl font-bold mt-4">
         {project.number}. {project.title}
