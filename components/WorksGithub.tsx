@@ -134,8 +134,10 @@ const WorksGithub: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            whileHover={{ scale: 1.1, rotateY: 10, rotateX: 10 }}
+            whileTap={{ scale: 0.9, rotateY: -10, rotateX: -10 }}
           >
-            <IoLogoGithub className="w-40 h-40 text-jet-black hover:text-yellow-400 transition duration-300 ease-in-out" />
+            <IoLogoGithub className="w-40 h-40 text-jet-black hover:text-yellow-400 transition duration-300 ease-in-out drop-shadow-lg" />
           </motion.div>
         </div>
       </div>
