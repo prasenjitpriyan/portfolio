@@ -21,6 +21,8 @@ interface Repo {
   description: string | null
   stargazers_count: number
   forks_count: number
+  watchers: number
+  open_issues: number
 }
 
 type LanguageUsage = { [language: string]: number }
@@ -107,7 +109,6 @@ const AboutGithub: React.FC = () => {
     )
   }
 
-  // Data for Pie Chart
   const chartData = {
     labels: Object.keys(languages),
     datasets: [
@@ -115,20 +116,20 @@ const AboutGithub: React.FC = () => {
         label: 'Languages Used',
         data: Object.values(languages),
         backgroundColor: [
-          '#222831', // dark charcoal
-          '#323330', // another black shade
-          '#4F4F4F', // medium gray
-          '#696969', // dim gray
-          '#808080', // gray
-          '#A9A9A9' // dark gray
+          '#222831',
+          '#323330',
+          '#4F4F4F',
+          '#696969',
+          '#808080',
+          '#A9A9A9'
         ],
         hoverBackgroundColor: [
-          '#222831', // dark charcoal
-          '#323330', // another black shade
-          '#4F4F4F', // medium gray
-          '#696969', // dim gray
-          '#808080', // gray
-          '#A9A9A9' // dark gray
+          '#222831',
+          '#323330',
+          '#4F4F4F',
+          '#696969',
+          '#808080',
+          '#A9A9A9'
         ]
       }
     ]
@@ -183,7 +184,46 @@ const AboutGithub: React.FC = () => {
               Total Forks:{' '}
               {repos.reduce((acc, repo) => acc + repo.forks_count, 0)}
             </p>
+            <p className="pt-1 text-jet-black">
+              Total Watchers:{' '}
+              {repos.reduce((acc, repo) => acc + repo.watchers, 0)}
+            </p>
+            <p className="pt-1 text-jet-black">
+              Total Open Issues:{' '}
+              {repos.reduce((acc, repo) => acc + repo.open_issues, 0)}
+            </p>
+            <p className="pt-1 text-jet-black">
+              Top Starred Repo:
+              {repos.length > 0
+                ? repos.reduce((prev, current) =>
+                    prev.stargazers_count > current.stargazers_count
+                      ? prev
+                      : current
+                  ).name
+                : 'N/A'}
+            </p>
+            <p className="pt-1 text-jet-black">
+              Avg Stars per Repo:{' '}
+              {repos.length > 0
+                ? (
+                    repos.reduce(
+                      (acc, repo) => acc + repo.stargazers_count,
+                      0
+                    ) / repos.length
+                  ).toFixed(2)
+                : 0}
+            </p>
+            <p className="pt-1 text-jet-black">
+              Avg Forks per Repo:{' '}
+              {repos.length > 0
+                ? (
+                    repos.reduce((acc, repo) => acc + repo.forks_count, 0) /
+                    repos.length
+                  ).toFixed(2)
+                : 0}
+            </p>
           </div>
+
           {/* Most Used Languages */}
           <div className="w-96 h-96">
             <h2 className="text-2xl font-semibold text-gray-800 text-center pb-2">
