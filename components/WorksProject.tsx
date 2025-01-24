@@ -2,12 +2,13 @@ import React from 'react'
 import Button from './Button'
 import { GoArrowRight } from 'react-icons/go'
 import Image from 'next/image'
-import projects from '../data/projects'
+import { projects } from '@/data/projects'
+import { Projects } from '@/types/projects'
 
 const WorksProject: React.FC = () => {
   return (
     <div className="h-[320svh] bg-ghost-white text-gray-300 overflow-hidden">
-      {projects.map((project) => (
+      {projects.map((project: Projects) => (
         <div
           key={project.id}
           className="relative h-[40svh] border-t-2 hover:bg-white hover:text-black transition-all duration-300 ease-in-out group"

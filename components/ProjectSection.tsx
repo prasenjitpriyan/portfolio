@@ -2,12 +2,13 @@ import React from 'react'
 import Image from 'next/image'
 import Button from './Button'
 import { GoArrowRight } from 'react-icons/go'
-import projects from '../data/projects'
+import { projects } from '@/data/projects'
+import { Projects } from '@/types/projects'
 
 const ProjectSection: React.FC = () => {
   return (
     <div className="h-[160svh] bg-ghost-white text-gray-300 overflow-hidden border-b-2">
-      {projects.slice(0, 4).map((project) => (
+      {projects.slice(0, 4).map((project: Projects) => (
         <div
           key={project.id}
           className="relative h-1/4 border-t-2 hover:bg-white hover:text-black transition-all duration-300 ease-in-out group"
