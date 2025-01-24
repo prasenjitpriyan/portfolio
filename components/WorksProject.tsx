@@ -13,7 +13,6 @@ const WorksProject: React.FC = () => {
           key={project.id}
           className="relative h-[40svh] border-t-2 hover:bg-white hover:text-black transition-all duration-300 ease-in-out group"
         >
-          {/* Background Image for Hover */}
           <div className="absolute inset-y-0 left-0 w-full group-hover:translate-x-0 translate-x-[-100%] transition-all duration-500 ease-in-out">
             <div className="relative w-full h-full opacity-25 group-hover:opacity-100 transition-opacity duration-500 ease-in-out">
               <Image
@@ -22,6 +21,19 @@ const WorksProject: React.FC = () => {
                 src={project.image}
                 alt={project.title}
                 className="object-cover w-full h-full"
+              />
+            </div>
+          </div>
+
+          {/* Centered Hover Image */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full flex justify-center items-center group-hover:translate-x-0 transition-all duration-500 ease-in-out">
+            <div className="relative w-full h-full opacity-10 group-hover:opacity-100 transition-opacity duration-500 ease-in-out">
+              <Image
+                width={240}
+                height={135}
+                src={project.slug_hero_image}
+                alt="Hover Landscape Image"
+                className="transform translate-x-[100%] opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ease-in-out rounded border-4"
               />
             </div>
           </div>

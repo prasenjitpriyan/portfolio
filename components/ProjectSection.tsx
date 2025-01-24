@@ -26,6 +26,19 @@ const ProjectSection: React.FC = () => {
             </div>
           </div>
 
+          {/* Centered Hover Image */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full flex justify-center items-center group-hover:translate-x-0 transition-all duration-500 ease-in-out">
+            <div className="relative w-full h-full opacity-10 group-hover:opacity-100 transition-opacity duration-500 ease-in-out">
+              <Image
+                width={240}
+                height={135}
+                src={project.slug_hero_image}
+                alt="Hover Landscape Image"
+                className="transform translate-x-[100%] opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ease-in-out rounded border-4"
+              />
+            </div>
+          </div>
+
           <div
             className="flex flex-col sm:flex-row items-center justify-between py-10"
             style={{ transform: 'translate(0px, 0px)', opacity: 1 }}
