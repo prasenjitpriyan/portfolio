@@ -3,6 +3,11 @@ import SlugSection from '@/components/SlugSection'
 import { notFound } from 'next/navigation'
 import { projects } from '@/data/projects'
 import { Projects } from '@/types/projects'
+import ScrollToTop from '@/components/ScrollToTop'
+import SlugAbout from '@/components/SlugAbout'
+import SlugProjects from '@/components/SlugProjects'
+import SlugNextPrevProjects from '@/components/SlugNextPrevProjects'
+import Footer from '@/components/Footer'
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>
@@ -46,7 +51,16 @@ const WorksSlugPage = async (props: ProjectPageProps) => {
     return null
   }
 
-  return <SlugSection project={project} />
+  return (
+    <main className="min-h-screen overflow-hidden bg-ghost-white relative">
+      <SlugSection project={project} />
+      <SlugAbout project={project} />
+      <SlugProjects project={project} />
+      <SlugNextPrevProjects project={project} projects={projects} />
+      <Footer />
+      <ScrollToTop />
+    </main>
+  )
 }
 
 export default WorksSlugPage
