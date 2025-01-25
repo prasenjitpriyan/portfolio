@@ -6,6 +6,7 @@ import { Projects } from '@/types/projects'
 import { motion } from 'framer-motion'
 import Header from './Header'
 import SlugAbout from './SlugAbout'
+import SlugProjects from './SlugProjects'
 
 interface SlugSectionProps {
   project: Projects
@@ -19,7 +20,7 @@ const SlugSection: React.FC<SlugSectionProps> = ({ project }) => {
   }
 
   return (
-    <section className="min-h-screen overflow-hidden relative bg-ghost-white">
+    <section className="min-h-screen overflow-hidden bg-ghost-white relative">
       <div className="h-screen flex justify-center items-center relative">
         <Header toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
         <div className="absolute">
@@ -57,8 +58,8 @@ const SlugSection: React.FC<SlugSectionProps> = ({ project }) => {
         />
       </div>
 
-      {/* SlugAbout Component */}
       <SlugAbout project={project} />
+      <SlugProjects project={project} />
     </section>
   )
 }
