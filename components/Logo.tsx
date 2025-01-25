@@ -8,6 +8,7 @@ const Logo: React.FC = () => {
       <Image
         width={50}
         height={50}
+        priority
         src="/pd-logo-black-and-white.png"
         alt="Prasenjit Das"
         className="rounded-lg max-w-full cursor-pointer"

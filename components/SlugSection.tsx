@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Projects } from '@/types/projects'
 import { motion } from 'framer-motion'
 import Header from './Header'
+import SlugAbout from './SlugAbout'
 
 interface SlugSectionProps {
   project: Projects
@@ -18,7 +19,7 @@ const SlugSection: React.FC<SlugSectionProps> = ({ project }) => {
   }
 
   return (
-    <section className="min-h-screen overflow-hidden relative">
+    <section className="min-h-screen overflow-hidden relative bg-ghost-white">
       <div className="h-screen flex justify-center items-center relative">
         <Header toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
         <div className="absolute">
@@ -55,6 +56,9 @@ const SlugSection: React.FC<SlugSectionProps> = ({ project }) => {
           transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
         />
       </div>
+
+      {/* SlugAbout Component */}
+      <SlugAbout project={project} />
     </section>
   )
 }
