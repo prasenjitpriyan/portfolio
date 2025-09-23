@@ -1,39 +1,39 @@
-'use client'
+'use client';
 
-import React, { useEffect, useState, useRef } from 'react'
-import { GoArrowRight } from 'react-icons/go'
-import { motion } from 'framer-motion'
-import MotionDiv from './MotionDiv'
-import Button from './Button'
+import { motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { GoArrowRight } from 'react-icons/go';
+import Button from './Button';
+import MotionDiv from './MotionDiv';
 
 const MoreProjects = () => {
-  const [inView, setInView] = useState(false)
-  const sectionRef = useRef(null)
+  const [inView, setInView] = useState(false);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
-    const currentRef = sectionRef.current
+    const currentRef = sectionRef.current;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setInView(true)
+          setInView(true);
         } else {
-          setInView(false)
+          setInView(false);
         }
       },
       { threshold: 0.5 }
-    )
+    );
 
     if (currentRef) {
-      observer.observe(currentRef)
+      observer.observe(currentRef);
     }
 
     return () => {
       if (currentRef) {
-        observer.unobserve(currentRef)
+        observer.unobserve(currentRef);
       }
-    }
-  }, [])
+    };
+  }, []);
 
   return (
     <section
@@ -57,7 +57,7 @@ const MoreProjects = () => {
             href="/works"
             icon={<GoArrowRight className="text-4xl" />}
             className="text-black text-3xl"
-            circleColor="bg-gray-200"
+            circleColor="bg-gradient-to-r from-gray-300 via-gray-200 to-gray-100"
             hoverWidth="300px"
           />
         </MotionDiv>
@@ -73,7 +73,7 @@ const MoreProjects = () => {
           transition={{
             duration: 20,
             repeat: inView ? Infinity : 0,
-            ease: 'linear'
+            ease: 'linear',
           }}
         >
           <svg
@@ -118,7 +118,7 @@ const MoreProjects = () => {
         </motion.div>
       </MotionDiv>
     </section>
-  )
-}
+  );
+};
 
-export default MoreProjects
+export default MoreProjects;

@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
           href="/contact"
           icon={<GoArrowRight className="text-2xl" />}
           className="text-white"
-          circleColor="bg-jet-black"
+          circleColor="bg-gradient-to-r from-jet-black/70 via-jet-black/50 to-jet-black/30"
           hoverWidth="140px"
         />
       </MotionDiv>
