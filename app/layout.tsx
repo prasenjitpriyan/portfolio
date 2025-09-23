@@ -1,13 +1,7 @@
-import type { Metadata } from 'next'
-import { Roboto } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
-
-const roboto = Roboto({
-  variable: '--font-roboto',
-  subsets: ['latin'],
-  weight: ['400', '700']
-})
+import { Analytics } from '@vercel/analytics/next';
+import type { Metadata } from 'next';
+import { playwrite, roboto } from './fonts';
+import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://portfolio-one-blond-61.vercel.app'),
@@ -24,10 +18,10 @@ export const metadata: Metadata = {
         url: '/my.jpg',
         width: 1200,
         height: 630,
-        alt: 'Prasenjit Das Portfolio'
-      }
+        alt: 'Prasenjit Das Portfolio',
+      },
     ],
-    type: 'website'
+    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
@@ -35,21 +29,21 @@ export const metadata: Metadata = {
     title: 'Prasenjit Das || Portfolio',
     description:
       'Crafting modern web solutions with React, TypeScript, and Tailwind CSS.',
-    images: ['/my.jpg']
-  }
-}
+    images: ['/my.jpg'],
+  },
+};
 
 export default function RootLayout({
-  children
+  children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${roboto.variable} antialiased scrollbar`}>
+    <html lang="en" className={`${roboto.variable} ${playwrite.variable}`}>
+      <body className="antialiased scrollbar">
         {children}
         <Analytics />
       </body>
     </html>
-  )
+  );
 }

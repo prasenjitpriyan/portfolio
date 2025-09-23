@@ -1,7 +1,7 @@
-import React from 'react'
-import MotionDiv from './MotionDiv'
-import Button from './Button'
-import { GoArrowRight } from 'react-icons/go'
+import React from 'react';
+import { GoArrowRight } from 'react-icons/go';
+import Button from './Button';
+import MotionDiv from './MotionDiv';
 
 const HeroLeftSection: React.FC = () => {
   return (
@@ -18,7 +18,11 @@ const HeroLeftSection: React.FC = () => {
         From Delivering Postal Services to Delivering Code
       </MotionDiv>
 
-      <MotionDiv className="text-lg" animationType="fadeInUp" delay={0.4}>
+      <MotionDiv
+        className="text-lg font-playwrite"
+        animationType="fadeInUp"
+        delay={0.4}
+      >
         Hi, I&apos;m <span className="font-bold">Prasenjit Das</span>, a
         passionate Front-end Developer, based in India.
       </MotionDiv>
@@ -36,7 +40,7 @@ const HeroLeftSection: React.FC = () => {
         />
       </MotionDiv>
     </MotionDiv>
-  )
-}
+  );
+};
 
-export default HeroLeftSection
+export default HeroLeftSection;

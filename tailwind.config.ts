@@ -15,6 +15,7 @@ export default {
       },
       fontFamily: {
         roboto: ['var(--roboto)', ...defaultTheme.fontFamily.sans],
+        playwrite: ['var(--font-playwrite)', 'system-ui', 'Arial'],
       },
       animation: {
         'bounce-in-place': 'bounceInPlace 1s ease-in-out infinite',
