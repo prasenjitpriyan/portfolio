@@ -1,5 +1,5 @@
-import React from 'react'
-import MotionDiv from './MotionDiv'
+import React from 'react';
+import MotionDiv from './MotionDiv';
 
 const Crafted: React.FC = () => {
   return (
@@ -15,14 +15,14 @@ const Crafted: React.FC = () => {
 
       {/* Paragraph */}
       <MotionDiv
-        className="text-jet-black text-lg"
+        className="text-jet-black text-lg font-playwrite"
         animationType="fadeInUp"
         delay={0.2}
       >
         These are a selection of my recent works.
       </MotionDiv>
     </section>
-  )
-}
+  );
+};
 
-export default Crafted
+export default Crafted;

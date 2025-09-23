@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import React from 'react'
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
+import React from 'react';
 
 const AboutQuote: React.FC = () => {
   return (
@@ -35,7 +35,7 @@ const AboutQuote: React.FC = () => {
         </motion.p>
       </motion.div>
     </section>
-  )
-}
+  );
+};
 
-export default AboutQuote
+export default AboutQuote;

@@ -1,18 +1,17 @@
-'use client'
+'use client';
 
-import React, { useState, useRef } from 'react'
-import { motion } from 'framer-motion'
-import Button from './Button'
-import { GoArrowRight } from 'react-icons/go'
+import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { GoArrowRight } from 'react-icons/go';
+import Button from './Button';
 
 const ContactForm: React.FC = () => {
-  const [message, setMessage] = useState('')
-  const buttonRef = useRef<HTMLDivElement | null>(null)
-  const maxLength = 1000
+  const [message, setMessage] = useState('');
+  const maxLength = 1000;
 
   const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setMessage(e.target.value)
-  }
+    setMessage(e.target.value);
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -20,38 +19,20 @@ const ContactForm: React.FC = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.15,
-        delayChildren: 0.2
-      }
-    }
-  }
+        delayChildren: 0.2,
+      },
+    },
+  };
 
   const inputVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' }
+      transition: { duration: 0.6, ease: 'easeOut' },
     },
-    hover: { scale: 1.02, transition: { duration: 0.3, ease: 'easeInOut' } }
-  }
-
-  const buttonVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: 'easeOut',
-        delay: 1.2 // Delays button appearance to match form completion
-      }
-    },
-    hover: {
-      scale: 1.1,
-      y: -2,
-      transition: { duration: 0.4, ease: 'easeInOut' }
-    }
-  }
+    hover: { scale: 1.02, transition: { duration: 0.3, ease: 'easeInOut' } },
+  };
 
   return (
     <motion.div
@@ -123,24 +104,17 @@ const ContactForm: React.FC = () => {
       </motion.form>
 
       {/* Submit Button */}
-      <motion.div
-        ref={buttonRef}
-        className="flex justify-end"
-        initial="hidden"
-        animate="visible"
-        variants={buttonVariants}
-        whileHover="hover"
-      >
+      <div className="flex justify-end">
         <Button
           text="SEND MESSAGE"
           href={'/'}
           icon={<GoArrowRight className="text-2xl" />}
-          className="relative inline-flex items-center transition-all duration-300 ease-in-out"
+          className="relative inline-flex items-center"
           hoverWidth="180px"
         />
-      </motion.div>
+      </div>
     </motion.div>
-  )
-}
+  );
+};
 
-export default ContactForm
+export default ContactForm;

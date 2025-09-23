@@ -1,26 +1,26 @@
-import React, { JSX } from 'react'
-import Link from 'next/link'
-import { GoArrowRight } from 'react-icons/go'
-import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
-import Round from './Round'
-import Circle from './Circle'
-import Button from './Button'
-import MotionDiv from './MotionDiv'
+import Link from 'next/link';
+import React, { JSX } from 'react';
+import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { GoArrowRight } from 'react-icons/go';
+import Button from './Button';
+import Circle from './Circle';
+import MotionDiv from './MotionDiv';
+import Round from './Round';
 
 type SocialLink = {
-  href: string
-  icon: JSX.Element
-}
+  href: string;
+  icon: JSX.Element;
+};
 
 const socialLinks: SocialLink[] = [
   { href: 'https://facebook.com', icon: <FaFacebook /> },
   { href: 'https://twitter.com', icon: <FaTwitter /> },
   { href: 'https://linkedin.com', icon: <FaLinkedin /> },
-  { href: 'https://github.com', icon: <FaGithub /> }
-]
+  { href: 'https://github.com', icon: <FaGithub /> },
+];
 
 const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
     <section className="h-screen relative bg-black text-white flex flex-col justify-between">
@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
         delay={0.3}
         animationType="fadeInScale"
       >
-        <h3 className="text-xl p-4 text-gray-200 font-thin">
+        <h3 className="text-xl p-4 text-gray-200 font-playwrite font-thin">
           I&apos;m available for freelance work.
         </h3>
         <Button
@@ -76,7 +76,7 @@ const Footer: React.FC = () => {
         </div>
       </MotionDiv>
     </section>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
