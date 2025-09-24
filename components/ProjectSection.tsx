@@ -1,9 +1,9 @@
-import React from 'react'
-import Image from 'next/image'
-import Button from './Button'
-import { GoArrowRight } from 'react-icons/go'
-import { projects } from '@/data/projects'
-import { Projects } from '@/types/projects'
+import { projects } from '@/data/projects';
+import { Projects } from '@/types/projects';
+import Image from 'next/image';
+import React from 'react';
+import { GoArrowRight } from 'react-icons/go';
+import Button from './Button';
 
 const ProjectSection: React.FC = () => {
   return (
@@ -21,7 +21,7 @@ const ProjectSection: React.FC = () => {
                 height={300}
                 src={project.image}
                 alt={project.title}
-                className="object-cover w-full h-full"
+                className="object-cover w-full h-full opacity-20"
               />
             </div>
           </div>
@@ -68,7 +68,7 @@ const ProjectSection: React.FC = () => {
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default ProjectSection
+export default ProjectSection;
