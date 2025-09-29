@@ -4,54 +4,73 @@ import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { GoArrowRight } from 'react-icons/go';
 import Button from './Button';
-import MotionDiv from './MotionDiv';
+import CircularText from './CircularText';
+
+const fadeInVariants = {
+  hidden: { opacity: 0 },
+  visible: (delay = 0) => ({
+    opacity: 1,
+    transition: { duration: 1, delay },
+  }),
+};
+
+const fadeInUpVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (delay = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1, delay },
+  }),
+};
 
 const MoreProjects = () => {
   const [inView, setInView] = useState(false);
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const currentRef = sectionRef.current;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-        } else {
-          setInView(false);
-        }
+        setInView(entry.isIntersecting);
       },
       { threshold: 0.5 }
     );
 
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
+    if (currentRef) observer.observe(currentRef);
     return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
+      if (currentRef) observer.unobserve(currentRef);
     };
   }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="min-h-[50svh] relative px-20 py-20 overflow-hidden flex flex-col md:flex-row items-center justify-between"
+      className="min-h-[50svh] relative px-20 py-20 overflow-hidden flex flex-col md:flex-row items-center justify-between gap-10"
     >
       {/* Left Content */}
       <div className="text-left">
         {/* Heading */}
-        <MotionDiv className="overflow-hidden" animationType="fadeIn">
+        <motion.div
+          className="overflow-hidden"
+          variants={fadeInVariants}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+          custom={0}
+        >
           <p className="revealer relative text-xs inline-block text-jet-black uppercase">
             THERE&apos;S MORE
           </p>
-        </MotionDiv>
+        </motion.div>
         <br />
 
         {/* Button */}
-        <MotionDiv animationType="fadeInUp" delay={0.3}>
+        <motion.div
+          variants={fadeInUpVariants}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+          custom={0.3}
+        >
           <Button
             text="View all projects"
             href="/works"
@@ -60,63 +79,18 @@ const MoreProjects = () => {
             circleColor="bg-gradient-to-r from-gray-300 via-gray-200 to-gray-100"
             hoverWidth="300px"
           />
-        </MotionDiv>
+        </motion.div>
       </div>
 
-      <MotionDiv
-        className="w-[200px] sm:w-[250px] md:w-[300px] aspect-square relative flex items-center"
-        animationType="fadeInScale"
-        delay={0.5}
-      >
-        <motion.div
-          animate={inView ? { rotate: [0, 360] } : { rotate: 0 }}
-          transition={{
-            duration: 20,
-            repeat: inView ? Infinity : 0,
-            ease: 'linear',
-          }}
-        >
-          <svg
-            viewBox="0 0 400 400"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-full opacity-80"
-          >
-            <defs>
-              <linearGradient
-                id="gradient1"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
-              >
-                <stop offset="0%" stopColor="#111827" />
-                <stop offset="100%" stopColor="#374151" />
-              </linearGradient>
-            </defs>
-            <circle cx="200" cy="200" r="180" fill="url(#gradient1)" />
-            <circle cx="200" cy="200" r="140" stroke="white" strokeWidth="5" />
-            <path
-              d="M200 60 L250 340 M200 60 L150 340"
-              stroke="white"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeDasharray="5, 10"
-            />
-            <text
-              x="50%"
-              y="50%"
-              textAnchor="middle"
-              fill="white"
-              fontSize="20"
-              fontWeight="bold"
-              dy=".3em"
-            >
-              Explore Projects
-            </text>
-          </svg>
-        </motion.div>
-      </MotionDiv>
+      {/* CircularText */}
+      <div className="w-[200px] sm:w-[250px] md:w-[300px] aspect-square relative flex items-center">
+        <CircularText
+          text="PRASENJIT*PORTFOLIO*"
+          onHover="speedUp"
+          spinDuration={10}
+          className="bg-jet-black"
+        />
+      </div>
     </section>
   );
 };
