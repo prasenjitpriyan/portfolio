@@ -1,17 +1,17 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import Header from './Header'
-import Image from 'next/image'
-import ScrollIndicator from './ScrollIndicator'
+import { AnimatePresence, motion } from 'framer-motion';
+import Image from 'next/image';
+import React, { useState } from 'react';
+import Header from './Header';
+import ScrollIndicator from './ScrollIndicator';
 
 const AboutSection: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen((prev) => !prev)
-  }
+    setIsMenuOpen((prev) => !prev);
+  };
 
   const textVariants = {
     hidden: { opacity: 0, x: -100 },
@@ -21,10 +21,10 @@ const AboutSection: React.FC = () => {
       transition: {
         type: 'spring',
         stiffness: 100,
-        damping: 20
-      }
-    }
-  }
+        damping: 20,
+      },
+    },
+  };
 
   const imageVariants = {
     hidden: { opacity: 0, scale: 0.8, rotateY: 90 },
@@ -34,10 +34,10 @@ const AboutSection: React.FC = () => {
       rotateY: 0,
       transition: {
         duration: 1.2,
-        ease: [0.16, 1, 0.3, 1]
-      }
-    }
-  }
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
+  };
 
   const svgVariants = {
     hidden: { opacity: 0, scale: 0.8 },
@@ -46,10 +46,10 @@ const AboutSection: React.FC = () => {
       scale: 1,
       transition: {
         duration: 1.2,
-        ease: [0.16, 1, 0.3, 1]
-      }
-    }
-  }
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
+  };
 
   return (
     <AnimatePresence mode="wait">
@@ -62,11 +62,10 @@ const AboutSection: React.FC = () => {
         exit="hidden"
         variants={{
           hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { duration: 0.5 } }
-        }}
-      >
+          visible: { opacity: 1, transition: { duration: 0.5 } },
+        }}>
         <Header toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
-        <div className="fixed left-8 top-[50%] rotate-[270deg] w-8 h-8">
+        <div className="hidden md:block fixed left-8 top-[50%] rotate-[270deg] w-8 h-8">
           <p className="text-xs">ABOUT</p>
         </div>
         <motion.div
@@ -75,14 +74,12 @@ const AboutSection: React.FC = () => {
           animate="visible"
           variants={{
             hidden: { opacity: 0 },
-            visible: { opacity: 1, transition: { duration: 0.5 } }
+            visible: { opacity: 1, transition: { duration: 0.5 } },
           }}
-          viewport={{ once: true, amount: 0.3 }}
-        >
+          viewport={{ once: true, amount: 0.3 }}>
           <motion.div
             className="w-full h-full flex justify-center items-center"
-            variants={textVariants}
-          >
+            variants={textVariants}>
             <p className="text-xl sm:text-3xl md:text-5xl font-thin p-4 text-center md:text-left">
               From Seamless Communication to Impactful Code – Crafting
               Meaningful Digital Experiences with Precision and Passion.
@@ -92,14 +89,12 @@ const AboutSection: React.FC = () => {
             {/* SVG in the background */}
             <motion.div
               className="absolute w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] z-0"
-              variants={svgVariants}
-            >
+              variants={svgVariants}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 100 100"
                 className="w-full h-full text-jet-black"
-                fill="none"
-              >
+                fill="none">
                 <motion.circle
                   cx="50"
                   cy="50"
@@ -115,8 +110,7 @@ const AboutSection: React.FC = () => {
             {/* Image */}
             <motion.div
               className="relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] p-4 z-10"
-              variants={imageVariants}
-            >
+              variants={imageVariants}>
               <Image
                 src="/4.png"
                 alt="about"
@@ -131,7 +125,7 @@ const AboutSection: React.FC = () => {
         <ScrollIndicator />
       </motion.section>
     </AnimatePresence>
-  )
-}
+  );
+};
 
-export default AboutSection
+export default AboutSection;

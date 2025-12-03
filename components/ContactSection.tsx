@@ -19,13 +19,13 @@ const ContactSection: React.FC = () => {
     <section className="relative min-h-screen bg-ghost-white text-jet-black flex flex-col">
       {/* Header */}
       <Header toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
-      <div className="fixed left-8 top-[50%] rotate-[270deg] w-8 h-8">
+      <div className="hidden md:block fixed left-8 top-[50%] rotate-[270deg] w-8 h-8">
         <p className="text-xs">CONTACT</p>
       </div>
 
       {/* Centered Content */}
       <div className="flex flex-col items-center justify-center h-full px-6">
-        <div className="px-20 py-20 max-w-4xl">
+        <div className="px-6 py-20 md:px-20 max-w-4xl">
           {/* Heading Section */}
           <div className="pb-8 text-center">
             <h1 className="text-5xl pb-2">Get in touch</h1>

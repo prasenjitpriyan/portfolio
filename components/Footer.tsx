@@ -1,23 +1,12 @@
 import Link from 'next/link';
-import React, { JSX } from 'react';
-import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import React from 'react';
 import { GoArrowRight } from 'react-icons/go';
 import Button from './Button';
 import Circle from './Circle';
 import MotionDiv from './MotionDiv';
 import Round from './Round';
 
-type SocialLink = {
-  href: string;
-  icon: JSX.Element;
-};
-
-const socialLinks: SocialLink[] = [
-  { href: 'https://facebook.com', icon: <FaFacebook /> },
-  { href: 'https://twitter.com', icon: <FaTwitter /> },
-  { href: 'https://linkedin.com', icon: <FaLinkedin /> },
-  { href: 'https://github.com', icon: <FaGithub /> },
-];
+import { socialLinks } from '../data/constants';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -35,8 +24,7 @@ const Footer: React.FC = () => {
       <MotionDiv
         className="flex flex-col justify-center items-center flex-grow gap-4"
         delay={0.3}
-        animationType="fadeInScale"
-      >
+        animationType="fadeInScale">
         <h3 className="text-xl p-4 text-gray-200 font-playwrite font-thin">
           I&apos;m available for freelance work.
         </h3>
@@ -56,23 +44,27 @@ const Footer: React.FC = () => {
       <MotionDiv
         className="w-full flex justify-center items-center p-12 gap-8 text-xs"
         delay={0.6}
-        animationType="fadeInUp"
-      >
+        animationType="fadeInUp">
         <p className=" text-white">© {currentYear} Prasenjit Das</p>
         <p className="text-xl">||</p>
         <div className="flex gap-2">
-          {socialLinks.map((link, index) => (
-            <MotionDiv key={index} animationType="fadeInScale" delay={0.9}>
-              <Link
-                href={link.href}
-                target="_blank"
-                rel="noreferrer"
-                className="h-8 w-8 flex justify-center items-center bg-black rounded-full hover:bg-white hover:text-black"
-              >
-                {link.icon}
-              </Link>
-            </MotionDiv>
-          ))}
+          {socialLinks.map(
+            (
+              link: { href: string; icon: React.ElementType; label: string },
+              index: number
+            ) => (
+              <MotionDiv key={index} animationType="fadeInScale" delay={0.9}>
+                <Link
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="h-8 w-8 flex justify-center items-center bg-black rounded-full hover:bg-white hover:text-black"
+                  aria-label={link.label}>
+                  <link.icon />
+                </Link>
+              </MotionDiv>
+            )
+          )}
         </div>
       </MotionDiv>
     </section>
