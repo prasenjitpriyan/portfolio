@@ -62,19 +62,20 @@ const Button: React.FC<ButtonProps> = ({
       <Link
         href={href}
         ref={linkRef}
-        className={`relative inline-flex items-center font-bold tracking-[0.5px] font-circular transition-all duration-300 z-[2] ${className}`}
-      >
+        className={`relative inline-flex items-center font-bold tracking-[0.5px] font-circular transition-all duration-300 z-[2] text-sm md:text-base ${className}`}>
         <span className="z-[3]">{text}</span>
 
         {/* Optional Icon */}
-        {icon && <span className="relative ml-2 text-xl z-[3]">{icon}</span>}
+        {icon && (
+          <span className="relative ml-2 text-lg md:text-xl z-[3]">{icon}</span>
+        )}
       </Link>
 
       {/* Decorative Circle */}
       <motion.div
         animate={circleAnimation}
         initial={{ scale: 1, width: '48px', height: '48px' }}
-        className={`absolute left-[-10px] top-0 bottom-0 m-auto rounded-full z-[1] transition-all duration-300 ${circleColor}`}
+        className={`absolute left-[-10px] top-0 bottom-0 m-auto rounded-full z-[1] transition-all duration-300 scale-75 md:scale-100 ${circleColor}`}
       />
     </div>
   );
