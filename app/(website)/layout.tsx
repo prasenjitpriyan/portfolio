@@ -1,7 +1,7 @@
 import { Analytics } from '@vercel/analytics/next';
 import type { Metadata } from 'next';
-import { playwrite, roboto } from './fonts';
-import './globals.css';
+import { playwrite, roboto } from '../fonts';
+import '../globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://portfolio-one-blond-61.vercel.app'),
