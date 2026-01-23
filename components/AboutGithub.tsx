@@ -1,104 +1,66 @@
-'use client'
+'use client';
 
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import { Pie } from 'react-chartjs-2'
-import { motion } from 'framer-motion'
+import axios from 'axios';
 import {
-  Chart as ChartJS,
   ArcElement,
-  Tooltip,
+  Chart as ChartJS,
+  ChartOptions,
   Legend,
-  ChartOptions
-} from 'chart.js'
+  Tooltip,
+} from 'chart.js';
+import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { Pie } from 'react-chartjs-2';
 
-ChartJS.register(ArcElement, Tooltip, Legend)
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 interface Repo {
-  id: number
-  name: string
-  html_url: string
-  description: string | null
-  stargazers_count: number
-  forks_count: number
-  watchers: number
-  open_issues: number
+  id: number;
+  name: string;
+  html_url: string;
+  description: string | null;
+  stargazers_count: number;
+  forks_count: number;
+  watchers: number;
+  open_issues: number;
 }
 
-type LanguageUsage = { [language: string]: number }
+type LanguageUsage = { [language: string]: number };
 
 const AboutGithub: React.FC = () => {
-  const [repos, setRepos] = useState<Repo[]>([])
-  const [languages, setLanguages] = useState<LanguageUsage>({})
-  const [loading, setLoading] = useState<boolean>(true)
-  const [error, setError] = useState<string | null>(null)
+  const [repos, setRepos] = useState<Repo[]>([]);
+  const [languages, setLanguages] = useState<LanguageUsage>({});
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchGitHubData = async () => {
-      let allRepos: Repo[] = []
-      let page = 1
-
       try {
-        // Fetch paginated repositories
-        while (true) {
-          const response = await axios.get<Repo[]>(
-            `https://api.github.com/users/prasenjitpriyan/repos`,
-            {
-              params: { per_page: 100, page },
-              headers: {
-                Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`
-              }
-            }
-          )
+        const response = await axios.get('/api/github/stats');
+        const { repos, languages } = response.data;
 
-          const data = response.data
-          if (data.length === 0) break
-          allRepos = [...allRepos, ...data]
-          page++
-        }
-
-        setRepos(allRepos)
-
-        // Fetch language statistics
-        const languageStats: LanguageUsage = {}
-        await Promise.all(
-          allRepos.map(async (repo) => {
-            const languageResponse = await axios.get<LanguageUsage>(
-              `https://api.github.com/repos/prasenjitpriyan/${repo.name}/languages`,
-              {
-                headers: {
-                  Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`
-                }
-              }
-            )
-
-            const repoLanguages = languageResponse.data
-            for (const [language, bytes] of Object.entries(repoLanguages)) {
-              languageStats[language] = (languageStats[language] || 0) + bytes
-            }
-          })
-        )
-        setLanguages(languageStats)
+        setRepos(repos);
+        setLanguages(languages);
       } catch (err: unknown) {
         if (err instanceof Error) {
-          setError(err.message)
+          setError(err.message);
         } else {
-          setError('An unknown error occurred')
+          setError('An unknown error occurred');
         }
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
+    };
 
-    fetchGitHubData()
-  }, [])
+    fetchGitHubData();
+  }, []);
 
   if (loading) {
     return (
       <div className="min-h-[70svh] w-full overflow-hidden bg-ghost-white text-jet-black flex px-20 py-20 justify-center items-center">
         Loading...
       </div>
-    )
+    );
   }
 
   if (error) {
@@ -106,7 +68,7 @@ const AboutGithub: React.FC = () => {
       <div className="min-h-[70svh] w-full overflow-hidden bg-ghost-white text-jet-black flex px-20 py-20 justify-center items-center">
         {error}
       </div>
-    )
+    );
   }
 
   const chartData = {
@@ -121,7 +83,7 @@ const AboutGithub: React.FC = () => {
           '#4F4F4F',
           '#696969',
           '#808080',
-          '#A9A9A9'
+          '#A9A9A9',
         ],
         hoverBackgroundColor: [
           '#222831',
@@ -129,20 +91,20 @@ const AboutGithub: React.FC = () => {
           '#4F4F4F',
           '#696969',
           '#808080',
-          '#A9A9A9'
-        ]
-      }
-    ]
-  }
+          '#A9A9A9',
+        ],
+      },
+    ],
+  };
 
   const options: ChartOptions<'pie'> = {
     responsive: true,
     plugins: {
       legend: {
-        position: 'bottom'
-      }
-    }
-  }
+        position: 'bottom',
+      },
+    },
+  };
 
   return (
     <div className="min-h-[70svh] w-full overflow-hidden bg-ghost-white text-jet-black flex flex-wrap px-20 py-20">
@@ -152,8 +114,7 @@ const AboutGithub: React.FC = () => {
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
+        transition={{ duration: 0.8 }}>
         <div className="flex gap-12">
           <p className="font-thin">/ 02 -</p>
           <p className="font-thin">GITHUB</p>
@@ -165,8 +126,7 @@ const AboutGithub: React.FC = () => {
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
+        transition={{ duration: 0.8 }}>
         <div className="flex flex-col justify-between md:flex-row items-center md:items-start">
           {/* GitHub Stats */}
           <div className="pb-4 text-center">
@@ -234,7 +194,7 @@ const AboutGithub: React.FC = () => {
         </div>
       </motion.div>
     </div>
-  )
-}
+  );
+};
 
-export default AboutGithub
+export default AboutGithub;
