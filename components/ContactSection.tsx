@@ -16,7 +16,7 @@ const ContactSection: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <section className="relative min-h-screen bg-ghost-white text-jet-black flex flex-col">
+    <section className="relative min-h-screen lg:h-screen lg:max-h-screen lg:overflow-hidden bg-ghost-white text-jet-black flex flex-col">
       {/* Header */}
       <Header toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
       <div className="hidden md:block fixed left-8 top-[50%] rotate-[270deg] w-8 h-8">
@@ -42,9 +42,7 @@ const ContactSection: React.FC = () => {
       {/* Footer */}
       <div className="fixed w-full h-20 bottom-0">
         <div className="flex justify-center items-center w-full h-full gap-8">
-          <p className="text-xs text-gray-500">
-            © {currentYear} Prasenjit Das
-          </p>
+          <p className="text-xs text-gray-500">© {currentYear} Prasenjit Das</p>
           <p className="text-xl">{'||'}</p>
           <div className="flex gap-2">
             <Link href="https://facebook.com" target="_blank" rel="noreferrer">
