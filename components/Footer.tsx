@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <section className="h-screen relative bg-black text-white flex flex-col justify-between">
+    <section className="h-[100dvh] relative bg-black text-white flex flex-col justify-between overflow-hidden">
       <Round className="absolute top-0 right-80" />
 
       {/* Top Section */}

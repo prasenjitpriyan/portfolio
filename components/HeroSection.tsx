@@ -19,7 +19,7 @@ const HeroSection: React.FC = () => {
   return (
     <section
       id="hero-section"
-      className="relative h-screen bg-ghost-white text-jet-black flex flex-col">
+      className="relative h-[100dvh] bg-ghost-white text-jet-black flex flex-col">
       {/* CircleSvg */}
       <CircleSvg className="z-0" />
 

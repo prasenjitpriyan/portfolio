@@ -1,4 +1,4 @@
-import { Projects } from '@/types/projects'
+import { Projects } from '@/types/projects';
 
 export const projects: Projects[] = [
   {
@@ -13,7 +13,9 @@ export const projects: Projects[] = [
       'A web app that provides real-time weather updates with an interactive UI.',
     platform: 'Web',
     technologies: ['Next.js', 'Tailwind CSS', 'OpenWeather API'],
-    project_images: ['/project.jpg', '/project.jpg']
+    project_images: ['/project.jpg', '/project.jpg'],
+    liveUrl: 'https://weather-app-demo.com',
+    repoUrl: 'https://github.com/prasenjitpriyan/weather-app',
   },
   {
     id: '2',
@@ -27,7 +29,9 @@ export const projects: Projects[] = [
       'An efficient task management tool with drag-and-drop functionality.',
     platform: 'Web',
     technologies: ['React', 'TypeScript', 'Redux', 'Firebase'],
-    project_images: ['/project.jpg', '/project.jpg']
+    project_images: ['/project.jpg', '/project.jpg'],
+    liveUrl: 'https://task-manager-demo.com',
+    repoUrl: 'https://github.com/prasenjitpriyan/task-manager',
   },
   {
     id: '3',
@@ -40,7 +44,7 @@ export const projects: Projects[] = [
     about: 'A portfolio website to showcase my work and achievements.',
     platform: 'Web',
     technologies: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
-    project_images: ['/project.jpg', '/project.jpg']
+    project_images: ['/project.jpg', '/project.jpg'],
   },
   {
     id: '4',
@@ -53,7 +57,7 @@ export const projects: Projects[] = [
     about: 'A fully functional e-commerce platform with payment integration.',
     platform: 'Web',
     technologies: ['React', 'Redux', 'Stripe API', 'Node.js'],
-    project_images: ['/project.jpg', '/project.jpg']
+    project_images: ['/project.jpg', '/project.jpg'],
   },
   {
     id: '5',
@@ -66,7 +70,7 @@ export const projects: Projects[] = [
     about: 'A real-time chat app with private and group messaging features.',
     platform: 'Web',
     technologies: ['Next.js', 'Socket.io', 'Firebase'],
-    project_images: ['/project.jpg', '/project.jpg']
+    project_images: ['/project.jpg', '/project.jpg'],
   },
   {
     id: '6',
@@ -79,7 +83,7 @@ export const projects: Projects[] = [
     about: 'An app to track expenses and analyze financial goals.',
     platform: 'Web',
     technologies: ['Vue.js', 'Pinia', 'Chart.js'],
-    project_images: ['/project.jpg', '/project.jpg']
+    project_images: ['/project.jpg', '/project.jpg'],
   },
   {
     id: '7',
@@ -92,7 +96,7 @@ export const projects: Projects[] = [
     about: 'A blog platform with CMS integration for content management.',
     platform: 'Web',
     technologies: ['Next.js', 'Sanity.io', 'Tailwind CSS'],
-    project_images: ['/project.jpg', '/project.jpg']
+    project_images: ['/project.jpg', '/project.jpg'],
   },
   {
     id: '8',
@@ -105,6 +109,6 @@ export const projects: Projects[] = [
     about: 'A fitness tracking app with workout plans and progress monitoring.',
     platform: 'Mobile',
     technologies: ['React Native', 'Expo', 'Firebase'],
-    project_images: ['/project.jpg', '/project.jpg']
-  }
-]
+    project_images: ['/project.jpg', '/project.jpg'],
+  },
+];

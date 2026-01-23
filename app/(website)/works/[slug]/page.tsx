@@ -1,27 +1,26 @@
-import React from 'react'
-import SlugSection from '@/components/SlugSection'
-import { notFound } from 'next/navigation'
-import { projects } from '@/data/projects'
-import { Projects } from '@/types/projects'
-import ScrollToTop from '@/components/ScrollToTop'
-import SlugAbout from '@/components/SlugAbout'
-import SlugProjects from '@/components/SlugProjects'
-import SlugNextPrevProjects from '@/components/SlugNextPrevProjects'
-import Footer from '@/components/Footer'
+import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
+import SlugAbout from '@/components/SlugAbout';
+import SlugNextPrevProjects from '@/components/SlugNextPrevProjects';
+import SlugProjects from '@/components/SlugProjects';
+import SlugSection from '@/components/SlugSection';
+import { projects } from '@/data/projects';
+import { Projects } from '@/types/projects';
+import { notFound } from 'next/navigation';
 
 interface ProjectPageProps {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({ params }: ProjectPageProps) {
-  const resolvedParams = await params
-  const project = projects.find((p) => p.slug === resolvedParams.slug)
+  const resolvedParams = await params;
+  const project = projects.find((p) => p.slug === resolvedParams.slug);
 
   if (!project) {
     return {
       title: 'Project Not Found',
-      description: 'This project does not exist.'
-    }
+      description: 'This project does not exist.',
+    };
   }
 
   return {
@@ -35,24 +34,24 @@ export async function generateMetadata({ params }: ProjectPageProps) {
           url: project.slug_hero_image,
           width: 1200,
           height: 630,
-          alt: project.title
-        }
-      ]
-    }
-  }
+          alt: project.title,
+        },
+      ],
+    },
+  };
 }
 
 const WorksSlugPage = async (props: ProjectPageProps) => {
-  const params = await props.params
-  const project = projects.find((p) => p.slug === params.slug)
+  const params = await props.params;
+  const project = projects.find((p) => p.slug === params.slug);
 
   if (!project) {
-    notFound()
-    return null
+    notFound();
+    return null;
   }
 
   return (
-    <main className="min-h-screen overflow-hidden bg-ghost-white relative">
+    <main className="min-h-screen bg-ghost-white relative">
       <SlugSection project={project} />
       <SlugAbout project={project} />
       <SlugProjects project={project} />
@@ -60,13 +59,13 @@ const WorksSlugPage = async (props: ProjectPageProps) => {
       <Footer />
       <ScrollToTop />
     </main>
-  )
-}
+  );
+};
 
-export default WorksSlugPage
+export default WorksSlugPage;
 
 export async function generateStaticParams() {
   return projects.map((project: Projects) => ({
-    slug: project.slug
-  }))
+    slug: project.slug,
+  }));
 }

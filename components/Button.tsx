@@ -77,7 +77,7 @@ const Button: React.FC<ButtonProps> = ({
 
   if (href) {
     return (
-      <div className="relative group">
+      <div className="relative group z-[1] hover:z-10">
         <Link href={href} ref={linkRef} className={commonClasses}>
           {content}
         </Link>
@@ -92,7 +92,7 @@ const Button: React.FC<ButtonProps> = ({
   }
 
   return (
-    <div className="relative group">
+    <div className="relative group z-[1] hover:z-10">
       <button
         ref={buttonRef}
         type={type}
