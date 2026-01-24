@@ -46,8 +46,7 @@ const MoreProjects = () => {
   return (
     <section
       ref={sectionRef}
-      className="min-h-[50svh] relative px-20 py-20 overflow-hidden flex flex-col md:flex-row items-center justify-between gap-10"
-    >
+      className="min-h-[50svh] relative px-20 py-20 overflow-hidden flex flex-col md:flex-row items-center justify-between gap-10">
       {/* Left Content */}
       <div className="text-left">
         {/* Heading */}
@@ -56,8 +55,7 @@ const MoreProjects = () => {
           variants={fadeInVariants}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
-          custom={0}
-        >
+          custom={0}>
           <p className="revealer relative text-xs inline-block text-jet-black uppercase">
             THERE&apos;S MORE
           </p>
@@ -69,15 +67,14 @@ const MoreProjects = () => {
           variants={fadeInUpVariants}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
-          custom={0.3}
-        >
+          custom={0.3}>
           <Button
             text="View all projects"
             href="/works"
             icon={<GoArrowRight className="text-4xl" />}
             className="text-black text-3xl"
             circleColor="bg-gradient-to-r from-gray-300 via-gray-200 to-gray-100"
-            hoverWidth="300px"
+            hoverWidth="200px"
           />
         </motion.div>
       </div>
