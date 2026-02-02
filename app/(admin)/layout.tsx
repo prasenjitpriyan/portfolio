@@ -20,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${roboto.variable} antialiased scrollbar`}>
+      <body
+        className={`${roboto.variable} antialiased scrollbar`}
+        suppressHydrationWarning>
         {children}
       </body>
     </html>
