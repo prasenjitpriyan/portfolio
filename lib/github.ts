@@ -19,7 +19,8 @@ export async function getGithubData(
   const token = process.env.GITHUB_TOKEN;
 
   if (!token) {
-    throw new Error('GitHub token not configured');
+    console.warn('GitHub token not configured, returning empty list.');
+    return { repos: [], languages: {} };
   }
 
   const headers = {
