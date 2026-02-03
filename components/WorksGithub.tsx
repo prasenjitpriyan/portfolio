@@ -1,70 +1,21 @@
 'use client';
 
+import { Repo } from '@/lib/github';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React from 'react';
 import { IoLogoGithub } from 'react-icons/io';
 
-type GitHubProject = {
-  name: string;
-  link: string;
-};
+interface WorksGithubProps {
+  repos: Repo[];
+}
 
-const WorksGithub: React.FC = () => {
-  const githubProjects: GitHubProject[] = [
-    {
-      name: 'Project One',
-      link: 'https://github.com/your-username/project-one',
-    },
-    {
-      name: 'Project Two',
-      link: 'https://github.com/your-username/project-two',
-    },
-    {
-      name: 'Project Three',
-      link: 'https://github.com/your-username/project-three',
-    },
-    {
-      name: 'Project Four',
-      link: 'https://github.com/your-username/project-four',
-    },
-    {
-      name: 'Project Five',
-      link: 'https://github.com/your-username/project-five',
-    },
-    {
-      name: 'Project Six',
-      link: 'https://github.com/your-username/project-six',
-    },
-    {
-      name: 'Project Seven',
-      link: 'https://github.com/your-username/project-seven',
-    },
-    {
-      name: 'Project Eight',
-      link: 'https://github.com/your-username/project-eight',
-    },
-    {
-      name: 'Project Nine',
-      link: 'https://github.com/your-username/project-nine',
-    },
-    {
-      name: 'Project Ten',
-      link: 'https://github.com/your-username/project-ten',
-    },
-    {
-      name: 'Project Eleven',
-      link: 'https://github.com/your-username/project-eleven',
-    },
-    {
-      name: 'Project Twelve',
-      link: 'https://github.com/your-username/project-twelve',
-    },
-    {
-      name: 'Project Thirteen',
-      link: 'https://github.com/your-username/project-thirteen',
-    },
-  ];
+const WorksGithub: React.FC<WorksGithubProps> = ({ repos }) => {
+  const [visibleCount, setVisibleCount] = React.useState(15);
+
+  const showMore = () => {
+    setVisibleCount((prev) => prev + 10);
+  };
 
   return (
     <section className="min-h-screen px-6 py-12 md:px-20 text-jet-black">
@@ -89,7 +40,7 @@ const WorksGithub: React.FC = () => {
           <span>
             <Link
               className="underline text-yellow-400 hover:text-yellow-300"
-              href={'https://github.com/your-username'}>
+              href={'https://github.com/prasenjitpriyan'}>
               GitHub repository.
             </Link>
           </span>
@@ -97,30 +48,35 @@ const WorksGithub: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center w-full space-y-6 md:space-y-0">
           {/* Projects List */}
           <div className="w-full md:w-2/3 space-y-6">
-            {githubProjects.map((project, index) => (
-              <motion.div
-                className="flex items-center bg-ghost-white p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out font-thin"
-                key={project.link}
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}>
-                <p className="text-xl mr-4 md:mr-8 text-jet-black">
-                  -/ {String(index + 1).padStart(2, '0')}
-                </p>
-                <p className="text-xl text-jet-black mr-4 md:mr-8">
-                  {'<src/>'}
-                </p>
-                <p className="text-xl text-jet-black">
-                  <Link
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    {project.name}
-                  </Link>
-                </p>
-              </motion.div>
-            ))}
+            {repos && repos.length > 0 ? (
+              repos.slice(0, visibleCount).map((project, index) => (
+                <motion.div
+                  className="flex items-center bg-ghost-white p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out font-thin"
+                  key={project.id}
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}>
+                  <p className="text-xl mr-4 md:mr-8 text-jet-black">
+                    -/ {String(index + 1).padStart(2, '0')}
+                  </p>
+                  <p className="text-xl text-jet-black mr-4 md:mr-8 flex-shrink-0">
+                    {'<src/>'}
+                  </p>
+                  <p className="text-xl text-jet-black truncate">
+                    <Link
+                      href={project.html_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-yellow-600 transition-colors capitalize">
+                      {project.name}
+                    </Link>
+                  </p>
+                </motion.div>
+              ))
+            ) : (
+              <p className="text-center text-xl">No projects found.</p>
+            )}
           </div>
           {/* GitHub Icon */}
           <motion.div
@@ -134,6 +90,17 @@ const WorksGithub: React.FC = () => {
             <IoLogoGithub className="w-40 h-40 text-jet-black hover:text-yellow-400 transition duration-300 ease-in-out drop-shadow-lg" />
           </motion.div>
         </div>
+
+        {/* Load More Button - Centered below both columns */}
+        {repos && visibleCount < repos.length && (
+          <div className="flex justify-center pt-8 w-full">
+            <button
+              onClick={showMore}
+              className="px-6 py-2 bg-jet-black text-white font-semibold rounded-lg shadow-md hover:bg-yellow-500 hover:text-jet-black transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-75">
+              Load More
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
