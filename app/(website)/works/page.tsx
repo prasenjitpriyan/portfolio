@@ -13,8 +13,8 @@ export const metadata = {
     'From delivering postal services to delivering code – Crafting solutions with JavaScript & TypeScript.',
 };
 
-// Ensure the page is dynamic since it fetches data that might change
-export const dynamic = 'force-dynamic';
+// Revalidate every hour
+export const revalidate = 3600;
 
 const WorksPage = async () => {
   const { repos } = await getGithubData({ includeLanguages: false });

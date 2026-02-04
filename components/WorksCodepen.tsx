@@ -11,6 +11,12 @@ interface WorksCodepenProps {
 }
 
 const WorksCodepen: React.FC<WorksCodepenProps> = ({ pens }) => {
+  const [visibleCount, setVisibleCount] = React.useState(10);
+
+  const showMore = () => {
+    setVisibleCount((prev) => prev + 10);
+  };
+
   return (
     <section className="min-h-screen px-6 py-12 md:px-20 text-jet-black bg-ghost-white">
       <div className="max-w-7xl mx-auto">
@@ -43,7 +49,7 @@ const WorksCodepen: React.FC<WorksCodepenProps> = ({ pens }) => {
           {/* Pens List */}
           <div className="w-full md:w-2/3 space-y-6">
             {pens && pens.length > 0 ? (
-              pens.map((pen, index) => (
+              pens.slice(0, visibleCount).map((pen, index) => (
                 <motion.div
                   className="flex items-center bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out font-thin"
                   key={pen.id}
@@ -88,6 +94,17 @@ const WorksCodepen: React.FC<WorksCodepenProps> = ({ pens }) => {
             <IoLogoCodepen className="w-40 h-40 text-jet-black hover:text-yellow-400 transition duration-300 ease-in-out drop-shadow-lg" />
           </motion.div>
         </div>
+
+        {/* Load More Button - Centered below both columns */}
+        {pens && visibleCount < pens.length && (
+          <div className="flex justify-center pt-8 w-full">
+            <button
+              onClick={showMore}
+              className="px-6 py-2 bg-jet-black text-white font-semibold rounded-lg shadow-md hover:bg-yellow-500 hover:text-jet-black transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-75">
+              Load More
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

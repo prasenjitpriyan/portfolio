@@ -11,7 +11,7 @@ interface WorksGithubProps {
 }
 
 const WorksGithub: React.FC<WorksGithubProps> = ({ repos }) => {
-  const [visibleCount, setVisibleCount] = React.useState(15);
+  const [visibleCount, setVisibleCount] = React.useState(10);
 
   const showMore = () => {
     setVisibleCount((prev) => prev + 10);

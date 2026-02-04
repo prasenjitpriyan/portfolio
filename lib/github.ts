@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 export interface Repo {
   id: number;
   name: string;
@@ -33,16 +31,22 @@ export async function getGithubData(
 
   try {
     while (true) {
-      const response = await axios.get<Repo[]>(
-        'https://api.github.com/users/prasenjitpriyan/repos',
+      const response = await fetch(
+        `https://api.github.com/users/prasenjitpriyan/repos?per_page=100&page=${page}`,
         {
           headers,
-          params: { per_page: 100, page },
+          next: { revalidate: 3600 }, // Cache for 1 hour
         }
       );
 
-      if (response.data.length === 0) break;
-      allRepos = [...allRepos, ...response.data];
+      if (!response.ok) {
+        throw new Error(`GitHub API error: ${response.statusText}`);
+      }
+
+      const data: Repo[] = await response.json();
+
+      if (data.length === 0) break;
+      allRepos = [...allRepos, ...data];
       page++;
     }
 
@@ -54,29 +58,23 @@ export async function getGithubData(
       return b.id - a.id;
     });
 
-    // Fetch languages (simplification: if we don't need languages for the Works page,
-    // we could skip this part or keep it if it's used elsewhere.
-    // The previous API route returned BOTH repos and languages.
-    // I will return an object with both to match the API route structure
-    // but optimized for direct server use).
-
-    // NOTE: For the Works page, we ONLY need the repos list.
-    // But to keep this function versatile (replacing the API route logic),
-    // I will fetch languages too.
-
-    // 2. Fetch languages directly in parallel (ONLY if requested)
-    // The Works page works better without this heavy operation.
+    // Fetch languages directly in parallel (ONLY if requested)
     const languageStats: LanguageUsage = {};
 
     if (options.includeLanguages) {
       const languagePromises = allRepos.map(async (repo) => {
         try {
-          // Add a small delay or concurrency limit here if needed, but for now just try/catch
-          const langResponse = await axios.get<LanguageUsage>(
+          const langResponse = await fetch(
             `https://api.github.com/repos/prasenjitpriyan/${repo.name}/languages`,
-            { headers }
+            {
+              headers,
+              next: { revalidate: 3600 },
+            }
           );
-          return langResponse.data;
+
+          if (!langResponse.ok) return {};
+
+          return langResponse.json() as Promise<LanguageUsage>;
         } catch (error) {
           console.error(`Failed to fetch languages for ${repo.name}`, error);
           return {};

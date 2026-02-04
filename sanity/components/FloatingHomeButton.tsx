@@ -7,8 +7,8 @@ export function FloatingHomeButton() {
       href="/"
       style={{
         position: 'fixed',
-        top: '1rem',
-        left: '50%',
+        bottom: '1rem',
+        left: '2%',
         transform: 'translateX(-50%)',
         zIndex: 999999,
         padding: '12px',

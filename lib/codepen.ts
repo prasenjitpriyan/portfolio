@@ -16,7 +16,11 @@ export const getBestPens = async (): Promise<Pen[]> => {
       url
     }`;
 
-    const pens = await client.fetch<Pen[]>(query);
+    const pens = await client.fetch<Pen[]>(
+      query,
+      {},
+      { next: { revalidate: 3600 } }
+    );
     return pens;
   } catch (error) {
     console.error('Failed to fetch CodePen data:', error);
