@@ -1,6 +1,19 @@
 import axios from 'axios';
 import { NextResponse } from 'next/server';
 
+// Allowlist of path prefixes that are safe to proxy to GitHub API
+const ALLOWED_PATH_PREFIXES = [
+  '/users/',
+  '/repos/',
+  '/search/',
+  '/orgs/',
+  '/gists/',
+];
+
+function isAllowedPath(path: string): boolean {
+  return ALLOWED_PATH_PREFIXES.some((prefix) => path.startsWith(prefix));
+}
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const path = searchParams.get('path');
@@ -12,6 +25,11 @@ export async function GET(request: Request) {
     );
   }
 
+  // SSRF protection: only allow known safe GitHub API path prefixes
+  if (!isAllowedPath(path)) {
+    return NextResponse.json({ error: 'Path not allowed' }, { status: 403 });
+  }
+
   const token = process.env.GITHUB_TOKEN;
 
   if (!token) {
@@ -21,7 +39,7 @@ export async function GET(request: Request) {
     );
   }
 
-  // Remove 'path' from query params to forward the rest to GitHub
+  // Forward only safe query params (strip 'path' itself)
   const queryParams = Object.fromEntries(searchParams.entries());
   delete queryParams.path;
 
@@ -46,7 +64,7 @@ export async function GET(request: Request) {
       errorMessage = error.message;
     }
 
-    console.error('GitHub API Information Error:', errorMessage);
+    console.error('GitHub API Error:', errorMessage);
     return NextResponse.json({ error: errorMessage }, { status: statusCode });
   }
 }

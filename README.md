@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Prasenjit Das — Portfolio
 
-## Getting Started
+A modern, performant developer portfolio built with **Next.js 15**, **Sanity Studio** (CMS), and **TypeScript**. Features project showcases, GitHub activity, CodePen creations, and a working contact form.
 
-First, run the development server:
+## ✨ Features
+
+- 🎨 Animated hero, project cards with hover effects, and smooth page transitions
+- 📁 **Sanity Studio** CMS for managing projects at `/studio`
+- 🐙 Live **GitHub** repository and language stats
+- 🖊️ **CodePen** best pens integration
+- 📬 Working **contact form** via SMTP (Gmail)
+- 🛡️ HTTP security headers (CSP, HSTS, X-Frame-Options, etc.)
+- ⚡ ISR (Incremental Static Regeneration) for fast, fresh content
+
+## 🛠️ Tech Stack
+
+| Layer      | Technology              |
+| ---------- | ----------------------- |
+| Framework  | Next.js 15 (App Router) |
+| CMS        | Sanity Studio v3        |
+| Language   | TypeScript              |
+| Styling    | Tailwind CSS            |
+| Animation  | Framer Motion           |
+| Email      | Nodemailer + Gmail SMTP |
+| Deployment | Vercel                  |
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- A [Sanity](https://sanity.io) account and project
+- A GitHub personal access token
+- A Gmail account with an [App Password](https://support.google.com/accounts/answer/185833)
+
+### 1. Clone and install
+
+```bash
+git clone https://github.com/prasenjitpriyan/portfolio.git
+cd portfolio
+npm install
+```
+
+### 2. Set up environment variables
+
+Create a `.env.local` file in the root:
+
+```env
+# Sanity
+NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
+NEXT_PUBLIC_SANITY_DATASET=production
+
+# GitHub (for activity section)
+GITHUB_TOKEN=your_github_pat
+
+# Contact form (Gmail SMTP)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=465
+SMTP_SECURE=true
+SMTP_USER=your@gmail.com
+SMTP_PASS=your_app_password
+CONTACT_RECEIVER_EMAIL=your@gmail.com
+```
+
+### 3. Run locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) for the site and [http://localhost:3000/studio](http://localhost:3000/studio) for Sanity Studio.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📂 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/
+  (website)/        # Public portfolio routes
+  (admin)/studio/   # Sanity Studio
+  api/
+    contact/        # Contact form email API
+    github/         # GitHub proxy API
+components/         # Reusable UI components
+data/               # Static data (nav links, social links)
+sanity/schemas/     # Sanity content schemas
+lib/                # GitHub & CodePen data fetching
+types/              # TypeScript interfaces
+```
 
-## Learn More
+## 🗂️ Adding Projects via Sanity Studio
 
-To learn more about Next.js, take a look at the following resources:
+1. Go to `/studio` and sign in
+2. Click **Project → Create new**
+3. Fill in: **Title**, **Slug** (auto-generated), **Order** (1 = first), **Category**, images, description, technologies, and links
+4. Publish — the site automatically updates
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+> The **Order** field controls display sequence. Set it to `1` for your first project, `2` for the second, etc. Display numbers (`01`, `02`…) are generated automatically.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔒 Security
 
-## Deploy on Vercel
+- All HTTP responses include security headers (HSTS, X-Frame-Options, CSP, Permissions-Policy)
+- Contact form inputs are sanitised and length-limited before being embedded in emails
+- GitHub API proxy uses a path allowlist to prevent SSRF
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📄 License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT

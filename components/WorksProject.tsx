@@ -1,13 +1,54 @@
-import { projects } from '@/data/projects';
+import { client } from '@/sanity/lib/client';
+import { urlFor } from '@/sanity/lib/image';
 import { Projects } from '@/types/projects';
 import Image from 'next/image';
 import React from 'react';
 import { GoArrowRight } from 'react-icons/go';
 import Button from './Button';
 
-const WorksProject: React.FC = () => {
+const ALL_PROJECTS_QUERY = `*[_type == "project"] | order(order asc){
+  _id,
+  title,
+  "slug": slug.current,
+  category,
+  image,
+  slugHeroImage
+}`;
+
+const WorksProject: React.FC = async () => {
+  let projects: Projects[] = [];
+
+  try {
+    const sanityProjects = await client.fetch(ALL_PROJECTS_QUERY);
+    projects = sanityProjects.map(
+      (
+        p: {
+          _id: string;
+          slug: string;
+          title?: string;
+          category?: string;
+          image?: object;
+          slugHeroImage?: object;
+        },
+        index: number
+      ) => ({
+        id: p._id,
+        slug: p.slug,
+        number: String(index + 1).padStart(2, '0'),
+        title: p.title ?? '',
+        category: p.category ?? '',
+        image: p.image ? urlFor(p.image).width(800).url() : '/project.jpg',
+        slug_hero_image: p.slugHeroImage
+          ? urlFor(p.slugHeroImage).width(1920).url()
+          : '/project.jpg',
+      })
+    );
+  } catch (err) {
+    console.error('Failed to fetch projects from Sanity:', err);
+  }
+
   return (
-    <div className="min-h-screen md:h-[320svh] bg-ghost-white text-gray-300 overflow-hidden">
+    <div className="min-h-screen md:h-[360svh] bg-ghost-white text-gray-300 overflow-hidden">
       {projects.map((project: Projects) => (
         <div
           key={project.id}

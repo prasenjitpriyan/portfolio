@@ -1,4 +1,4 @@
-import { defineType, defineField } from 'sanity'
+import { defineField, defineType } from 'sanity';
 
 export default defineType({
   name: 'project',
@@ -11,71 +11,74 @@ export default defineType({
       type: 'slug',
       options: {
         source: 'title',
-        maxLength: 200
-      }
+        maxLength: 200,
+      },
     }),
     defineField({
-      name: 'number',
-      title: 'Number',
-      type: 'string'
+      name: 'order',
+      title: 'Order',
+      type: 'number',
+      description:
+        'Controls the display sequence (1 = first, 2 = second, etc.)',
+      validation: (Rule) => Rule.required().min(1).integer(),
     }),
     defineField({
       name: 'title',
       title: 'Title',
-      type: 'string'
+      type: 'string',
     }),
     defineField({
       name: 'category',
       title: 'Category',
-      type: 'string'
+      type: 'string',
     }),
     defineField({
       name: 'image',
       title: 'Image',
       type: 'image',
       options: {
-        hotspot: true
-      }
+        hotspot: true,
+      },
     }),
     defineField({
       name: 'slugHeroImage',
       title: 'Slug Hero Image',
       type: 'image',
       options: {
-        hotspot: true
-      }
+        hotspot: true,
+      },
     }),
     defineField({
       name: 'about',
       title: 'About',
-      type: 'text'
+      type: 'text',
     }),
     defineField({
       name: 'platform',
       title: 'Platform',
-      type: 'string'
+      type: 'string',
     }),
     defineField({
       name: 'technologies',
       title: 'Technologies',
       type: 'array',
-      of: [{ type: 'string' }]
+      of: [{ type: 'string' }],
     }),
     defineField({
       name: 'projectImages',
       title: 'Project Images',
       type: 'array',
-      of: [{ type: 'image', options: { hotspot: true } }]
+      of: [{ type: 'image', options: { hotspot: true } }],
     }),
     defineField({
       name: 'deployedLink',
       title: 'Deployed Link',
-      type: 'url'
+      type: 'url',
     }),
     defineField({
       name: 'githubRepo',
       title: 'GitHub Repository',
-      type: 'url'
-    })
-  ]
-})
+      type: 'url',
+    }),
+  ],
+});
