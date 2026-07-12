@@ -12,7 +12,7 @@ const pathVariants = {
     pathLength: 1,
     opacity: 1,
     transition: {
-      pathLength: { delay: i * 0.05, type: 'spring', duration: 1.5, bounce: 0 },
+      pathLength: { delay: i * 0.05, type: 'spring' as const, duration: 1.5, bounce: 0 },
       opacity: { delay: i * 0.05, duration: 0.01 },
     },
   }),
@@ -28,7 +28,7 @@ const circleVariants = {
     scale: 1,
     opacity: 1,
     transition: {
-      type: 'spring',
+      type: 'spring' as const,
       stiffness: 260,
       damping: 20,
       delay: i * 0.05,

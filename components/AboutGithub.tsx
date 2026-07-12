@@ -1,6 +1,6 @@
 'use client';
 
-import axios from 'axios';
+
 import {
   ArcElement,
   Chart as ChartJS,
@@ -36,8 +36,12 @@ const AboutGithub: React.FC = () => {
   useEffect(() => {
     const fetchGitHubData = async () => {
       try {
-        const response = await axios.get('/api/github/stats');
-        const { repos, languages } = response.data;
+        const response = await fetch('/api/github/stats');
+        if (!response.ok) {
+          throw new Error(`Failed to fetch GitHub data: ${response.statusText}`);
+        }
+        const data = await response.json();
+        const { repos, languages } = data;
 
         setRepos(repos);
         setLanguages(languages);

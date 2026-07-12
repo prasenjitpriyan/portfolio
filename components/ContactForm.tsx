@@ -71,9 +71,9 @@ const ContactForm: React.FC = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' },
+      transition: { duration: 0.6, ease: 'easeOut' as const },
     },
-    hover: { scale: 1.02, transition: { duration: 0.3, ease: 'easeInOut' } },
+    hover: { scale: 1.02, transition: { duration: 0.3, ease: 'easeInOut' as const } },
   };
 
   return (

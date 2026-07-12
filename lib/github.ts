@@ -11,19 +11,41 @@ export interface Repo {
 
 export type LanguageUsage = { [language: string]: number };
 
+let isTokenValid = true;
+
 export async function getGithubData(
   options: { includeLanguages?: boolean } = {}
 ) {
-  const token = process.env.GITHUB_TOKEN;
+  const token = isTokenValid ? process.env.GITHUB_TOKEN : undefined;
 
-  if (!token) {
-    console.warn('GitHub token not configured, returning empty list.');
-    return { repos: [], languages: {} };
-  }
+  const fetchWithFallback = async (url: string) => {
+    if (token) {
+      try {
+        const res = await fetch(url, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: 'application/vnd.github.v3+json',
+          },
+          next: { revalidate: 3600 },
+        });
+        if (res.ok) return res;
+        if (res.status === 401) {
+          console.warn('GitHub token returned 401 Unauthorized, disabling token and falling back to unauthenticated request.');
+          isTokenValid = false;
+        } else {
+          console.warn(`GitHub API request with token returned status ${res.status}, falling back.`);
+        }
+      } catch (err) {
+        console.error('Error fetching with token, falling back to unauthenticated:', err);
+      }
+    }
 
-  const headers = {
-    Authorization: `Bearer ${token}`,
-    Accept: 'application/vnd.github.v3+json',
+    return fetch(url, {
+      headers: {
+        Accept: 'application/vnd.github.v3+json',
+      },
+      next: { revalidate: 3600 },
+    });
   };
 
   let allRepos: Repo[] = [];
@@ -31,16 +53,12 @@ export async function getGithubData(
 
   try {
     while (true) {
-      const response = await fetch(
-        `https://api.github.com/users/prasenjitpriyan/repos?per_page=100&page=${page}`,
-        {
-          headers,
-          next: { revalidate: 3600 }, // Cache for 1 hour
-        }
+      const response = await fetchWithFallback(
+        `https://api.github.com/users/prasenjitpriyan/repos?per_page=100&page=${page}`
       );
 
       if (!response.ok) {
-        throw new Error(`GitHub API error: ${response.statusText}`);
+        throw new Error(`GitHub API error: ${response.statusText} (${response.status})`);
       }
 
       const data: Repo[] = await response.json();
@@ -62,14 +80,12 @@ export async function getGithubData(
     const languageStats: LanguageUsage = {};
 
     if (options.includeLanguages) {
-      const languagePromises = allRepos.map(async (repo) => {
+      // Limit to top 15 repositories to prevent hitting GitHub rate limits (especially when unauthenticated)
+      const reposToFetch = sortedRepos.slice(0, 15);
+      const languagePromises = reposToFetch.map(async (repo) => {
         try {
-          const langResponse = await fetch(
-            `https://api.github.com/repos/prasenjitpriyan/${repo.name}/languages`,
-            {
-              headers,
-              next: { revalidate: 3600 },
-            }
+          const langResponse = await fetchWithFallback(
+            `https://api.github.com/repos/prasenjitpriyan/${repo.name}/languages`
           );
 
           if (!langResponse.ok) return {};

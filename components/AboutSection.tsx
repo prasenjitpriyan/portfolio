@@ -19,7 +19,7 @@ const AboutSection: React.FC = () => {
       opacity: 1,
       x: 0,
       transition: {
-        type: 'spring',
+        type: 'spring' as const,
         stiffness: 100,
         damping: 20,
       },
@@ -34,7 +34,7 @@ const AboutSection: React.FC = () => {
       rotateY: 0,
       transition: {
         duration: 1.2,
-        ease: [0.16, 1, 0.3, 1],
+        ease: [0.16, 1, 0.3, 1] as const,
       },
     },
   };
@@ -46,7 +46,7 @@ const AboutSection: React.FC = () => {
       scale: 1,
       transition: {
         duration: 1.2,
-        ease: [0.16, 1, 0.3, 1],
+        ease: [0.16, 1, 0.3, 1] as const,
       },
     },
   };
